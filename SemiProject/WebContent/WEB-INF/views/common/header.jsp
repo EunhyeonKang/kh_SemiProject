@@ -15,16 +15,17 @@
         <button type="button" class="menu-btn">메뉴열기</button>
         <ul class="nav">
         <li class="nav-item"><a href="/view/introduce.jsp">기관소개</a></li>
-          <li class="nav-item"><a href="/view/supportSale.jsp">후원판매</a></li>
+          <li class="nav-item"><a href="/view/goodsProduct.jsp">굿즈상품</a></li>
           <li class="nav-item"><a href="/view/supporNotice.jsp">공지사항</a></li>
           <li class="nav-item"><a href="/view/supportBoard.jsp">후원게시판</a></li>
+          <li class="nav-item"><a href="/view/freeBoard.jsp">자유게시판</a></li>
         </ul>
         <div class="right-col">
           <ul class="login">
             <li class="login-item"><a href="#none">로그인</a></li>
             <li class="login-item"><a href="#none">회원가입</a></li>
           </ul>
-           <a class="interior-link" href="#none">후원내역</a>
+           <a class="interior-link" href="#none">관리자</a>
         </div>
       </div>
 

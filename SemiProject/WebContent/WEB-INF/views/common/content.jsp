@@ -11,8 +11,8 @@
     <div class="content">
       <div class="content-banner">
         <div>
-          <form class="example" action="/action_page.php">
-            <input type="text" placeholder="키워드를 검색해 주세요" name="search2">
+          <form class="example" action="/search" method="post" name="search">
+            <input type="text" placeholder="키워드를 검색해 주세요" id="search" name="search">
             <button type="submit"><i class="fa fa-search"></i></button>
         </div>
         </form>
