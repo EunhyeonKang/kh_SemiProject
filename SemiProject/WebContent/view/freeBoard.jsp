@@ -8,5 +8,6 @@
 </head>
 <body>
 	자유게시판
+	github 사이트 테스트
 </body>
 </html>
