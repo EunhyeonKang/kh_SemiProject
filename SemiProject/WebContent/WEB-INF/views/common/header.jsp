@@ -5,13 +5,14 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/join.css">
 <style>
  @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap');
 </style>
 <header>
       <div class="header-wrap">
-        <a href="./index.html" class="home">해피흠</a>
+        <a href="/" class="home">해피흠</a>
         <button type="button" class="menu-btn">메뉴열기</button>
         <ul class="nav">
         <li class="nav-item"><a href="/view/introduce.jsp">기관소개</a></li>
@@ -25,7 +26,7 @@
             <li class="login-item"><a href="#none">로그인</a></li>
             <li class="login-item"><a href="#none">회원가입</a></li>
           </ul>
-           <a class="interior-link" href="#none">관리자</a>
+           <a class="interior-link" href="/adminJoin">관리자</a>
         </div>
       </div>
 
