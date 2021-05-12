@@ -56,17 +56,17 @@
             <p style="font-size: 25px; font-weight: bold">
               모든 어린이는 보호받을 권리가 있습니다.
             </p>
-            <hr/>
-            <pre style="font-size: 18px; font-family: 'Nanum Gothic', sans-serif">
-  어린이는 보호와 지원을 받아야 하지만 세상의 많은 어린이들은 전쟁과 기아, 
-  폭력,질병 등으로 고통받고 있습니다.
-  어린이들의 생명을 구하고 삶을 개선하기 위해 유니세프는 2차 세계대전
-  직후인 1946년부터 전 세계에서 어린이들을 돕는 활동을 펼치고 있습니다.
-  현재 유니세프는 약 190개 국가 및 영토에서 활동하고 있으며
-  157개 개발도상국에서 어린이들의 생명을 구하고, 어린이의 삶을 개선하기 
-  위한 다양한 사업을 펼치고 있습니다.
-          </pre
-            >
+            <hr style="width: 95%;">
+            <pre style="font-size: 18px; font-family: 'Nanum Gothic', sans-serif; line-height: 30px;">
+어린이는 보호와 지원을 받아야 하지만 세상의 많은 
+어린이들은 전쟁과 기아, 폭력,질병 등으로 고통받고 있습니다.
+어린이들의 생명을 구하고 삶을 개선하기 위해 해피흠은 
+2차 세계대전 직후인 1946년부터 전 세계에서 어린이들을 돕는 
+활동을 펼치고 있습니다. 현재 해피흠은 약 190개 국가 및 
+영토에서 활동하고 있으며 157개 개발도상국에서 어린이들의 
+생명을 구하고, 어린이의 삶을 개선하기 위한 다양한 
+사업을 펼치고 있습니다.
+          </pre>
           </div>
         </div>
 
@@ -85,10 +85,10 @@
             <hr width="95%">
             <div class="kind1" style="margin-left: 200px;">
               <input type="radio" id ="kind1"class="radi" name=kind value="kind1">
-              <label for="kind1"><p style="font-size: 20px;">정기후원하기</p>매월 약정된 금액을 후원하여 구호활동에 참여하실수있습니다</label></div>
+              <label for="kind1"><p style="font-size: 20px;">정기후원하기</p>매월 약정된 금액을 후원하여 구호<br>활동에 참여하실수있습니다</label></div>
             <div class="kind2">
               <input type="radio" id ="kind2"class="radi" name=kind value="kind2">
-              <label for="kind2"><p style="font-size: 20px;">일시후원하기</p>매월 약정된 금액을 후원하여 구호활동에 참여하실수있습니다</label></div>
+              <label for="kind2"><p style="font-size: 20px;">일시후원하기</p>일시적으로 금액을 후원하여 구호<br>활동에 참여하실수있습니다</label></div>
           </div>
           
           <div class="dona_radio">
@@ -107,7 +107,7 @@
               <label for="kind5"><div>나의 이웃 돕기</div> 인기척없이 힘들고, 고통받고 있을수있는 나의 이웃을 보살피는 구호활동에 후원금이 사용됩니다.</label>
             </div>
             <div class="dona_btn" style="height: 60px; border: none;">
-              <div style="margin-left: 410px;">메인으로</div>
+              <div style="margin-left: 340px;">메인으로</div>
               <div onclick="func1()">다음</div>
             </div>
           </div>
@@ -145,11 +145,12 @@
                 <div class="info" style="margin-bottom: 30px">
                   <div>이메일</div>
                   <div>
-                    <input type="text" name="email" />@
+                    <input type="text" name="email" /> @
                     <input type="text" name="email2" />
                     <select
                       class="select"
-                      style="width: 120px; height: 25px"
+                      style="width: 120px; height: 25px; outline: none;"
+                      
                       onChange="selectEmail(this)"
                     >
                       <option value="">직접입력</option>
@@ -174,7 +175,7 @@
                   <div class="info_con">
                     <div>내용</div>
                     <div style="margin-left: 30px">
-                      <textarea style="width: 600px; height: 80px"></textarea>
+                      <textarea style="width: 600px; height: 80px; outline: none;"></textarea>
                     </div>
                   </div>
                 </div>
@@ -182,26 +183,59 @@
               <div class="con4_2">
                 <p class="ment1" style="margin-top: 20px; margin-bottom: 20px">
                   약관 및 개인정보 수집 - 이용동의
+                  <input type="checkbox" id="allCheck" style="margin-left: 480px;"><label for="allCheck">이용약관 전체동의</label>
                 </p>
                 <div class="agree">
-                  <input type="checkbox" />
+                  <input type="checkbox" id="check1"/>
                   <p class="agree1">[+] 후원 약관 동의[필수]</p>
                 </div>
-                <div id="toggle1">약관 내용</div>
+                <div id="toggle1">
+                  <div style="overflow-x: scroll; width: 100%; height: 100px; text-align: left; ">
+                    [ 해피흠 이용 약관 ]<br>
+제1장 총칙<br>
+
+제 1 조 (목적)<br>
+이 약관은 해피흠 주식회사(이하 “회사”)가 운영하는 후원에서 제공하는 서비스와 이를 이용하는 회원의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.<br>
+
+제 2 조 (용어의 정의)<br>
+이 약관에서 사용하는 용어의 정의는 다음과 같습니다. 그리고 여기에서 정의되지 않은 이 약관상의 용어의 의미는 일반적인 거래관행에 따릅니다.<br>
+1. “사이버몰”이란 회사가 상품 또는 용역 등(일정한 시설을 이용하거나 용역을 제공받을 수 있는 권리를 포함하며, 이하 “상품 등”)을 회원에게 제공하기 위하여 컴퓨터 등 정보통신설비를 이용하여 상품 등을 거래할 수 있도록 설정한 가상의 영업장(http://www.coupang.com 등 회사가 운영하는 웹사이트 및 모바일 웹, 앱 등을 모두 포함)을 의미합니다.<br>
+2. “회원”이라 함은 사이버몰에 회원등록을 한 자로서, 계속적으로 사이버몰에서 제공하는 서비스를 이용할 수 있는 자를 말합니다.<br>
+3. “아이디(ID)”라 함은 회원의 식별과 서비스 이용을 위하여 회원이 설정하고 회사가 승인하여 등록된 전자우편주소를 말합니다.<br>
+4. “비밀번호(Password)”라 함은 회원의 동일성 확인과 회원의 권익 및 비밀보호를 위하여 회원 스스로가 설정하여 사이버몰에 등록한 문자와 숫자 등의 조합을 말합니다.<br>
+5. “마켓플레이스 서비스(MarketPlace Service)”라 함은 회사가 사이버몰을 통하여 제공하는 통신판매중개 서비스 및 관련 부가서비스 일체를 말합니다.<br>
+                  </div>
+                </div>
                 <div class="agree">
-                  <input type="checkbox" />
+                  <input type="checkbox" id="check2"/>
                   <p class="agree2">[+] 개인정보 수집-이용동의[필수]</p>
                 </div>
-                <div id="toggle2">약관 내용</div>
+                <div id="toggle2">
+                  <div style="overflow-x: scroll; width: 100%; height: 100px; text-align: left;">
+                    [ 해피흠 이용 약관 ]<br>
+제1장 총칙<br>
+
+제 1 조 (목적)<br>
+이 약관은 해피흠 주식회사(이하 “회사”)가 운영하는 후원에서 제공하는 서비스와 이를 이용하는 회원의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.<br>
+
+제 2 조 (용어의 정의)<br>
+이 약관에서 사용하는 용어의 정의는 다음과 같습니다. 그리고 여기에서 정의되지 않은 이 약관상의 용어의 의미는 일반적인 거래관행에 따릅니다.<br>
+1. “사이버몰”이란 회사가 상품 또는 용역 등(일정한 시설을 이용하거나 용역을 제공받을 수 있는 권리를 포함하며, 이하 “상품 등”)을 회원에게 제공하기 위하여 컴퓨터 등 정보통신설비를 이용하여 상품 등을 거래할 수 있도록 설정한 가상의 영업장(http://www.coupang.com 등 회사가 운영하는 웹사이트 및 모바일 웹, 앱 등을 모두 포함)을 의미합니다.<br>
+2. “회원”이라 함은 사이버몰에 회원등록을 한 자로서, 계속적으로 사이버몰에서 제공하는 서비스를 이용할 수 있는 자를 말합니다.<br>
+3. “아이디(ID)”라 함은 회원의 식별과 서비스 이용을 위하여 회원이 설정하고 회사가 승인하여 등록된 전자우편주소를 말합니다.<br>
+4. “비밀번호(Password)”라 함은 회원의 동일성 확인과 회원의 권익 및 비밀보호를 위하여 회원 스스로가 설정하여 사이버몰에 등록한 문자와 숫자 등의 조합을 말합니다.<br>
+5. “마켓플레이스 서비스(MarketPlace Service)”라 함은 회사가 사이버몰을 통하여 제공하는 통신판매중개 서비스 및 관련 부가서비스 일체를 말합니다.<br>
+                  </div>
+                </div>
               </div>
-              <div class="dona_btn">
-                <div style="margin-left: 410px">메인으로</div>
+              <div class="dona_btn" style="margin-top: 20px;">
+                <div style="margin-left: 380px">메인으로</div>
                 <div onclick="func2()">다음</div>
               </div>
             </div>
           </div>
           <!--화면3-->
-
+          
           <div class="con5" style="display: none;">
             <div class="con5_1">
               <p class="ment1" style="padding-top: 40px;">후원 금액을 선택해주세요.</p>
@@ -214,11 +248,11 @@
               <input type="radio" id="100000" name="price_choice" value="100000" /><label for="100000">100,000원</label>
               <input type="radio" id="200000" name="price_choice" value="200000" /><label for="200000">200,000원</label>
               <input type="radio" id="gitar" name="price_choice" value="" />
-              <label for="gitar"><input type="text"  name="price_choice" value=""  style=" margin-top: 20px;"/>원</label>
+              <label for="gitar">기타<input type="text"  name="price_choice" value="" placeholder="직접입력" style=" margin-top: 20px; margin-left: 10px; width: 100px;"/>원</label>
             </div>
 
-            <div class="con5_1" style="padding-top: 30px;">
-              <p class="ment1" style="padding-top: 15px;">후원 정보 추가 확인</p>
+            <div class="con5_1" style="padding-top: 10px;">
+              <p class="ment1" style="padding-top: 40px;">후원 정보 추가 확인</p>
             </div>
             <hr width="95%">
 
@@ -234,7 +268,7 @@
               </p>
             </div>
             <div class="dona_btn">
-              <div style="margin-left: 410px">메인으로</div>
+              <div style="margin-left: 380px">메인으로</div>
               <div onclick="func3()">다음</div>
             </div>
           </div>
@@ -261,7 +295,7 @@
             <p class="ment6"">후원 내역은 후원게시판에서 확인하실수 있습니다.</p>
             
             <div class="dona_btn">
-              <div style="margin-left: 410px">후원게시판</div>
+              <div style="margin-left: 380px">후원게시판</div>
               <div onclick="func4()">메인으로</div>
             </div>
           </form>
@@ -269,11 +303,11 @@
         </div>
 
         <!--pan -->
-      
+      <styl>
+       
+      </styl>
 
       <script>
-      
-      
         function selectEmail(ele) {
           var ele = $(".select").val();
           var email2 = $("input[name=email2]");
@@ -284,32 +318,48 @@
           $(".dona_kind").css("display", "none");
           $(".dona_radio").css("display", "none");
           $(".con4").css("display", "block");
-          $(".dona_naviCon1").css("background-color", "white");
-          $(".dona_naviCon2").css( "background-color","rgba(0, 183, 255, 0.959)");
+          $(".dona_naviCon1").css("background-color", "rgba(211, 211, 211, 0.535)");
+          $(".dona_naviCon2").css( "background-color","rgba(135, 207, 235, 0.645)");
+          $(".con2_img > img").attr("src","mini_img/54.jpg")
           
         }
         function func2() {
           $(".con4").css("display", "none");
           $(".con5").css("display", "block");
-          $(".dona_naviCon2").css("background-color", "white");
-          $(".dona_naviCon3").css("background-color", "rgba(0, 183, 255, 0.959)");
+          $(".dona_naviCon2").css("background-color", "rgba(211, 211, 211, 0.535)");
+          $(".dona_naviCon3").css("background-color", "rgba(135, 207, 235, 0.645)");
+          $(".con2_img > img").attr("src","mini_img/51.jpg")
         }
         function func3() {
           $(".con5").css("display", "none");
           $(".con6").css("display", "block");
-          $(".dona_naviCon3").css("background-color", "white");
-          $(".dona_naviCon4").css("background-color", "rgba(0, 183, 255, 0.959)");
+          $(".dona_naviCon3").css("background-color", "rgba(211, 211, 211, 0.535)");
+          $(".dona_naviCon4").css("background-color", "rgba(135, 207, 235, 0.645)");
+          $(".con2_img > img").attr("src","mini_img/53.jpg")
         }
 
         $(function () {
+          //약관내용
           $(".agree1").click(function () {
             $("#toggle1").slideToggle(200);
           });
           $(".agree2").click(function () {
             $("#toggle2").slideToggle(200);
           });
-          $("#gitar")
+          //전체동의
+          $("#allCheck").click(function(){
+            if($("#allCheck").prop("checked")){
+              $("input[type=checkbox]").prop("checked",true);
+            }else{
+              $("input[type=checkbox]").prop("checked",false);
+            }
+          });
+
         });
+
+
+
+        
       </script>
 
     </div>
