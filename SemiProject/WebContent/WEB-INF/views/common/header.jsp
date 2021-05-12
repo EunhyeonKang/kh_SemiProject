@@ -19,7 +19,7 @@
           <li class="nav-item"><a href="/view/goodsProduct.jsp">굿즈상품</a></li>
           <li class="nav-item"><a href="/view/supporNotice.jsp">공지사항</a></li>
           <li class="nav-item"><a href="/view/supportBoard.jsp">후원게시판</a></li>
-          <li class="nav-item"><a href="/view/freeBoard.jsp">자유게시판</a></li>
+          <li class="nav-item"><a href="/freeBoard">자유게시판</a></li>
         </ul>
         <div class="right-col">
           <ul class="login">
