@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+.container {
+  margin-top: 104px;
+  min-height: 692px;
+}
+/* 글쓰기 버튼 우측 정렬 */
+table + div {
+  text-align: right;
+}
+
+table > thead > tr {
+  /* background-color: rgb(80, 215, 248); */
+}
+
+table > thead > tr > th {
+  text-align: center;
+}
+
+table > tbody tr > td {
+  text-align: center;
+}
+/* 글제목 정렬 : left */
+table > tbody tr > td:nth-child(2) {
+  text-align: left;
+}
