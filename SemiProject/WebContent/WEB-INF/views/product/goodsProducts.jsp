@@ -23,9 +23,9 @@
 			<div id="searchList">
 				<%for(Main n : list){ %>
 					<tr class="table-light">
-						<td><%=n.getFilepath() %>, </td>
-						<td><%=n.getPhotoWriter() %>, </td>
-						<td><%=n.getPhotoDate() %></td>
+						<td><%=n.getNoticeTitle() %>, </td>
+						<td><%=n.getNoticeWriter() %>, </td>
+						<td><%=n.getNoticeDate() %></td>
 					</tr>
 					<br>
 				<%} %>

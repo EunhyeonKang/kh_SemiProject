@@ -1,52 +1,69 @@
 package main.model.vo;
 
 public class Main {
-	private int photoNo;
-	private String photoWriter;
-	private String photoContent;
-	private String filepath;
-	private String photoDate;
+	private int noticeNo;
+	private String noticeTitle;
+	private String noticeWriter;
+	private String noticeContent;
+	private String noticeDate;
+	private String fileName;
+	private String filePath;
 	public Main() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Main(int photoNo, String photoWriter, String photoContent, String filepath, String photoDate) {
+	public Main(int noticeNo, String noticeTitle, String noticeWriter, String noticeContent, String noticeDate,
+			String fileName, String filePath) {
 		super();
-		this.photoNo = photoNo;
-		this.photoWriter = photoWriter;
-		this.photoContent = photoContent;
-		this.filepath = filepath;
-		this.photoDate = photoDate;
+		this.noticeNo = noticeNo;
+		this.noticeTitle = noticeTitle;
+		this.noticeWriter = noticeWriter;
+		this.noticeContent = noticeContent;
+		this.noticeDate = noticeDate;
+		this.fileName = fileName;
+		this.filePath = filePath;
 	}
-	public int getPhotoNo() {
-		return photoNo;
+	public int getNoticeNo() {
+		return noticeNo;
 	}
-	public void setPhotoNo(int photoNo) {
-		this.photoNo = photoNo;
+	public void setNoticeNo(int noticeNo) {
+		this.noticeNo = noticeNo;
 	}
-	public String getPhotoWriter() {
-		return photoWriter;
+	public String getNoticeTitle() {
+		return noticeTitle;
 	}
-	public void setPhotoWriter(String photoWriter) {
-		this.photoWriter = photoWriter;
+	public void setNoticeTitle(String noticeTitle) {
+		this.noticeTitle = noticeTitle;
 	}
-	public String getPhotoContent() {
-		return photoContent;
+	public String getNoticeWriter() {
+		return noticeWriter;
 	}
-	public void setPhotoContent(String photoContent) {
-		this.photoContent = photoContent;
+	public void setNoticeWriter(String noticeWriter) {
+		this.noticeWriter = noticeWriter;
 	}
-	public String getFilepath() {
-		return filepath;
+	public String getNoticeContent() {
+		return noticeContent;
 	}
-	public void setFilepath(String filepath) {
-		this.filepath = filepath;
+	public void setNoticeContent(String noticeContent) {
+		this.noticeContent = noticeContent;
 	}
-	public String getPhotoDate() {
-		return photoDate;
+	public String getNoticeDate() {
+		return noticeDate;
 	}
-	public void setPhotoDate(String photoDate) {
-		this.photoDate = photoDate;
+	public void setNoticeDate(String noticeDate) {
+		this.noticeDate = noticeDate;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 	
 }

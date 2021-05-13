@@ -177,7 +177,6 @@ header .mobile-panel {
 .content-detail{
   width: 80%;
   background-color: white;
-  height: 1000px;
   margin: 0 auto;
   text-align: center;
   margin-top: 20px;
@@ -210,7 +209,7 @@ header .mobile-panel {
   border: 25px solid rgba(0, 183, 255, 0.959);
 }
 .content-detail>ul{
-  width: 100%;
+  width:100%;
   float: center;
   margin: 20px auto;
   /* background-color:rgb(230, 231, 233); */
@@ -349,4 +348,46 @@ footer .footer-wrap .footer-detail::after {
   content: "";
   display: block;
   clear: both;
+}
+.tabMenu {
+  margin: 70px auto;
+  display: inline-block;
+  width: 80%;
+  background-color: rgba(0, 183, 255, 0.959);
+  border-radius: 20px;
+}
+.tabs {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style-type: none;
+}
+
+.tab {
+  width: 24.6%;
+  height: 100px;
+  line-height: 30px;
+  text-align: center;
+  margin-right: 4px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  float: left;
+  font-size: large;
+  font-weight: bolder;
+  padding: 30px;
+  color: white;
+}
+
+.tabContent {
+  width: 100%;
+  height: 600px;
+  background-color: rgb(207, 204, 204);
+  display: none;
+  padding: 50px;
+}
+.content-detail>div{
+  margin-top:80px;
+}
+.tabContent>table{
+  margin: 0 auto;
 }

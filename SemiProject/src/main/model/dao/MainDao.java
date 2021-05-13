@@ -14,7 +14,7 @@ public class MainDao {
 	public ArrayList<Main> searchMain(Connection conn, String search) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "select * from photo where photo_content like '%"+search+"%'";
+		String query = "select * from notice where notice_content like '%"+search+"%'";
 		ArrayList<Main> list = new ArrayList<Main>();
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -22,11 +22,13 @@ public class MainDao {
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				Main m = new Main();
-				m.setFilepath(rset.getString("filepath"));
-				m.setPhotoContent(rset.getString("photo_content"));
-				m.setPhotoDate(rset.getString("photo_date"));
-				m.setPhotoNo(rset.getInt("photo_no"));
-				m.setPhotoWriter(rset.getString("photo_writer"));
+				m.setFilePath(rset.getString("filepath"));
+				m.setNoticeContent(rset.getString("notice_content"));
+				m.setNoticeDate(rset.getString("notice_date"));
+				m.setNoticeNo(rset.getInt("notice_no"));
+				m.setNoticeWriter(rset.getString("notice_writer"));
+				m.setFileName(rset.getString("filepath"));
+				m.setNoticeTitle(rset.getString("notice_title"));
 				list.add(m);
 			}
 		} catch (SQLException e) {
