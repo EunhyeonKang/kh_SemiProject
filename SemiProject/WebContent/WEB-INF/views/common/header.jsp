@@ -5,27 +5,33 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/join.css">
 <style>
  @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap');
 </style>
 <header>
       <div class="header-wrap">
-        <a href="./index.html" class="home">해피흠</a>
+        <a href="/" class="home">해피흠</a>
         <button type="button" class="menu-btn">메뉴열기</button>
         <ul class="nav">
         <li class="nav-item"><a href="/view/introduce.jsp">기관소개</a></li>
-          <li class="nav-item"><a href="/view/supportSale.jsp">후원판매</a></li>
+          <li class="nav-item"><a href="/view/goodsProduct.jsp">굿즈상품</a></li>
           <li class="nav-item"><a href="/view/supporNotice.jsp">공지사항</a></li>
+<<<<<<< HEAD
           <li class="nav-item"><a href="/donation">후원하기</a></li>
           <li class="nav-item"><a href="/donationList">후원게시판</a></li>
+=======
+          <li class="nav-item"><a href="/view/supportBoard.jsp">후원게시판</a></li>
+          <li class="nav-item"><a href="/freeBoard">자유게시판</a></li>
+>>>>>>> main
         </ul>
         <div class="right-col">
           <ul class="login">
             <li class="login-item"><a href="#none">로그인</a></li>
             <li class="login-item"><a href="#none">회원가입</a></li>
           </ul>
-           <a class="interior-link" href="#none">후원내역</a>
+           <a class="interior-link" href="/adminJoin">관리자</a>
         </div>
       </div>
 

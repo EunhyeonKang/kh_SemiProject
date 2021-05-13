@@ -11,11 +11,12 @@
     <div class="content">
       <div class="content-banner">
         <div>
-          <form class="example" action="/action_page.php">
-            <input type="text" placeholder="키워드를 검색해 주세요" name="search2">
+          <form class="example" action="/search" method="get">
+            <input type="text" placeholder="키워드를 검색해 주세요" id="search" name="search">
             <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
         </div>
-        </form>
+       
       </div>
       <div class="content-detail">
         <h1><span>￦845,730,000</span></h1>
@@ -33,6 +34,7 @@
           <li></li>
           <li></li>
         </ul>
+      </div>
       </div>
 </body>
 </html>
