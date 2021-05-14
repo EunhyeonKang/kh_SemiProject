@@ -8,7 +8,7 @@
 		<title>freeBoard</title>
 
 		<%@ include file="/WEB-INF/views/free/freeHeader.html" %>
-			<link rel="stylesheet" href="/css/freeBoard.css">
+			<link rel="stylesheet" href="/css/free/freeBoard.css">
 	</head>
 
 	<body>

@@ -6,23 +6,29 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>freeWriteFrm</title>
     <%@ include file="/WEB-INF/views/free/freeHeader.html" %>
-      <!-- 서머노트 lite 버전 css/js -->
-      <link rel="stylesheet" href="/summernote/summernote-lite.css">
-      <script src="/summernote/summernote-lite.js"></script>
+      <!-- 서머노트 bs4 css/js -->
+      <link href="/summernote/summernote-bs4.css" rel="stylesheet">
+      <script src="/summernote/summernote-bs4.js"></script>
       <!-- summernote 한글 설정 -->
       <script src="/summernote/lang/summernote-ko-KR.js"></script>
+      <link href="/css/free/freeBoardFrm.css" rel="stylesheet">
   </head>
 
   <body>
     <!-- Header -->
     <%@ include file="/WEB-INF/views/common/header.jsp" %>
       <div class="container">
-        <h3>글쓰기</h3>
+        <h3>자유게시판 글쓰기</h3>
         <br>
         <form action="/freeWrite" method="post" enctype="multipart/form-data">
-          <input name="freeTitle" style="width: 100%;" type="text" placeholder="제목을 입력해주세요."><br><br>
-          <!-- summerEditor -->
-          <div name="editorData" id="summernote" type="text" style="width: 300px; margin-bottom: 20px;"></div>
+          <fieldset>
+            <input name="freeTitle" style="width: 100%;" type="text" placeholder="제목을 입력하세요." required><br><br>
+            <!-- summerEditor -->
+            <textarea id="summernote" name="editordata"></textarea>
+            <div class="btn-right">
+              <button type="submit" class="btn btn-danger btn-lg">등록</button>
+            </div>
+          </fieldset>
         </form>
       </div>
       <!-- Footer -->
@@ -30,13 +36,44 @@
 
         <script>
           $(function () {
+
             // summernote init
             $("#summernote").summernote({
               height: 300, // editor height
               focus: true, // set focus editable area
               lang: "ko-KR", // 한글설정
-              placeholder: "내용을 입력하세요."
+              placeholder: "내용을 입력하세요.",
+              callbacks: {
+                // 이미지 첨부 시
+                onImageUpload: function (files) {
+                  // 다중 업로드 처리
+                  for (var i = 0; i < files.length; i++) {
+                    uploadImage(files[i], this);
+                  }
+                }
+              }
             });
+
+            // 이미지 업로드
+            function uploadImage(file, editor) {
+              var formData = new FormData();
+              formData.append("file", file);
+
+              $.ajax({
+                data: formData,
+                type: "POST",
+                url: "/uploadImage",
+                enctype: 'multipart/form-data',
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                  console.log(data);
+                  $(editor).summernote('insertImage', data);
+                }
+              });
+            }
+
           });
         </script>
   </body>
