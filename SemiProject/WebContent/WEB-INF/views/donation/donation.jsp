@@ -1,5 +1,11 @@
+<%@page import="com.sun.xml.internal.bind.v2.schemagen.xmlschema.List"%>
+<%@page import="donation.login.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+    Member m = (Member)session.getAttribute("m");
+    %>
     
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/css/donation1.css">
@@ -17,8 +23,7 @@
     <link rel="stylesheet" type="text/css" href="/slick/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="/slick/slick/slick-theme.css" />
     <script type="text/javascript" src="/slick/slick/slick.js"></script>
-    <link href="/slick/main.css" rel="stylesheet" type="text/css" />
-    <script src="/slick/main.js" type="text/javascript"></script>
+    <link href="/css/donation1.css" rel="stylesheet" type="text/css" />
 
     <!--나눔고딕체-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -79,15 +84,15 @@
           </div>
 
 
-          <form action="#" method="post">
+          <form action="/donationListInsert" method="post">
           <div class="dona_kind">
             <p class="ment1">후원 방법을 선택해주세요</p>
             <hr width="95%">
             <div class="kind1" style="margin-left: 200px;">
-              <input type="radio" id ="kind1"class="radi" name=kind value="kind1">
+              <input type="radio" id ="kind1"class="radi" name=kind value="정기후원">
               <label for="kind1"><p style="font-size: 20px;">정기후원하기</p>매월 약정된 금액을 후원하여 구호<br>활동에 참여하실수있습니다</label></div>
             <div class="kind2">
-              <input type="radio" id ="kind2"class="radi" name=kind value="kind2">
+              <input type="radio" id ="kind2"class="radi" name=kind value="일시후원">
               <label for="kind2"><p style="font-size: 20px;">일시후원하기</p>일시적으로 금액을 후원하여 구호<br>활동에 참여하실수있습니다</label></div>
           </div>
           
@@ -95,19 +100,19 @@
             <P class="ment1" style="width: 90%;">후원 종류 선택하기</P>
             <hr width="95%" style="margin-left: 30px;">
             <div class="dona_radio_con1">
-              <input type="radio" id ="kind3"class="radi" name=kind1 value="kind3">
+              <input type="radio" id ="kind3"class="radi" name=kind1 value="세계어린이 돕기">
               <label for="kind3"><div>세계 어린이 돕기</div> 전세계 도움이 필요한 어린이들의 생존과 인권을 위한 유니세프의 구호 활동에 후원금이 사용됩니다.</label>
             </div>
             <div class="dona_radio_con2">
-              <input type="radio" id ="kind4"class="radi" name=kind1 value="kind4">
+              <input type="radio" id ="kind4"class="radi" name=kind1 value="지구변화 돕기">
               <label for="kind4"><div>지구 변화 돕기</div> 전쟁,환경오염,기후변화 인간에 의한 지구 환경변화를 생각한 구호 활동에 후원금이 사용됩니다.</label>
             </div>
             <div class="dona_radio_con3">
-              <input type="radio" id ="kind5"class="radi" name=kind1 value="kind5">
+              <input type="radio" id ="kind5"class="radi" name=kind1 value="나의 이웃돕기">
               <label for="kind5"><div>나의 이웃 돕기</div> 인기척없이 힘들고, 고통받고 있을수있는 나의 이웃을 보살피는 구호활동에 후원금이 사용됩니다.</label>
             </div>
             <div class="dona_btn" style="height: 60px; border: none;">
-              <div style="margin-left: 340px;">메인으로</div>
+              <div style="margin-left: 340px;"><a href ="/" style="margin-left:20px;">메인으로</a></div>
               <div onclick="func1()">다음</div>
             </div>
           </div>
@@ -124,16 +129,16 @@
                 <div class="info">
                   <div>후원인 구분</div>
                   <div>
-                    <input type="radio" id="dona_sor1" name="dona_sor"/><label for="dona_sor1">개인</label>
-                    <input type="radio" id="dona_sor2" name="dona_sor" /><label for="dona_sor2">법인</label>
-                    <input type="radio" id="dona_sor3" name="dona_sor" /><label for="dona_sor3">학교 및 단체</label>
+                    <input type="radio" id="dona_sor1" name="dona_sor" value="개인" /><label for="dona_sor1">개인</label>
+                    <input type="radio" id="dona_sor2" name="dona_sor" value="법인" /><label for="dona_sor2">법인</label>
+                    <input type="radio" id="dona_sor3" name="dona_sor" value="학교 및 단체" /><label for="dona_sor3">학교 및 단체</label>
                   </div>
                 </div>
 
                 <div class="info">
                   <div>후원인 이름</div>
                   <div>
-                    <input type="text" name="name" style="width: 300px" />
+                    <input type="text" name="name" style="width: 300px" value=""/>
                   </div>
                 </div>
                 <div class="info">
@@ -145,7 +150,7 @@
                 <div class="info" style="margin-bottom: 30px">
                   <div>이메일</div>
                   <div>
-                    <input type="text" name="email" /> @
+                    <input type="text" name="email" value="" /> @
                     <input type="text" name="email2" />
                     <select
                       class="select"
@@ -169,13 +174,13 @@
                   <div class="info">
                     <div>제목</div>
                     <div>
-                      <input type="text" name="title" />
+                      <input type="text" name="title" placeholder="제목을 입력해주세요"/>
                     </div>
                   </div>
                   <div class="info_con">
                     <div>내용</div>
                     <div style="margin-left: 30px">
-                      <textarea style="width: 600px; height: 80px; outline: none;"></textarea>
+                      <textarea name="concon" placeholder="후원받는 이들에게 전하고싶은 말을 적어주세요" style="width: 600px; height: 80px; outline: none;"></textarea>
                     </div>
                   </div>
                 </div>
@@ -229,7 +234,7 @@
                 </div>
               </div>
               <div class="dona_btn" style="margin-top: 20px;">
-                <div style="margin-left: 380px">메인으로</div>
+                <div style="margin-left: 380px"><a href ="/">메인으로</a></div>
                 <div onclick="func2()">다음</div>
               </div>
             </div>
@@ -243,11 +248,11 @@
             <hr width="95%">
 
             <div class="con5_1">
-              <input type="radio" id="30000" name="price_choice" value="30000" /><label for="30000">30,000원</label>
-              <input type="radio" id="50000" name="price_choice" value="50000" /><label for="50000"> 50,000원</label>
-              <input type="radio" id="100000" name="price_choice" value="100000" /><label for="100000">100,000원</label>
-              <input type="radio" id="200000" name="price_choice" value="200000" /><label for="200000">200,000원</label>
-              <input type="radio" id="gitar" name="price_choice" value="" />
+              <input type="radio" id="30000" name="price_choice" value="30000"/><label for="30000">30,000원</label>
+              <input type="radio" id="50000" name="price_choice" value="50000"/><label for="50000"> 50,000원</label>
+              <input type="radio" id="100000" name="price_choice" value="100000"/><label for="100000">100,000원</label>
+              <input type="radio" id="200000" name="price_choice" value="200000"/><label for="200000">200,000원</label>
+              <input type="radio" id="gitar" name="price_choice" value="500000" />
               <label for="gitar">기타<input type="text"  name="price_choice" value="" placeholder="직접입력" style=" margin-top: 20px; margin-left: 10px; width: 100px;"/>원</label>
             </div>
 
@@ -268,7 +273,7 @@
               </p>
             </div>
             <div class="dona_btn">
-              <div style="margin-left: 380px">메인으로</div>
+              <div style="margin-left: 380px"><a href ="/">메인으로</a></div>
               <div onclick="func3()">다음</div>
             </div>
           </div>
@@ -292,20 +297,18 @@
                 <img src="/mini_img/56.jpg" style="height: 100%;">
               </div>
             </div>
-            <p class="ment6"">후원 내역은 후원게시판에서 확인하실수 있습니다.</p>
+            <p class="ment6">후원 내역은 후원게시판에서 확인하실수 있습니다.</p>
             
             <div class="dona_btn">
-              <div style="margin-left: 380px">후원게시판</div>
-              <div onclick="func4()">메인으로</div>
+              <div style="margin-left: 380px"><button type="submit" value="후원게시판">후원게시판</button></div>
+              <div onclick="func4()"><a href ="/">메인으로</a></div>
+              
             </div>
           </form>
           </div>
         </div>
 
         <!--pan -->
-      <styl>
-       
-      </styl>
 
       <script>
         function selectEmail(ele) {
