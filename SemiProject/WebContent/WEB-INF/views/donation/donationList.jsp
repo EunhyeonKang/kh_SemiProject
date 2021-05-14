@@ -66,9 +66,9 @@
              <%for(DonationList n : list){ %>
             <tr class="donaConList" style="height:40px;">
               <td style="width: 60px;"><%=n.getDona_no() %></td>
-              <td style="width: 130px;"><%=n.getPa_level() %></td>
+              <td style="width: 130px; padding: 0px"><%=n.getPa_level() %></td>
               <td style="width: 120px;"><%=n.getPa_amount()%></td>
-              <td style="width: 100px; text-align: left;"><%=n.getDona_writer()%></td>
+              <td style="width: 120px; text-align: left;"><%=n.getDona_writer()%></td>
               <td style="width: 500px; height: 40px; text-align: left; margin-left: 100px"><%=n.getDona_content()%></td>
               <td style="width: 100px;"><input type="button"  class="modifyDonation" value="수정" >            	
                 <div class="alertModal" style="position: absolute;">
@@ -105,7 +105,7 @@
                         </div>
                         <div>
                           <div>내용</div>
-                          <textarea style="width: 300px; height: 100px; resize: none;" value="<%=n.getDona_content()%>">후원내용</textarea>
+                          <textarea style="width: 300px; height: 100px; resize: none;"><%=n.getDona_content()%></textarea>
                         </div>
                       </div>
                       <div class="modifyBtn">

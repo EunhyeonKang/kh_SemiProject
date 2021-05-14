@@ -53,7 +53,7 @@ public class DonationListInsertServlet extends HttpServlet {
 		}else {
 			request.setAttribute("msg", "후원게시판에 등록실패");
 		}
-		request.setAttribute("loc", "/donationList?reqPage=1");
+		request.setAttribute("loc", "/donation");
 		rd.forward(request, response);
 	}
 

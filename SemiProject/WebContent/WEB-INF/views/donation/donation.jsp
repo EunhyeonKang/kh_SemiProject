@@ -273,7 +273,7 @@
             </div>
             <div class="dona_btn">
               <div style="margin-left: 380px"><a href ="/">메인으로</a></div>
-              <div onclick="func3()">다음</div>
+              <div onclick="func3()">후원하기</div>
             </div>
           </div>
           <div class="con6" style="display: none;">
@@ -299,9 +299,8 @@
             <p class="ment6">후원 내역은 후원게시판에서 확인하실수 있습니다.</p>
             
             <div class="dona_btn">
-              <div style="margin-left: 380px"><button type="submit" value="후원게시판">후원게시판</button></div>
+              <div style="margin-left: 380px"><button type="submit" class="formDonaList" value="후원게시판">후원하기</button></div>
               <div onclick="func4()"><a href ="/">메인으로</a></div>
-              
             </div>
           </form>
           </div>
@@ -337,7 +336,7 @@
           $(".con6").css("display", "block");
           $(".dona_naviCon3").css("background-color", "rgba(211, 211, 211, 0.535)");
           $(".dona_naviCon4").css("background-color", "rgba(135, 207, 235, 0.645)");
-          $(".con2_img > img").attr("src","mini_img/53.jpg")
+          $(".con2_img > img").attr("src","mini_img/53.jpg");
         }
 
         $(function () {
