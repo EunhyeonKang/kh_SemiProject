@@ -1,10 +1,9 @@
 <%@page import="com.sun.xml.internal.bind.v2.schemagen.xmlschema.List"%>
-<%@page import="donation.login.Member"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
     <%
-    Member m = (Member)session.getAttribute("m");
     %>
     
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

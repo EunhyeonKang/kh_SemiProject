@@ -1,4 +1,3 @@
-<%@page import="donation.login.Member"%>
 <%@page import="donation.DonationList"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -7,7 +6,6 @@
 <%
 	ArrayList<DonationList> list = (ArrayList<DonationList>)request.getAttribute("list");
 	String pageNavi = (String)request.getAttribute("pageNavi");
-    Member m = (Member)session.getAttribute("m");
 %>
 <html>
 <head>

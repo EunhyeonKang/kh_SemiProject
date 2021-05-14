@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import common.JDBCTemplate;
-import donation.login.Member;
 
 public class DonationService {
 
@@ -74,15 +73,15 @@ public class DonationService {
 		
 	}
 
-	public Member loginCheck(String id, String pw) {
-		Connection conn = JDBCTemplate.getConnection();
-		
-		Member m = new DonationDao().loginCheck(conn,id,pw);
-		
-		
-		JDBCTemplate.close(conn);
-		return m;
-	}
+//	public Member loginCheck(String id, String pw) {
+//		Connection conn = JDBCTemplate.getConnection();
+//		
+//		Member m = new DonationDao().loginCheck(conn,id,pw);
+//		
+//		
+//		JDBCTemplate.close(conn);
+//		return m;
+//	}
 
 	public int insertList(Donation d, String pa_lev, DonationList list) {
 		Connection conn = JDBCTemplate.getConnection();
