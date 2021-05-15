@@ -20,11 +20,15 @@
       <div class="container">
         <h3>자유게시판 글쓰기</h3>
         <br>
-        <form action="/freeWrite" method="post" enctype="multipart/form-data">
+        <form action="/freeWrite" method="POST">
           <fieldset>
             <input name="freeTitle" style="width: 100%;" type="text" placeholder="제목을 입력하세요." required><br><br>
             <!-- summerEditor -->
             <textarea id="summernote" name="editordata"></textarea>
+
+            <!-- 파일 이름 저장용 -->
+            <input type="hidden" name="filename">
+
             <div class="btn-right">
               <button type="submit" class="btn btn-danger btn-lg">등록</button>
             </div>
@@ -68,12 +72,15 @@
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                  console.log(data);
+                  // 파일 네임 전송용
+                  $("[name=filename]").val(data);
+                  // 이미지 경로 설정
+                  data = "/upload/free/" + data;
+                  // 이미지 미리보기
                   $(editor).summernote('insertImage', data);
                 }
               });
             }
-
           });
         </script>
   </body>

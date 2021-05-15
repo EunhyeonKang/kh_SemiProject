@@ -66,12 +66,12 @@ public class UploadImageServlet extends HttpServlet {
 		String fileName = mRequest.getFilesystemName((String) mRequest.getFileNames().nextElement());
 
 		// 상대 경로 전달
-		String filePath = "/upload/free/" + fileName;
-		System.out.println(filePath);
+//		String filePath = "/upload/free/" + fileName;
+//		System.out.println(filePath);
 		// 4. 결과처리
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
-		out.print(filePath);
+		out.print(fileName);
 	}
 
 	/**
