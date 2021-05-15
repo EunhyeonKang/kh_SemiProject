@@ -35,7 +35,7 @@
   <style>
   
 </style>
-<body>
+<body>>
 	<!-- Header -->
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	
@@ -48,7 +48,7 @@
       <div class="content" style="margin-top: 80px;">
       <div class="container">
       	<br><br>
-        <h2>후원게시판</h2>
+        <h3 style="margin-left: 70px;">후원게시판</h2>
         <br>                                         
         <div class="table-responsive">          
         <table class="table" style="margin: 0px;">
@@ -66,10 +66,10 @@
              <%for(DonationList n : list){ %>
             <tr class="donaConList" style="height:40px;">
               <td style="width: 60px;"><%=n.getDona_no() %></td>
-              <td style="width: 130px; padding: 0px"><%=n.getPa_level() %></td>
-              <td style="width: 120px;"><%=n.getPa_amount()%></td>
-              <td style="width: 120px; text-align: left;"><%=n.getDona_writer()%></td>
-              <td style="width: 500px; height: 40px; text-align: left; margin-left: 100px"><%=n.getDona_content()%></td>
+              <td style="width: 130px; padding-top: 10px"><%=n.getPa_level() %></td>
+              <td style="width: 120px; text-align: right; padding-right: 30px"><%=n.getPa_amount()%>원</td>
+              <td style="width: 120px; text-align: left; padding-left: 20px""><%=n.getDona_writer()%></td>
+              <td style="width: 300px; height: 40px; text-align: left; margin-left: 100px"><%=n.getDona_content()%></td>
               <td style="width: 100px;"><input type="button"  class="modifyDonation" value="수정" >            	
                 <div class="alertModal" style="position: absolute;">
                   <div class="alertWrap">
@@ -122,17 +122,22 @@
           </tbody>
         </table>
         </div>
-        <div id="dona_pageNavi"></div>
-
-        <div class="con1" style="overflow: hidden">
-          <div id="slider-div">
-            <div><img src="mini_img/16.jpg" class="slideImg" /></div>
-            <div><img src="mini_img/9.jpg" class="slideImg" /></div>
-            <div><img src="mini_img/10.jpg" class="slideImg" /></div>
-            <div><img src="mini_img/8.jpg" class="slideImg" /></div>
-            <div><img src="mini_img/5.jpg" class="slideImg" /></div>
-            <div><img src="mini_img/11.jpg" class="slideImg" /></div>
-          </div>
+        <div id="dona_pageNavi" style="text-align: center;"><%=pageNavi%></div>
+        <div class="donaBottom">
+        <div class="donaBottom1">
+        	<h3>함께이기에 하나가 될수있습니다</h3>
+        	<hr style="width: 95%">
+        	<p style="font-size: 13px; font-family: 'Nanum Gothic', sans-serif; line-height: 25px;">
+        	여러분의 소중한 관심이 하나로 모여 오늘의 행복을 만들어 나갑니다.<br>
+        	누구에게나 추억은 소중하듯이 그 소중한 추억을<br>
+        	 우리 모두가 만들어낼수 있습니다<br>
+        	 혼자가 아닌 함께이기에
+        	 저희 해피흠은 미래를 만들어 나갑니다.
+        	</p>
+        </div>
+        <div class="donaBottom2">
+        	<img src="mini_img/64.jpg">
+        </div>
         </div>
       </div>
 
