@@ -57,11 +57,11 @@
             <img src="mini_img/33.jpg" style="width: 90%" />
           </div>
           <div class="con2_text">
-            <p style="font-size: 25px; font-weight: bold">
+            <p style="font-size: 20px; font-weight: bold">
               모든 어린이는 보호받을 권리가 있습니다.
             </p>
-            <hr style="width: 95%;">
-            <pre style="font-size: 18px; font-family: 'Nanum Gothic', sans-serif; line-height: 30px;">
+            <hr style="width: 100%; ">
+            <pre style="font-size: 13px; font-family: 'Nanum Gothic', sans-serif; line-height: 25px;">
 어린이는 보호와 지원을 받아야 하지만 세상의 많은 
 어린이들은 전쟁과 기아, 폭력,질병 등으로 고통받고 있습니다.
 어린이들의 생명을 구하고 삶을 개선하기 위해 해피흠은 
@@ -87,12 +87,12 @@
           <div class="dona_kind">
             <p class="ment1">후원 방법을 선택해주세요</p>
             <hr width="95%">
-            <div class="kind1" style="margin-left: 200px;">
+            <div class="kind1" style="margin-left: 160px;">
               <input type="radio" id ="kind1"class="radi" name=kind value="정기후원">
-              <label for="kind1"><p style="font-size: 20px;">정기후원하기</p>매월 약정된 금액을 후원하여 구호<br>활동에 참여하실수있습니다</label></div>
+              <label for="kind1"><p style="font-size: 20px; margin-top: 10px">정기후원하기</p><p style="font-size:13px">매월 약정된 금액을 후원하여 구호<br>활동에 참여하실수있습니다</p></label></div>
             <div class="kind2">
               <input type="radio" id ="kind2"class="radi" name=kind value="일시후원">
-              <label for="kind2"><p style="font-size: 20px;">일시후원하기</p>일시적으로 금액을 후원하여 구호<br>활동에 참여하실수있습니다</label></div>
+              <label for="kind2"><p style="font-size: 20px; margin-top: 10px">일시후원하기</p><p style="font-size:13px">일시적으로 금액을 후원하여 구호<br>활동에 참여하실수있습니다</p></label></div>
           </div>
           
           <div class="dona_radio">
@@ -111,7 +111,7 @@
               <label for="kind5"><div>나의 이웃 돕기</div> 인기척없이 힘들고, 고통받고 있을수있는 나의 이웃을 보살피는 구호활동에 후원금이 사용됩니다.</label>
             </div>
             <div class="dona_btn" style="height: 60px; border: none;">
-              <div style="margin-left: 340px;"><a href ="/" style="margin-left:20px;">메인으로</a></div>
+              <div style="margin-left: 310px;"><a href ="/" style="margin-left:10px;">메인으로</a></div>
               <div onclick="func1()">다음</div>
             </div>
           </div>
@@ -153,7 +153,7 @@
                     <input type="text" name="email2" />
                     <select
                       class="select"
-                      style="width: 120px; height: 25px; outline: none;"
+                      style="width: 120px; height: 20px; outline: none; font-size:13px;"
                       
                       onChange="selectEmail(this)"
                     >
@@ -173,28 +173,28 @@
                   <div class="info">
                     <div>제목</div>
                     <div>
-                      <input type="text" name="title" placeholder="제목을 입력해주세요"/>
+                      <input type="text" name="title" />
                     </div>
                   </div>
                   <div class="info_con">
                     <div>내용</div>
                     <div style="margin-left: 30px">
-                      <textarea name="concon" placeholder="후원받는 이들에게 전하고싶은 말을 적어주세요" style="width: 600px; height: 80px; outline: none;"></textarea>
+                      <textarea name="concon" style="width: 600px; height: 80px; outline: none;"></textarea>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="con4_2">
-                <p class="ment1" style="margin-top: 20px; margin-bottom: 20px">
+                <p class="ment1" style="margin-top:20px; width:100%; margin-bottom: 20px">
                   약관 및 개인정보 수집 - 이용동의
-                  <input type="checkbox" id="allCheck" style="margin-left: 480px;"><label for="allCheck">이용약관 전체동의</label>
+                  <input type="checkbox" id="allCheck" style="margin-left: 470px;"><label for="allCheck">이용약관 전체동의</label>
                 </p>
                 <div class="agree">
                   <input type="checkbox" id="check1"/>
                   <p class="agree1">[+] 후원 약관 동의[필수]</p>
                 </div>
                 <div id="toggle1">
-                  <div style="overflow-x: scroll; width: 100%; height: 100px; text-align: left; ">
+                  <div style="overflow-x: scroll; font-size:12px; width: 100%; height: 100px; text-align: left; background: white;">
                     [ 해피흠 이용 약관 ]<br>
 제1장 총칙<br>
 
@@ -212,10 +212,10 @@
                 </div>
                 <div class="agree">
                   <input type="checkbox" id="check2"/>
-                  <p class="agree2">[+] 개인정보 수집-이용동의[필수]</p>
+                  <p class="agree2">[+] 개인정보 수집-이용동의[선택]</p>
                 </div>
                 <div id="toggle2">
-                  <div style="overflow-x: scroll; width: 100%; height: 100px; text-align: left;">
+                  <div style="overflow-x: scroll; font-size:12px;  width: 100%; height: 100px; text-align: left; background: white;">
                     [ 해피흠 이용 약관 ]<br>
 제1장 총칙<br>
 
@@ -233,7 +233,7 @@
                 </div>
               </div>
               <div class="dona_btn" style="margin-top: 20px;">
-                <div style="margin-left: 380px"><a href ="/">메인으로</a></div>
+                <div style="margin-left: 310px"><a href ="/">메인으로</a></div>
                 <div onclick="func2()">다음</div>
               </div>
             </div>
@@ -252,7 +252,7 @@
               <input type="radio" id="100000" name="price_choice" value="100000"/><label for="100000">100,000원</label>
               <input type="radio" id="200000" name="price_choice" value="200000"/><label for="200000">200,000원</label>
               <input type="radio" id="gitar" name="price_choice" value="500000" />
-              <label for="gitar">기타<input type="text"  name="price_choice" value="" placeholder="직접입력" style=" margin-top: 20px; margin-left: 10px; width: 100px;"/>원</label>
+              <label for="gitar">기타<input type="text"  name="price_choice" value="" placeholder="직접입력" style=" font-size:13px; margin-top: 20px; margin-left: 10px; width: 100px;"/>원</label>
             </div>
 
             <div class="con5_1" style="padding-top: 10px;">
@@ -272,8 +272,8 @@
               </p>
             </div>
             <div class="dona_btn">
-              <div style="margin-left: 380px"><a href ="/">메인으로</a></div>
-              <div onclick="func3()">후원하기</div>
+              <div style="margin-left: 310px"><a href ="/">메인으로</a></div>
+              <div onclick="func3()">다음</div>
             </div>
           </div>
           <div class="con6" style="display: none;">
@@ -299,7 +299,7 @@
             <p class="ment6">후원 내역은 후원게시판에서 확인하실수 있습니다.</p>
             
             <div class="dona_btn">
-              <div style="margin-left: 380px"><button type="submit" class="formDonaList" value="후원게시판">후원하기</button></div>
+              <div style="margin-left: 310px"><button type="submit" class="formDonaList" value="후원게시판">후원하기</button></div>
               <div onclick="func4()"><a href ="/">메인으로</a></div>
             </div>
           </form>
@@ -316,12 +316,19 @@
         }
 
         function func1() {
-          $(".dona_kind").css("display", "none");
-          $(".dona_radio").css("display", "none");
-          $(".con4").css("display", "block");
-          $(".dona_naviCon1").css("background-color", "rgba(211, 211, 211, 0.535)");
-          $(".dona_naviCon2").css( "background-color","rgba(135, 207, 235, 0.645)");
-          $(".con2_img > img").attr("src","mini_img/54.jpg")
+        	var kind = $("input[name=kind]").is(":checked");
+        	var kind1 = $("input[name=kind1]").is(":checked");
+          if(kind && kind1){	
+	          $(".dona_kind").css("display", "none");
+	          $(".dona_radio").css("display", "none");
+	          $(".con4").css("display", "block");
+	          $(".dona_naviCon1").css("background-color", "rgba(211, 211, 211, 0.535)");
+	          $(".dona_naviCon2").css( "background-color","rgba(135, 207, 235, 0.645)");
+	          $(".con2_img > img").attr("src","mini_img/54.jpg");
+          }else{
+        	  alert("후원을 선택해주세요");
+          }
+          
           
         }
         function func2() {

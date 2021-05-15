@@ -16,6 +16,8 @@ div{
 
   .donaConList>*{
     text-align: center;
+    font-size:14px;
+    margin-top: 10px;
     
   }
   
@@ -78,3 +80,44 @@ div{
   background-color: white;
   line-height:5px;
 }
+.table-responsive{
+	width: 90%;
+	margin: 0 auto;
+}
+.donaBottom{
+	border:0px solid black;
+	width: 90%;
+	height: 250px;
+	margin: 0 auto;
+}
+.donaBottom>div{
+	float: left;
+	margin-left: 35px;
+}
+.donaBottom1{
+	border: 0px solid black;
+	width: 45%;
+	height: 90%;
+	font-size: 13px;
+}
+.donaBottom2{
+	border: 0px solid black;
+	width: 45%;
+	height: 90%;
+}
+.donaBottom2 > img{
+	
+	width: 100%;
+	height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
