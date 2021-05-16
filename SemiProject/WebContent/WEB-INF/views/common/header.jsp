@@ -7,24 +7,27 @@
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/join.css">
 <link rel="stylesheet" href="/css/admin.css">
-<script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
+
+
 <style>
  @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap');
+ @media screen and (max-width: 1350px) {
+  .right-col{
+      display: none;
+  }
+}
 </style>
 <header>
       <div class="header-wrap">
         <a href="/" class="home">해피흠</a>
         <button type="button" class="menu-btn">메뉴열기</button>
         <ul class="nav">
-        <li class="nav-item"><a href="/view/introduce.jsp">기관소개</a></li>
           <li class="nav-item"><a href="/view/goodsProduct.jsp">굿즈상품</a></li>
           <li class="nav-item"><a href="/view/supporNotice.jsp">공지사항</a></li>
 
           <li class="nav-item"><a href="/donation">후원하기</a></li>
           <li class="nav-item"><a href="/donationList">후원게시판</a></li>
-
-          <li class="nav-item"><a href="/view/supportBoard.jsp">후원게시판</a></li>
           <li class="nav-item"><a href="/freeBoard">자유게시판</a></li>
 
         </ul>
