@@ -59,4 +59,33 @@ public class AdminDao {
 		return a;
 	}
 
+	public Admin selectOneAdmin(Connection conn, String adminId, String adminPw) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select * from admin where admin_id=? and admin_pw=?";
+		Admin a = null;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, adminId);
+			pstmt.setString(2, adminPw);
+			rset = pstmt.executeQuery();
+			if (rset.next()) {
+				a = new Admin();
+				a.setAddr(rset.getString("admin_addr"));
+				a.setAdminId(rset.getString("admin_id"));
+				a.setAdminName(rset.getString("admin_name"));
+				a.setAdminNo(rset.getInt("admin_no"));
+				a.setAdminPw(rset.getString("admin_pw"));
+				a.setPhone(rset.getString("admin_phone"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return a;
+	}
+
 }
