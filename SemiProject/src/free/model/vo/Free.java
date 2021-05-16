@@ -9,13 +9,14 @@ public class Free {
 	private String freeDate;
 	private String filepath;
 	private int readCount;
+	private int likeCount;
 
 	public Free() {
 		super();
 	}
 
 	public Free(int rnum, int freeNo, String freeTitle, String freeWriter, String freeContent, String freeDate,
-			String filepath, int readCount) {
+			String filepath, int readCount, int likeCount) {
 		super();
 		this.rnum = rnum;
 		this.freeNo = freeNo;
@@ -25,6 +26,15 @@ public class Free {
 		this.freeDate = freeDate;
 		this.filepath = filepath;
 		this.readCount = readCount;
+		this.likeCount = likeCount;
+	}
+
+	public int getLikeCount() {
+		return likeCount;
+	}
+
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
 	}
 
 	public int getRnum() {

@@ -54,7 +54,9 @@
 												<td>
 													<%=f.getReadCount() %>
 												</td>
-												<td>0</td>
+												<td>
+													<%=f.getLikeCount()%>
+												</td>
 											</tr>
 											<%} %>
 									</tbody>
