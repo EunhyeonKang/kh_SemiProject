@@ -27,4 +27,11 @@ public class AdminService {
 		return a;
 	}
 
+	public Admin selectOneAdmin(String adminId, String adminPw) {
+		Connection conn = JDBCTemplate.getConnection();
+		Admin a = new AdminDao().selectOneAdmin(conn,adminId,adminPw);
+		JDBCTemplate.close(conn);
+		return a;
+	}
+
 }
