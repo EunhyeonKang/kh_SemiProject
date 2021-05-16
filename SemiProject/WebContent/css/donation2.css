@@ -1,14 +1,14 @@
 #toggle1 {
-  width: 80%;
+  width: 75%;
   height: 100px;
-  margin-left: 70px;
+  margin-left: 40px;
   outline: none;
   border: 1px solid lightgrey;
 }
 #toggle2 {
-  width: 80%;
+  width: 75%;
   height: 100px;
-  margin-left: 70px;
+  margin-left: 40px;
   border: 1px solid lightgrey;
 }
 .con5_1 {
@@ -18,7 +18,7 @@
 }
 .con5_1 > input {
   width: 3%;
-  margin-left: 60px;
+  margin-left: 45px;
 }
 
 input {
@@ -39,8 +39,15 @@ textarea {
 .con4 {
   border: 0px solid black;
   width: 100%;
-  height: 100%;
+  height: 900px;
   overflow: hidden;
+  font-size:13px;
+}
+.con4_1 div{
+	border-radius: 10px;
+}
+.cont4_1 input{
+	font-size:13px;
 }
 .info {
   border: 0px solid black;
@@ -67,11 +74,11 @@ textarea {
 }
 .agree {
   border: 1px solid lightgrey;
-  width: 80%;
+  width: 75%;
   height: 40px;
   font-weight: bold;
   padding-left: 20px;
-  margin-left: 70px;
+  margin-left: 40px;
 }
 .info > div:first-child {
   margin-left: 50px;

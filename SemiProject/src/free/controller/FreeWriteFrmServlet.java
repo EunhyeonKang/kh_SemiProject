@@ -9,20 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import free.model.service.FreeService;
-import free.model.vo.FreePageData;
-
 /**
- * Servlet implementation class FreeBoardServlet
+ * Servlet implementation class FreeWriteFrmServlet
  */
-@WebServlet(name = "FreeBoard", urlPatterns = { "/freeBoard" })
-public class FreeBoardServlet extends HttpServlet {
+@WebServlet(name = "FreeWriteFrm", urlPatterns = { "/freeWriteFrm" })
+public class FreeWriteFrmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public FreeBoardServlet() {
+	public FreeWriteFrmServlet() {
 		super();
 	}
 
@@ -35,14 +32,9 @@ public class FreeBoardServlet extends HttpServlet {
 		// 1. 인코딩
 		request.setCharacterEncoding("utf-8");
 		// 2. 값 추출
-		int reqPage = Integer.parseInt(request.getParameter("reqPage"));
 		// 3. 비지니스 로직
-		FreePageData fpd = new FreeService().selectFreeList(reqPage);
-		// 4. 결과처리
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/free/freeBoard.jsp");
-		request.setAttribute("list", fpd.getList());
-		request.setAttribute("pageNavi", fpd.getPageNavi());
-		
+		// 4. 결과 처리
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/free/freeWriteFrm.jsp");
 		rd.forward(request, response);
 	}
 

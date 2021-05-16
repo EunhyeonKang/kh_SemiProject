@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import free.model.service.FreeService;
-import free.model.vo.FreePageData;
+import free.model.vo.Free;
 
 /**
- * Servlet implementation class FreeBoardServlet
+ * Servlet implementation class FreeWriteServlet
  */
-@WebServlet(name = "FreeBoard", urlPatterns = { "/freeBoard" })
-public class FreeBoardServlet extends HttpServlet {
+@WebServlet(name = "FreeWrite", urlPatterns = { "/freeWrite" })
+public class FreeWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public FreeBoardServlet() {
+	public FreeWriteServlet() {
 		super();
 	}
 
@@ -34,15 +34,24 @@ public class FreeBoardServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// 1. 인코딩
 		request.setCharacterEncoding("utf-8");
+
 		// 2. 값 추출
-		int reqPage = Integer.parseInt(request.getParameter("reqPage"));
-		// 3. 비지니스 로직
-		FreePageData fpd = new FreeService().selectFreeList(reqPage);
+		Free f = new Free();
+		f.setFreeTitle(request.getParameter("freeTitle"));
+		f.setFreeContent(request.getParameter("editordata"));
+		f.setFilepath(request.getParameter("filename"));
+
+		// 3. 비지니스로직
+		int result = new FreeService().insertFree(f);
 		// 4. 결과처리
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/free/freeBoard.jsp");
-		request.setAttribute("list", fpd.getList());
-		request.setAttribute("pageNavi", fpd.getPageNavi());
-		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
+
+		if (result > 0) {
+			request.setAttribute("msg", "게시물 등록 성공!");
+		} else {
+			request.setAttribute("msg", "게시물 등록 실패!");
+		}
+		request.setAttribute("loc", "/freeBoard?reqPage=1");
 		rd.forward(request, response);
 	}
 
