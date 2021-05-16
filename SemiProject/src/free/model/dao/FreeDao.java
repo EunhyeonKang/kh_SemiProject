@@ -33,11 +33,11 @@ public class FreeDao {
 		return result;
 	}
 
-	// 게시물 전체 조회
+	// 게시물 전체 조회 + 좋아요 조회
 	public ArrayList<Free> selectFreeList(Connection conn, int start, int end) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "SELECT * FROM (SELECT ROWNUM AS RNUM, F.* FROM (SELECT * FROM FREE ORDER BY FREE_NO DESC) F) WHERE RNUM BETWEEN ? AND ?";
+		String query = "SELECT * FROM(SELECT ROWNUM AS RNUM, F.*, (SELECT COUNT(*) AS CNT FROM FREE_LIKE WHERE FREE_REF = F.FREE_NO) AS LIKE_COUNT FROM (SELECT * FROM FREE ORDER BY FREE_NO DESC) F) WHERE RNUM BETWEEN ? AND ?";
 		ArrayList<Free> list = new ArrayList<Free>();
 
 		try {
@@ -59,7 +59,7 @@ public class FreeDao {
 		return list;
 	}
 
-	// 게시물 조회용
+	// 게시물 저장용
 	private Free setFree(ResultSet rset, String test) {
 		Free f = new Free();
 
@@ -71,16 +71,18 @@ public class FreeDao {
 			f.setFreeTitle(rset.getString("free_title"));
 			f.setFreeWriter(rset.getString("free_writer"));
 			f.setReadCount(rset.getInt("read_count"));
+			// 조회일때만
 			if (test.equals("조회")) {
 				f.setRnum(rset.getInt("rnum"));
+				f.setLikeCount(rset.getInt("like_count"));
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return f;
 	}
 
+	// 게시물 총 갯수 조회
 	public int totalCount(Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
