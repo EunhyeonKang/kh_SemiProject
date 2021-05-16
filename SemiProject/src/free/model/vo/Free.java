@@ -1,6 +1,7 @@
 package free.model.vo;
 
 public class Free {
+	private int rnum;
 	private int freeNo;
 	private String freeTitle;
 	private String freeWriter;
@@ -13,9 +14,10 @@ public class Free {
 		super();
 	}
 
-	public Free(int freeNo, String freeTitle, String freeWriter, String freeContent, String freeDate, String filepath,
-			int readCount) {
+	public Free(int rnum, int freeNo, String freeTitle, String freeWriter, String freeContent, String freeDate,
+			String filepath, int readCount) {
 		super();
+		this.rnum = rnum;
 		this.freeNo = freeNo;
 		this.freeTitle = freeTitle;
 		this.freeWriter = freeWriter;
@@ -23,6 +25,14 @@ public class Free {
 		this.freeDate = freeDate;
 		this.filepath = filepath;
 		this.readCount = readCount;
+	}
+
+	public int getRnum() {
+		return rnum;
+	}
+
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
 	}
 
 	public int getFreeNo() {

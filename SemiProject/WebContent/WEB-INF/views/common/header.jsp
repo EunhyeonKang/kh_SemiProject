@@ -20,7 +20,7 @@
 
         <li class="nav-item"><a href="/donation">후원하기</a></li>
         <li class="nav-item"><a href="/donationList?reqPage=1">후원게시판</a></li>
-        <li class="nav-item"><a href="/freeBoard">자유게시판</a></li>
+        <li class="nav-item"><a href="/freeBoard?reqPage=1">자유게시판</a></li>
 
       </ul>
       <div class="right-col">

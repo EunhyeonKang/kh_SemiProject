@@ -37,8 +37,6 @@ public class UploadImageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("이미지 생김~");
-
 		// 1. 인코딩
 		request.setCharacterEncoding("utf-8");
 
@@ -66,12 +64,12 @@ public class UploadImageServlet extends HttpServlet {
 		String fileName = mRequest.getFilesystemName((String) mRequest.getFileNames().nextElement());
 
 		// 상대 경로 전달
-		String filePath = "/upload/free/" + fileName;
-		System.out.println(filePath);
+		// String filePath = "/upload/free/" + fileName;
+		// System.out.println(filePath);
 		// 4. 결과처리
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
-		out.print(filePath);
+		out.print(fileName);
 	}
 
 	/**
