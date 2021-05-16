@@ -51,7 +51,7 @@ public class FreeWriteServlet extends HttpServlet {
 		} else {
 			request.setAttribute("msg", "게시물 등록 실패!");
 		}
-		request.setAttribute("loc", "/freeBoard");
+		request.setAttribute("loc", "/freeBoard?reqPage=1");
 		rd.forward(request, response);
 	}
 

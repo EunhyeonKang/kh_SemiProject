@@ -40,7 +40,6 @@
 
         <script>
           $(function () {
-
             // summernote init
             $("#summernote").summernote({
               height: 300, // editor height
