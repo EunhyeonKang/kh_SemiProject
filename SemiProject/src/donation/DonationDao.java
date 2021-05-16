@@ -109,7 +109,7 @@ public class DonationDao {
 			pstmt.setString(2, d.getPa_name());
 			pstmt.setString(3, list.getDona_content());
 			pstmt.setInt(4, d.getPrice_choice());
-			pstmt.setString(5, d.getPa_kind());
+			pstmt.setString(5, list.getPa_level());
 			
 			result=pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -121,6 +121,50 @@ public class DonationDao {
 		return result;
 	}
 
+	public int donationUpdate(Connection conn, Donation d, DonationList list, int listNum) {
+
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query="update donation_list set dona_writer=?, dona_title=?, dona_content=?,pa_level=? where dona_no=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, list.getDona_writer());
+			pstmt.setString(2, list.getDona_title());
+			pstmt.setString(3, list.getDona_content());
+			pstmt.setString(4, list.getPa_level());
+			pstmt.setInt(5, listNum);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int donaDelete(Connection conn, int donaNum) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String query = "delete from donation_list where dona_no = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, donaNum);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+	}
 }
 
 

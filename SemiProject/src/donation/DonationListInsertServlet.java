@@ -36,6 +36,7 @@ public class DonationListInsertServlet extends HttpServlet {
 		d.setPa_name(request.getParameter("name"));
 		list.setDona_title(request.getParameter("title"));
 		list.setDona_content(request.getParameter("concon"));
+		list.setPa_level(request.getParameter("dona_sor"));
 		
 		d.setPrice_choice(Integer.parseInt(request.getParameter("price_choice")));
 		System.out.println(d.getPrice_choice());

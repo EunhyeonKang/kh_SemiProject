@@ -33,9 +33,10 @@
 <title>Insert title here</title>
 </head>
   <style>
-  
+ 
 </style>
-<body>>
+<body>
+	
 	<!-- Header -->
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	
@@ -51,7 +52,7 @@
         <h3 style="margin-left: 70px;">후원게시판</h2>
         <br>                                         
         <div class="table-responsive">          
-        <table class="table" style="margin: 0px;">
+        <table class="table" style="margin: 0px; overflow: hidden; ">
           <thead>
             <tr class="donahighNavi" style="background-color: #343a40; color:white;">
               <th style="text-align: center;">번호</th>
@@ -71,11 +72,11 @@
               <td style="width: 120px; text-align: left; padding-left: 20px""><%=n.getDona_writer()%></td>
               <td style="width: 300px; height: 40px; text-align: left; margin-left: 100px"><%=n.getDona_content()%></td>
               <td style="width: 100px;"><input type="button"  class="modifyDonation" value="수정" >            	
-                <div class="alertModal" style="position: absolute;">
+                <div class="alertModal" style="position: absolute; z-index: 10;">
                   <div class="alertWrap">
                     <h2>후원내용</h2>
                     <hr>
-                    <form action="#" method="post">
+                    <form action="/donationListUpdate?donationNo=<%=n.getDona_no()%>" method="post">
                       <div class="donaModal">
                         <div class="radioHover">
                           <div>후원처</div>
@@ -101,17 +102,17 @@
                         </div>
                         <div>
                           <div>제목</div>
-                          <input type="text" value="<%=n.getDona_title()%>">
+                          <input type="text" name="title" value="<%=n.getDona_title()%>">
                         </div>
                         <div>
                           <div>내용</div>
-                          <textarea style="width: 300px; height: 100px; resize: none;"><%=n.getDona_content()%></textarea>
+                          <textarea name="concon" style="width: 300px; height: 100px; resize: none;"><%=n.getDona_content()%></textarea>
                         </div>
                       </div>
                       <div class="modifyBtn">
-                        <button class="modiBtn1" id="" style="background-color: rgba(253, 56, 56, 0.788); color: white;">게시글 삭제</button>
-                        <button class="modiBtn2" id="closeBtn" style="background-color: rgba(48, 48, 48, 0.753); color: white;">취소</button>
-                        <button class="modiBtn3" type="submit" id="" style="background-color: orange; color: white;">수정</button>
+                        <button class="modiBtn1" type="button" onclick="location.href='donaListDel?donaNum=<%=n.getDona_no() %>'" style="background-color: rgba(253, 56, 56, 0.788); color: white;">게시글 삭제</button>
+                        <button class="modiBtn2" type="button" onclick="cancle()" style="background-color: rgba(48, 48, 48, 0.753); color: white;">취소</button>
+                        <button class="modiBtn3" type="submit" style="background-color: orange; color: white;">수정</button>
                       </div>
                     </form>
                   </div>
@@ -131,7 +132,7 @@
         	여러분의 소중한 관심이 하나로 모여 오늘의 행복을 만들어 나갑니다.<br>
         	누구에게나 추억은 소중하듯이 그 소중한 추억을<br>
         	 우리 모두가 만들어낼수 있습니다<br>
-        	 혼자가 아닌 함께이기에
+        	 혼자가 아닌 함께이기에<br>
         	 저희 해피흠은 미래를 만들어 나갑니다.
         	</p>
         </div>
@@ -154,18 +155,17 @@
 	    $(".modifyDonation").click(function(){
 	        $(this).next().css("display","flex");
 	    });
-	    
-	    $("#closeBtn").click(function(){
-	        $(".alertModal").hide();
-	    });
-		
 	  });
 
-  function selectEmail(ele) {
-      var ele = $(".select").val();
-      var email2 = $("input[name=email2]");
-      email2.val(ele);
-    } 
+	function cancle(){
+		$(".alertModal").hide();
+	}
+	
+	function selectEmail(ele) {
+	    var ele = $(".select").val();
+	    var email2 = $("input[name=email2]");
+	    email2.val(ele);
+	  } 
 </script>
 </html>
 

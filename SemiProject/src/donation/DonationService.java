@@ -97,6 +97,34 @@ public class DonationService {
 		return result;
 	}
 
+	public int donationUpdate(Donation d, DonationList list, int listNum) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new DonationDao().donationUpdate(conn,d,list,listNum);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+	public int donaDelete(int donaNum) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new DonationDao().donaDelete(conn,donaNum);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
 
 
 
