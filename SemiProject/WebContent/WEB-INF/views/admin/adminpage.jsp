@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-    	Admin admin = (Admin)request.getAttribute("admin");
+    	Admin admin = (Admin)session.getAttribute("admin");
     %>
 <!DOCTYPE html>
 <html>
