@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import common.JDBCTemplate;
 import free.model.dao.FreeDao;
 import free.model.vo.Free;
+import free.model.vo.FreeComment;
 import free.model.vo.FreePageData;
+import free.model.vo.FreeViewData;
 
 public class FreeService {
 
@@ -92,6 +94,21 @@ public class FreeService {
 		// data 전송
 		FreePageData fpd = new FreePageData(list, pageNavi);
 		return fpd;
+	}
+
+	// 게시물 및 댓글 불러오기
+	public FreeViewData selectFreeView(int freeNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		FreeDao dao = new FreeDao();
+		
+		// 게시물 전체 정보 및 좋아요 수 조회
+		Free f = dao.selectOneFree(conn, freeNo);
+		ArrayList<FreeComment> list = dao.selectFreeCommentList(conn, freeNo);
+		
+		JDBCTemplate.close(conn);
+		
+		FreeViewData fvd = new FreeViewData(f, list);
+		return fvd;
 	}
 
 }
