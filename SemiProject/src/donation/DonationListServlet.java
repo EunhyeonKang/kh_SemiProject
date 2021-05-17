@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
  * Servlet implementation class DonationListServlet
  */
@@ -26,16 +25,10 @@ public class DonationListServlet extends HttpServlet {
 		//1.인코딩
 		request.setCharacterEncoding("utf-8");
 		//2.값추출
-		int reqPage = Integer.parseInt(request.getParameter("reqPage"));
 		//3.로직처리
-		DonationPageData dpd = new DonationService().selectDonationList(reqPage);
-		DonationPageData member = new DonationService().selectDonationList(reqPage);
 		//4.결과처리
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/donation/donationList.jsp");
-		request.setAttribute("list", dpd.getList());
-		request.setAttribute("pageNavi", dpd.getPageNavi());
 		rd.forward(request, response);
-		
 	}
 
 	

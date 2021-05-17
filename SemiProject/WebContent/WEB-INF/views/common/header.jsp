@@ -1,5 +1,9 @@
+<%@page import="admin.model.vo.Admin"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
+  	<%
+    	Admin a = (Admin)session.getAttribute("admin");
+    %>
+ 
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/css/main.css">
@@ -9,6 +13,11 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap');
+    @media screen and (max-width: 1200px) {
+	 .right-col{
+	      display: none;
+	}
+} 
   </style>
   <header>
     <div class="header-wrap">
@@ -23,15 +32,23 @@
         <li class="nav-item"><a href="/freeBoard?reqPage=1">자유게시판</a></li>
 
       </ul>
+    <%if (a == null) {%>
       <div class="right-col">
         <ul class="login">
           <li class="login-item"><a href="#none">로그인</a></li>
           <li class="login-item"><a href="#none">회원가입</a></li>
         </ul>
-        <a class="interior-link" href="/adminJoin">관리자</a>
+        <a class="interior-link" href="/adminJoin">관리자</a> 
       </div>
-    </div>
-
+      <%} else { %>
+      <div class="right-col">   
+         <ul class="login">
+          <li class="login-item"><a href="/adminPage" style="color:rgba(0, 183, 255, 0.959);"><%=a.getAdminName() %> </a>님 환영합니다</li>
+          <li class="login-item"><a href="/logout">로그아웃</a></li>
+         </ul>
+	   </div>
+	   <%} %>
+	</div>
     <div class="mobile-panel">
       <div class="panel-board">
         <button type="button" class="board-close-btn">

@@ -32,13 +32,13 @@
                     <hr style="width : 80%">
                 </h1>
 
-                <form class="registerForm">
+                <form action="/adminLogin2" method="post" class="registerForm" name="adminLogin2">
                     <div class="paddingTop"><img src="./../img/logo.png" width="200" height="200"></div>
                     <ul>
                         <li><span>관리자아이디</span><input type="text" name="adminId" placeholder="아이디를 입력해주세요"></li>
-                        <li><span>비밀번호</span><input type="password" name="pw" placeholder="비밀번호를 입력해주세요"><br></li>
+                        <li><span>비밀번호</span><input type="password" name="adminPw" placeholder="비밀번호를 입력해주세요"><br></li>
                     </ul>
-                    <button type="button" style="background-color: rgba(0, 183, 255, 0.959);">로그인</button>
+                    <button type="submit" style="background-color: rgba(0, 183, 255, 0.959);">로그인</button>
                 </form>
 				<div class="content-footer"> </div>
 		</div>

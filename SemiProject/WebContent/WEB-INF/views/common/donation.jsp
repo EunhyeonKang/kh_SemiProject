@@ -120,15 +120,15 @@
           </div>
 
 
-          <form action="/donationListInsert" method="post">
+          <form action="#" method="post">
           <div class="dona_kind">
             <p class="ment1">후원 방법을 선택해주세요</p>
             <hr width="95%">
             <div class="kind1" style="margin-left: 200px;">
-              <input type="radio" id ="kind1"class="radi" name="kind" value="kind1">
+              <input type="radio" id ="kind1"class="radi" name=kind value="kind1">
               <label for="kind1"><p style="font-size: 20px;">정기후원하기</p>매월 약정된 금액을 후원하여 구호활동에 참여하실수있습니다</label></div>
             <div class="kind2">
-              <input type="radio" id ="kind2"class="radi" name="kind" value="kind2">
+              <input type="radio" id ="kind2"class="radi" name=kind value="kind2">
               <label for="kind2"><p style="font-size: 20px;">일시후원하기</p>매월 약정된 금액을 후원하여 구호활동에 참여하실수있습니다</label></div>
           </div>
           
@@ -159,35 +159,35 @@
             <div class="con4_pan">
               <div class="con4_1">
                 <p class="ment1" style="margin-bottom: 10px">
-                  	후원인 정보를 입력해주세요
+                  후원인 정보를 입력해주세요
                 </p>
                 <hr width="95%">
                 <div class="info">
                   <div>후원인 구분</div>
                   <div>
-                    <input type="radio" id="dona_sor1" name="dona_sor" value="dona_sor1"/><label for="dona_sor1">개인</label>
-                    <input type="radio" id="dona_sor2" name="dona_sor" value="dona_sor2" /><label for="dona_sor2">법인</label>
-                    <input type="radio" id="dona_sor3" name="dona_sor" value="dona_sor3" /><label for="dona_sor3">학교 및 단체</label>
+                    <input type="radio" id="dona_sor1" name="dona_sor"/><label for="dona_sor1">개인</label>
+                    <input type="radio" id="dona_sor2" name="dona_sor" /><label for="dona_sor2">법인</label>
+                    <input type="radio" id="dona_sor3" name="dona_sor" /><label for="dona_sor3">학교 및 단체</label>
                   </div>
                 </div>
 
                 <div class="info">
                   <div>후원인 이름</div>
                   <div>
-                    <input type="text" name="name" id="dona_name" style="width: 300px" />
+                    <input type="text" name="name" style="width: 300px" />
                   </div>
                 </div>
                 <div class="info">
                   <div>전화번호</div>
                   <div>
-                    <input type="text" name="phone" id="dona_phone" style="width: 300px" />
+                    <input type="text" name="phone" style="width: 300px" />
                   </div>
                 </div>
                 <div class="info" style="margin-bottom: 30px">
                   <div>이메일</div>
                   <div>
-                    <input type="text" name="email" id="dona_email" />@
-                    <input type="text" name="email2" id="dona_email2" />
+                    <input type="text" name="email" />@
+                    <input type="text" name="email2" />
                     <select
                       class="select"
                       style="width: 120px; height: 25px"
@@ -215,7 +215,7 @@
                   <div class="info_con">
                     <div>내용</div>
                     <div style="margin-left: 30px">
-                      <textarea style="width: 600px; height: 80px" name="con"></textarea>
+                      <textarea style="width: 600px; height: 80px"></textarea>
                     </div>
                   </div>
                 </div>
@@ -259,7 +259,7 @@
             </div>
 
             <div class="con5_1" style="padding-top: 30px;">
-              <p class="ment1" style="padding-top: 15px;" id="pw_rere">후원 정보 추가 확인</p>
+              <p class="ment1" style="padding-top: 15px;">후원 정보 추가 확인</p>
             </div>
             <hr width="95%">
 
@@ -299,16 +299,12 @@
                 <img src="/mini_img/56.jpg" style="height: 100%;">
               </div>
             </div>
-            <p class="ment6">후원 내역은 후원게시판에서 확인하실수 있습니다.</p>
+            <p class="ment6"">후원 내역은 후원게시판에서 확인하실수 있습니다.</p>
             
             <div class="dona_btn">
-              <div style="margin-left: 410px">
-              <button type="submit" value="후원게시판">dfd</button>
-              </div>
+              <div style="margin-left: 410px">후원게시판</div>
               <div onclick="func4()">메인으로</div>
             </div>
-            
-            
           </form>
           </div>
         </div>
@@ -345,13 +341,13 @@
         }
 
         $(function () {
-        	//버튼 클릭시 토글설정
           $(".agree1").click(function () {
             $("#toggle1").slideToggle(200);
           });
           $(".agree2").click(function () {
             $("#toggle2").slideToggle(200);
           });
+          $("#gitar")
         });
       </script>
 

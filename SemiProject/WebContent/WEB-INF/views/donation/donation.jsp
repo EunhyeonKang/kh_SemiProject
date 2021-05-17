@@ -1,10 +1,5 @@
-<%@page import="com.sun.xml.internal.bind.v2.schemagen.xmlschema.List"%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    <%
-    %>
     
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/css/donation1.css">
@@ -22,7 +17,8 @@
     <link rel="stylesheet" type="text/css" href="/slick/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="/slick/slick/slick-theme.css" />
     <script type="text/javascript" src="/slick/slick/slick.js"></script>
-    <link href="/css/donation1.css" rel="stylesheet" type="text/css" />
+    <link href="/slick/main.css" rel="stylesheet" type="text/css" />
+    <script src="/slick/main.js" type="text/javascript"></script>
 
     <!--나눔고딕체-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -57,11 +53,11 @@
             <img src="mini_img/33.jpg" style="width: 90%" />
           </div>
           <div class="con2_text">
-            <p style="font-size: 20px; font-weight: bold">
+            <p style="font-size: 25px; font-weight: bold">
               모든 어린이는 보호받을 권리가 있습니다.
             </p>
-            <hr style="width: 100%; ">
-            <pre style="font-size: 13px; font-family: 'Nanum Gothic', sans-serif; line-height: 25px;">
+            <hr style="width: 95%;">
+            <pre style="font-size: 18px; font-family: 'Nanum Gothic', sans-serif; line-height: 30px;">
 어린이는 보호와 지원을 받아야 하지만 세상의 많은 
 어린이들은 전쟁과 기아, 폭력,질병 등으로 고통받고 있습니다.
 어린이들의 생명을 구하고 삶을 개선하기 위해 해피흠은 
@@ -83,35 +79,35 @@
           </div>
 
 
-          <form action="/donationListInsert" method="post">
+          <form action="#" method="post">
           <div class="dona_kind">
             <p class="ment1">후원 방법을 선택해주세요</p>
             <hr width="95%">
-            <div class="kind1" style="margin-left: 160px;">
-              <input type="radio" id ="kind1"class="radi" name=kind value="정기후원">
-              <label for="kind1"><p style="font-size: 20px; margin-top: 10px">정기후원하기</p><p style="font-size:13px">매월 약정된 금액을 후원하여 구호<br>활동에 참여하실수있습니다</p></label></div>
+            <div class="kind1" style="margin-left: 200px;">
+              <input type="radio" id ="kind1"class="radi" name=kind value="kind1">
+              <label for="kind1"><p style="font-size: 20px;">정기후원하기</p>매월 약정된 금액을 후원하여 구호<br>활동에 참여하실수있습니다</label></div>
             <div class="kind2">
-              <input type="radio" id ="kind2"class="radi" name=kind value="일시후원">
-              <label for="kind2"><p style="font-size: 20px; margin-top: 10px">일시후원하기</p><p style="font-size:13px">일시적으로 금액을 후원하여 구호<br>활동에 참여하실수있습니다</p></label></div>
+              <input type="radio" id ="kind2"class="radi" name=kind value="kind2">
+              <label for="kind2"><p style="font-size: 20px;">일시후원하기</p>일시적으로 금액을 후원하여 구호<br>활동에 참여하실수있습니다</label></div>
           </div>
           
           <div class="dona_radio">
             <P class="ment1" style="width: 90%;">후원 종류 선택하기</P>
             <hr width="95%" style="margin-left: 30px;">
             <div class="dona_radio_con1">
-              <input type="radio" id ="kind3"class="radi" name=kind1 value="세계어린이 돕기">
+              <input type="radio" id ="kind3"class="radi" name=kind1 value="kind3">
               <label for="kind3"><div>세계 어린이 돕기</div> 전세계 도움이 필요한 어린이들의 생존과 인권을 위한 유니세프의 구호 활동에 후원금이 사용됩니다.</label>
             </div>
             <div class="dona_radio_con2">
-              <input type="radio" id ="kind4"class="radi" name=kind1 value="지구변화 돕기">
+              <input type="radio" id ="kind4"class="radi" name=kind1 value="kind4">
               <label for="kind4"><div>지구 변화 돕기</div> 전쟁,환경오염,기후변화 인간에 의한 지구 환경변화를 생각한 구호 활동에 후원금이 사용됩니다.</label>
             </div>
             <div class="dona_radio_con3">
-              <input type="radio" id ="kind5"class="radi" name=kind1 value="나의 이웃돕기">
+              <input type="radio" id ="kind5"class="radi" name=kind1 value="kind5">
               <label for="kind5"><div>나의 이웃 돕기</div> 인기척없이 힘들고, 고통받고 있을수있는 나의 이웃을 보살피는 구호활동에 후원금이 사용됩니다.</label>
             </div>
             <div class="dona_btn" style="height: 60px; border: none;">
-              <div style="margin-left: 310px;"><a href ="/" style="margin-left:10px;">메인으로</a></div>
+              <div style="margin-left: 340px;">메인으로</div>
               <div onclick="func1()">다음</div>
             </div>
           </div>
@@ -128,16 +124,16 @@
                 <div class="info">
                   <div>후원인 구분</div>
                   <div>
-                    <input type="radio" id="dona_sor1" name="dona_sor" value="개인" /><label for="dona_sor1">개인</label>
-                    <input type="radio" id="dona_sor2" name="dona_sor" value="법인" /><label for="dona_sor2">법인</label>
-                    <input type="radio" id="dona_sor3" name="dona_sor" value="학교 및 단체" /><label for="dona_sor3">학교 및 단체</label>
+                    <input type="radio" id="dona_sor1" name="dona_sor"/><label for="dona_sor1">개인</label>
+                    <input type="radio" id="dona_sor2" name="dona_sor" /><label for="dona_sor2">법인</label>
+                    <input type="radio" id="dona_sor3" name="dona_sor" /><label for="dona_sor3">학교 및 단체</label>
                   </div>
                 </div>
 
                 <div class="info">
                   <div>후원인 이름</div>
                   <div>
-                    <input type="text" name="name" style="width: 300px" value=""/>
+                    <input type="text" name="name" style="width: 300px" />
                   </div>
                 </div>
                 <div class="info">
@@ -149,11 +145,11 @@
                 <div class="info" style="margin-bottom: 30px">
                   <div>이메일</div>
                   <div>
-                    <input type="text" name="email" value="" /> @
+                    <input type="text" name="email" /> @
                     <input type="text" name="email2" />
                     <select
                       class="select"
-                      style="width: 120px; height: 20px; outline: none; font-size:13px;"
+                      style="width: 120px; height: 25px; outline: none;"
                       
                       onChange="selectEmail(this)"
                     >
@@ -179,22 +175,22 @@
                   <div class="info_con">
                     <div>내용</div>
                     <div style="margin-left: 30px">
-                      <textarea name="concon" style="width: 600px; height: 80px; outline: none;"></textarea>
+                      <textarea style="width: 600px; height: 80px; outline: none;"></textarea>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="con4_2">
-                <p class="ment1" style="margin-top:20px; width:100%; margin-bottom: 20px">
+                <p class="ment1" style="margin-top: 20px; margin-bottom: 20px">
                   약관 및 개인정보 수집 - 이용동의
-                  <input type="checkbox" id="allCheck" style="margin-left: 470px;"><label for="allCheck">이용약관 전체동의</label>
+                  <input type="checkbox" id="allCheck" style="margin-left: 480px;"><label for="allCheck">이용약관 전체동의</label>
                 </p>
                 <div class="agree">
                   <input type="checkbox" id="check1"/>
                   <p class="agree1">[+] 후원 약관 동의[필수]</p>
                 </div>
                 <div id="toggle1">
-                  <div style="overflow-x: scroll; font-size:12px; width: 100%; height: 100px; text-align: left; background: white;">
+                  <div style="overflow-x: scroll; width: 100%; height: 100px; text-align: left; ">
                     [ 해피흠 이용 약관 ]<br>
 제1장 총칙<br>
 
@@ -212,10 +208,10 @@
                 </div>
                 <div class="agree">
                   <input type="checkbox" id="check2"/>
-                  <p class="agree2">[+] 개인정보 수집-이용동의[선택]</p>
+                  <p class="agree2">[+] 개인정보 수집-이용동의[필수]</p>
                 </div>
                 <div id="toggle2">
-                  <div style="overflow-x: scroll; font-size:12px;  width: 100%; height: 100px; text-align: left; background: white;">
+                  <div style="overflow-x: scroll; width: 100%; height: 100px; text-align: left;">
                     [ 해피흠 이용 약관 ]<br>
 제1장 총칙<br>
 
@@ -233,7 +229,7 @@
                 </div>
               </div>
               <div class="dona_btn" style="margin-top: 20px;">
-                <div style="margin-left: 310px"><a href ="/">메인으로</a></div>
+                <div style="margin-left: 380px">메인으로</div>
                 <div onclick="func2()">다음</div>
               </div>
             </div>
@@ -247,12 +243,12 @@
             <hr width="95%">
 
             <div class="con5_1">
-              <input type="radio" id="30000" name="price_choice" value="30000"/><label for="30000">30,000원</label>
-              <input type="radio" id="50000" name="price_choice" value="50000"/><label for="50000"> 50,000원</label>
-              <input type="radio" id="100000" name="price_choice" value="100000"/><label for="100000">100,000원</label>
-              <input type="radio" id="200000" name="price_choice" value="200000"/><label for="200000">200,000원</label>
-              <input type="radio" id="gitar" name="price_choice" value="500000" />
-              <label for="gitar">기타<input type="text"  name="price_choice" value="" placeholder="직접입력" style=" font-size:13px; margin-top: 20px; margin-left: 10px; width: 100px;"/>원</label>
+              <input type="radio" id="30000" name="price_choice" value="30000" /><label for="30000">30,000원</label>
+              <input type="radio" id="50000" name="price_choice" value="50000" /><label for="50000"> 50,000원</label>
+              <input type="radio" id="100000" name="price_choice" value="100000" /><label for="100000">100,000원</label>
+              <input type="radio" id="200000" name="price_choice" value="200000" /><label for="200000">200,000원</label>
+              <input type="radio" id="gitar" name="price_choice" value="" />
+              <label for="gitar">기타<input type="text"  name="price_choice" value="" placeholder="직접입력" style=" margin-top: 20px; margin-left: 10px; width: 100px;"/>원</label>
             </div>
 
             <div class="con5_1" style="padding-top: 10px;">
@@ -272,7 +268,7 @@
               </p>
             </div>
             <div class="dona_btn">
-              <div style="margin-left: 310px"><a href ="/">메인으로</a></div>
+              <div style="margin-left: 380px">메인으로</div>
               <div onclick="func3()">다음</div>
             </div>
           </div>
@@ -296,17 +292,20 @@
                 <img src="/mini_img/56.jpg" style="height: 100%;">
               </div>
             </div>
-            <p class="ment6">후원 내역은 후원게시판에서 확인하실수 있습니다.</p>
+            <p class="ment6"">후원 내역은 후원게시판에서 확인하실수 있습니다.</p>
             
             <div class="dona_btn">
-              <div style="margin-left: 310px"><button type="submit" class="formDonaList" value="후원게시판">후원하기</button></div>
-              <div onclick="func4()"><a href ="/">메인으로</a></div>
+              <div style="margin-left: 380px">후원게시판</div>
+              <div onclick="func4()">메인으로</div>
             </div>
           </form>
           </div>
         </div>
 
         <!--pan -->
+      <styl>
+       
+      </styl>
 
       <script>
         function selectEmail(ele) {
@@ -316,19 +315,12 @@
         }
 
         function func1() {
-        	var kind = $("input[name=kind]").is(":checked");
-        	var kind1 = $("input[name=kind1]").is(":checked");
-          if(kind && kind1){	
-	          $(".dona_kind").css("display", "none");
-	          $(".dona_radio").css("display", "none");
-	          $(".con4").css("display", "block");
-	          $(".dona_naviCon1").css("background-color", "rgba(211, 211, 211, 0.535)");
-	          $(".dona_naviCon2").css( "background-color","rgba(135, 207, 235, 0.645)");
-	          $(".con2_img > img").attr("src","mini_img/54.jpg");
-          }else{
-        	  alert("후원을 선택해주세요");
-          }
-          
+          $(".dona_kind").css("display", "none");
+          $(".dona_radio").css("display", "none");
+          $(".con4").css("display", "block");
+          $(".dona_naviCon1").css("background-color", "rgba(211, 211, 211, 0.535)");
+          $(".dona_naviCon2").css( "background-color","rgba(135, 207, 235, 0.645)");
+          $(".con2_img > img").attr("src","mini_img/54.jpg")
           
         }
         function func2() {
@@ -343,7 +335,7 @@
           $(".con6").css("display", "block");
           $(".dona_naviCon3").css("background-color", "rgba(211, 211, 211, 0.535)");
           $(".dona_naviCon4").css("background-color", "rgba(135, 207, 235, 0.645)");
-          $(".con2_img > img").attr("src","mini_img/53.jpg");
+          $(".con2_img > img").attr("src","mini_img/53.jpg")
         }
 
         $(function () {

@@ -6,12 +6,11 @@
     %>
 <!DOCTYPE html>
 <html>
-
+ <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> 
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
 <style>
  	@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap');

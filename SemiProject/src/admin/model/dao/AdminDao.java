@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import admin.model.vo.Admin;
 import common.JDBCTemplate;
@@ -58,5 +59,57 @@ public class AdminDao {
 		}
 		return a;
 	}
+
+	public Admin selectOneAdmin(Connection conn, String adminId, String adminPw) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select * from admin where admin_id=? and admin_pw=?";
+		Admin a = null;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, adminId);
+			pstmt.setString(2, adminPw);
+			rset = pstmt.executeQuery();
+			if (rset.next()) {
+				a = new Admin();
+				a.setAddr(rset.getString("admin_addr"));
+				a.setAdminId(rset.getString("admin_id"));
+				a.setAdminName(rset.getString("admin_name"));
+				a.setAdminNo(rset.getInt("admin_no"));
+				a.setAdminPw(rset.getString("admin_pw"));
+				a.setPhone(rset.getString("admin_phone"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return a;
+	}
+
+	public int updateAdmin(Connection conn, Admin a) {
+		PreparedStatement pstmt = null;
+		int result =0;
+		String query = "update admin set admin_pw=?,admin_phone=?,admin_addr=? where admin_id=?";
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, a.getAdminPw());
+			pstmt.setString(2, a.getPhone());
+			pstmt.setString(3, a.getAddr());
+			pstmt.setString(4, a.getAdminId());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+				
+		return result;
+	}
+
+	
 
 }

@@ -101,7 +101,6 @@ $RECYCLE.BIN/
 # 충돌 방지
 .project
 .classpath
-/build/
 *.class
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java-web,windows

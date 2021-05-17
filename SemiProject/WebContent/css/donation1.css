@@ -3,15 +3,13 @@ div {
 }
 .con1 {
   border: 0px solid black;
-  width: 95%;
-  height: 350px;
-  margin-left: 40px;
+  width: 100%;
+  height: 400px;
 }
 .con2 {
   border: 0px solid black;
-  width: 85%;
-  height: 280px;
-  margin-left: 60px;
+  width: 90%;
+  height: 350px;
 }
 .con2 > div {
   float: left;
@@ -25,7 +23,7 @@ div {
 }
 .con2_text {
   border: 0px solid black;
-  width: 42%;
+  width: 47%;
   height: 300px;
   margin-left: 20px;
   margin-top: 20px;
@@ -48,12 +46,11 @@ div {
 }
 .donation_pan {
   border: 0px solid springgreen;
-  width: 70%;
+  width: 90%;
   margin: 0 auto;
   margin-top: 0px;
   overflow: hidden;
   background-color: rgba(211, 211, 211, 0.241);
-  font-size:13px;
 }
 .dona_navi {
   width: 100%;
@@ -70,9 +67,8 @@ div {
   border: 1px solid lightgrey;
   box-sizing: border-box;
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
-  line-height: 22px
 }
 .dona_navi :nth-child(4) {
   border: 0px solid black;
@@ -109,10 +105,9 @@ div {
   height: 40%;
 }
 .dona_radio > div {
-  font-size:13px;
   border: 1px solid lightgrey;
   width: 90%;
-  height: 35px;
+  height: 50px;
   margin-left: 45px;
   margin-top: 25px;
 }
@@ -126,12 +121,11 @@ div {
   display: none;
 }
 .dona_radio input[type="radio"] {
-  margin-top: 10px;
+  margin-top: 16px;
 }
 label {
-  font-size:13px;
   width: 20%;
-  height: 60px;
+  height: 100%;
   text-align: center;
   font-weight: bold;
   cursor: pointer;
@@ -147,21 +141,20 @@ label > div {
 
 .dona_kind > div > label {
   width: 100%;
-  height: 90%;
+  height: 100%;
   float: left;
-  line-height: 30px;
-  font-size: 16px;
+  line-height: 40px;
 }
 .dona_radio * {
   float: left;
 }
 .dona_radio label {
   width: 95%;
-  line-height: 33px;
+  line-height: 45px;
 }
 .dona_btn > div {
   float: left;
-  width: 80px;
+  width: 10%;
   height: 50%;
   margin-top: 10px;
   margin-left: 10px;
@@ -179,7 +172,7 @@ label > div {
 
 .ment1 {
   font-family: "Nanum Gothic", sans-serif;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: bold;
   margin-left: 20px;
   padding-top: 10px;
