@@ -1,3 +1,5 @@
+<%@page import="donation.login.Member"%>
+<%@page import="admin.model.vo.Admin"%>
 <%@page import="notice.model.vo.Notice"%>
 
 <%@page import="java.util.ArrayList"%>
@@ -10,6 +12,8 @@
 ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 
 	String pageNavi = (String) request.getAttribute("pageNavi");
+	Admin a  = (Admin)request.getAttribute("a");
+	Member m = (Member)request.getAttribute("m");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -105,12 +109,13 @@ ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 		<div id="notice-content">
 
 			<div id="notice">
-
+			<%if(a!=null){ %> 
 				<div class="form-row pull-right" id="button-style">
 
 					<a class="btn btn-outline-secondary" href="#">글쓰기</a>
 
 				</div>
+				<%} %>
 
 				<table class="table table-hover">
 
