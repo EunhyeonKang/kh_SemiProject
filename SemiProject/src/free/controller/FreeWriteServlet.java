@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import donation.login.Member;
 import free.model.service.FreeService;
 import free.model.vo.Free;
 
@@ -36,10 +38,14 @@ public class FreeWriteServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 
 		// 2. 값 추출
+		HttpSession session = request.getSession(false); // 로그인 했으면 값 불러옴 / 로그인 안했으면 null
+		Member m = (Member) session.getAttribute("m");
+
 		Free f = new Free();
 		f.setFreeTitle(request.getParameter("freeTitle"));
 		f.setFreeContent(request.getParameter("editordata"));
 		f.setFilepath(request.getParameter("filename"));
+		f.setFreeWriter(m.getMemberId());
 
 		// 3. 비지니스로직
 		int result = new FreeService().insertFree(f);

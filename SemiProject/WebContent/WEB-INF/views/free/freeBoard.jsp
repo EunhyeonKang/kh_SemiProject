@@ -1,9 +1,11 @@
+<%@page import="donation.login.Member"%>
 <%@page import="free.model.vo.Free" %>
 	<%@page import="java.util.ArrayList" %>
 		<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 			<% ArrayList<Free> list = (ArrayList<Free>) request.getAttribute("list");
 					String pageNavi = (String) request.getAttribute("pageNavi");
+					Member m = (Member) session.getAttribute("m");
 					%>
 					<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 					<html>
@@ -61,11 +63,12 @@
 									</tbody>
 								</table>
 
-								<!-- 로그인 체크 추가 해야 함 -->
+<!-- 로그인 시에만 글쓰기 가능 -->
+								<%if(m != null) {%>
 								<div>
 									<a class="btn btn-primary" href="/freeWriteFrm">글쓰기</a>
 								</div>
-
+								<%} %>
 								<div class="pageNavi">
 									<%=pageNavi%>
 								</div>
