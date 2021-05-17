@@ -28,9 +28,7 @@ ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 
 </head>
 
-<link rel="stylesheet"
-
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <style>
 
@@ -94,9 +92,7 @@ ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 #notice-tab{
 	height:30px;
 }
-#notice-td>td>:nth-child(1){
-	background-color:white;
-}
+
 
 </style>
 
@@ -119,7 +115,7 @@ ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 
 				<table class="table table-hover">
 
-					<tr class="table-primary" id="notice-tab">
+					<tr>
 
 						<th>번호</th>
 
@@ -135,7 +131,7 @@ ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 					for (Notice n : list) {
 					%>
 
-					<tr class="table-light" id="notice-td">
+					<tr>
 
 						<td><%=n.getRnum()%></td>
 
