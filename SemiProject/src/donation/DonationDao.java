@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import common.JDBCTemplate;
+import donation.login.Member;
 
 public class DonationDao {
 
@@ -68,35 +69,37 @@ public class DonationDao {
 		return result;
 	}
 
-//	public Member loginCheck(Connection conn, String id, String pw) {
-//		PreparedStatement pstmt = null;
-//		ResultSet rset = null;
-//		String query = "select * from member where member_id=? and member_pw=?";
-//		Member m = null;
-//		
-//		try {
-//			pstmt=conn.prepareStatement(query);
-//			pstmt.setString(1, id);
-//			pstmt.setString(2, pw);
-//			
-//			
-//			rset = pstmt.executeQuery();
-//			
-//			if(rset.next()) {
-//				m = new Member();
-//				m.setNo(rset.getInt("member_No"));
-//				m.setId(rset.getString("member_id"));
-//				m.setPw(rset.getString("member_pw"));
-//				m.setName(rset.getString("member_name"));
-//				m.setAddr(rset.getString("member_addr"));
-//				m.setEmail(rset.getString("member_email"));
-//			}
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return m;
-//	}
+	public Member loginCheck(Connection conn, String id, String pw) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select * from member where member_id=? and member_pw=?";
+		Member m = null;
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pw);
+			
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				m = new Member();
+				m.setMemberNo(rset.getInt("member_No"));
+				m.setMemberId(rset.getString("member_id"));
+				m.setMemberPw(rset.getString("member_pw"));
+				m.setMemberName(rset.getString("member_name"));
+				m.setMemberAddr(rset.getString("member_addr"));
+				m.setMemberEmail(rset.getString("member_email"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return m;
+	}
 
 	public int insertList(Donation d, String pa_lev, Connection conn, DonationList list) {
 		PreparedStatement pstmt = null;

@@ -25,7 +25,7 @@
       </ul>
       <div class="right-col">
         <ul class="login">
-          <li class="login-item"><a href="#none">로그인</a></li>
+          <li class="login-item"><a href="/login">로그인</a></li>
           <li class="login-item"><a href="#none">회원가입</a></li>
         </ul>
         <a class="interior-link" href="/adminJoin">관리자</a>
@@ -46,7 +46,7 @@
           <li class="board-nav-item"><a href="#none">마이페이지</a></li>
         </ul>
         <ul class="account-list">
-          <li class="account-item"><a href="#none">로그인</a></li>
+          <li class="account-item"><a href="/login">로그인</a></li>
           <li class="account-item"><a href="#none">회원가입</a></li>
           <li class="account-item"><a href="#none">이용약관</a></li>
           <li class="account-item"><a href="#none">개인정보처리방침</a></li>
