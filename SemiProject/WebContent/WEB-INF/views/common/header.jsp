@@ -16,7 +16,7 @@
       <button type="button" class="menu-btn">메뉴열기</button>
       <ul class="nav">
         <li class="nav-item"><a href="/view/goodsProduct.jsp">굿즈상품</a></li>
-        <li class="nav-item"><a href="/view/supporNotice.jsp">공지사항</a></li>
+        <li class="nav-item"><a href="/supportList?reqPage=1">공지사항</a></li>
 
         <li class="nav-item"><a href="/donation">후원하기</a></li>
         <li class="nav-item"><a href="/donationList?reqPage=1">후원게시판</a></li>
