@@ -1,0 +1,14 @@
+/* 컬럼 */
+.table th {
+  width: 15%;
+  text-align: center;
+}
+
+/* 컬럼값 */
+.table td {
+  width: 35%;
+}
+
+.text-center {
+  margin-bottom: 20px;
+}
