@@ -33,9 +33,11 @@
   <link href="/css/donationList.css" rel="stylesheet" type="text/css" />
 <title>Insert title here</title>
 </head>
-  <style>
- 
-</style>
+<style>
+	.header-wrap>.nav>li>a{
+ 		padding: 0;
+ 	}
+ </style>
 <body>
 	
 	<!-- Header -->
