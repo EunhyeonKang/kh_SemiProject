@@ -11,7 +11,6 @@ import free.model.vo.Free;
 import free.model.vo.FreeComment;
 
 public class FreeDao {
-
 	// 게시물 작성
 	public int insertFree(Connection conn, Free f) {
 		PreparedStatement pstmt = null;
@@ -21,7 +20,7 @@ public class FreeDao {
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, f.getFreeTitle());
-			pstmt.setString(2, "test01"); // 테스트용 계정 추후 변경해야함
+			pstmt.setString(2, f.getFreeWriter());
 			pstmt.setString(3, f.getFreeContent());
 			pstmt.setString(4, f.getFilepath());
 
@@ -83,7 +82,7 @@ public class FreeDao {
 		return result;
 	}
 
-	// 게시물 1개 조회
+	// 게시물 상세페이지 조회
 	public Free selectOneFree(Connection conn, int freeNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -120,7 +119,7 @@ public class FreeDao {
 			f.setFreeTitle(rset.getString("free_title"));
 			f.setFreeWriter(rset.getString("free_writer"));
 			f.setReadCount(rset.getInt("read_count"));
-			
+
 			// 게시판 전체 조회
 			if (test.equals("조회")) {
 				f.setRnum(rset.getInt("rnum"));
@@ -142,28 +141,30 @@ public class FreeDao {
 		ResultSet rset = null;
 		ArrayList<FreeComment> list = new ArrayList<FreeComment>();
 		String query = "select * from free_comment where free_ref = ?";
-		
+
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, freeNo);
-			
+
 			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
+
+			while (rset.next()) {
 				list.add(setFreeComment(rset));
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
 		}
-		
 		return list;
 	}
 
 	// 댓글 저장용
 	private FreeComment setFreeComment(ResultSet rset) {
 		FreeComment fc = new FreeComment();
-		
+
 		try {
 			fc.setFcContent(rset.getString("fc_content"));
 			fc.setFcDate(rset.getString("fc_date"));
@@ -175,6 +176,33 @@ public class FreeDao {
 			e.printStackTrace();
 		}
 		return fc;
+	}
+
+	// 좋아요 check
+	public int selectLike(Connection conn, int freeNo, String memberId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		String query = "select * from free_like where free_ref = ? and member_id = ?";
+		int result = 0;
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, freeNo);
+			pstmt.setString(2, memberId);
+
+			rset = pstmt.executeQuery();
+
+			if (rset.next()) {
+				result = 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 
 }

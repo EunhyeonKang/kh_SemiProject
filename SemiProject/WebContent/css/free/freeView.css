@@ -12,3 +12,20 @@
 .text-center {
   margin-bottom: 20px;
 }
+
+.heart:hover {
+  cursor: pointer;
+}
+
+body,
+input,
+textarea,
+select,
+button,
+table {
+  font-size: 10px;
+}
+
+.love {
+  color: red;
+}

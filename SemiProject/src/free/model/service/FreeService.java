@@ -88,26 +88,29 @@ public class FreeService {
 		}
 		// pageNavi 종료
 		pageNavi += "</ul>";
-		
+
 		JDBCTemplate.close(conn);
-		
+
 		// data 전송
 		FreePageData fpd = new FreePageData(list, pageNavi);
 		return fpd;
 	}
 
 	// 게시물 및 댓글 불러오기
-	public FreeViewData selectFreeView(int freeNo) {
+	public FreeViewData selectFreeView(int freeNo, String memberId) {
 		Connection conn = JDBCTemplate.getConnection();
 		FreeDao dao = new FreeDao();
-		
+
 		// 게시물 전체 정보 및 좋아요 수 조회
 		Free f = dao.selectOneFree(conn, freeNo);
 		ArrayList<FreeComment> list = dao.selectFreeCommentList(conn, freeNo);
+
+		// 해당 게시물 현재 로그인 한 회원의 좋아요 체크
+		int result = dao.selectLike(conn, freeNo, memberId);
 		
 		JDBCTemplate.close(conn);
-		
-		FreeViewData fvd = new FreeViewData(f, list);
+
+		FreeViewData fvd = new FreeViewData(f, list, result);
 		return fvd;
 	}
 
