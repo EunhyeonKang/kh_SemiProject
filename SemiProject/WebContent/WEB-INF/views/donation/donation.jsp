@@ -1,12 +1,14 @@
-<%@page import="com.sun.xml.internal.bind.v2.schemagen.xmlschema.List"%>
+<%@page import="donation.login.Member"%>
+
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
     <%
+    Member m = (Member)session.getAttribute("m");
     %>
     
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/css/donation1.css">
 	<link rel="stylesheet" href="/css/donation2.css">
 	<link rel="stylesheet" href="/css/donation3.css">
@@ -32,13 +34,19 @@
     <link href="/css/donation1.css" rel="stylesheet" type="text/css" />
     <link href="/css/donation2.css" rel="stylesheet" type="text/css" />
     <link href="/css/donation3.css" rel="stylesheet" type="text/css" />
+    <style>
+    	 .header-wrap>.nav>li>a{
+		  	font-weight: bold;
+		  }
+    </style>
   </head>
 
   <body>
+  
     <%@ include file="/WEB-INF/views/common/header.jsp" %>
       <div class="layout-wrap">
       <!-- header -->
-
+	
       <!-- content -->
       <div class="content" style="width: 1100px; margin: 0 auto">
         <div class="con1" style="overflow: hidden">
@@ -137,20 +145,23 @@
                 <div class="info">
                   <div>후원인 이름</div>
                   <div>
-                    <input type="text" name="name" style="width: 300px" value=""/>
+                    <input type="text" name="name" style="width: 300px" value=<%=m.getMemberName()%>>
                   </div>
                 </div>
                 <div class="info">
                   <div>전화번호</div>
                   <div>
-                    <input type="text" name="phone" style="width: 300px" />
+                    <input type="text" name="phone" style="width: 300px" value=<%=m.getMemberPhone() %>>
                   </div>
                 </div>
                 <div class="info" style="margin-bottom: 30px">
                   <div>이메일</div>
                   <div>
-                    <input type="text" name="email" value="" /> @
-                    <input type="text" name="email2" />
+                  	<%String str =  m.getMemberEmail(); %>
+                  	<%String email1 = str.substring(0,str.indexOf("@")); %>
+                  	<%String email2 = str.substring(str.lastIndexOf("@")+1); %>
+                    <input type="text" name="email" value=<%=email1 %> /> @
+                    <input type="text" name="email2" value=<%=email2 %> />
                     <select
                       class="select"
                       style="width: 120px; height: 20px; outline: none; font-size:13px;"
@@ -398,6 +409,7 @@
 
     </div>
     <%@ include file="/WEB-INF/views/common/footer.jsp" %>
+    
   </body>
 </html>
     

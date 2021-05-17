@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import free.model.vo.Free;
+import free.model.vo.FreeComment;
 
 public class FreeDao {
 
@@ -59,29 +60,6 @@ public class FreeDao {
 		return list;
 	}
 
-	// 게시물 저장용
-	private Free setFree(ResultSet rset, String test) {
-		Free f = new Free();
-
-		try {
-			f.setFilepath(rset.getString("filepath"));
-			f.setFreeContent(rset.getString("free_content"));
-			f.setFreeDate(rset.getString("free_date"));
-			f.setFreeNo(rset.getInt("free_no"));
-			f.setFreeTitle(rset.getString("free_title"));
-			f.setFreeWriter(rset.getString("free_writer"));
-			f.setReadCount(rset.getInt("read_count"));
-			// 조회일때만
-			if (test.equals("조회")) {
-				f.setRnum(rset.getInt("rnum"));
-				f.setLikeCount(rset.getInt("like_count"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return f;
-	}
-
 	// 게시물 총 갯수 조회
 	public int totalCount(Connection conn) {
 		PreparedStatement pstmt = null;
@@ -103,6 +81,100 @@ public class FreeDao {
 			JDBCTemplate.close(pstmt);
 		}
 		return result;
+	}
+
+	// 게시물 1개 조회
+	public Free selectOneFree(Connection conn, int freeNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT F.*, (SELECT COUNT(*) AS CNT FROM FREE_LIKE WHERE FREE_REF = F.FREE_NO) AS LIKE_COUNT FROM (SELECT * FROM FREE WHERE FREE_NO = ?) F";
+		Free f = null;
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, freeNo);
+
+			rset = pstmt.executeQuery();
+
+			if (rset.next()) {
+				f = setFree(rset, "상세");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		}
+		return f;
+	}
+
+	// 게시물 저장용
+	private Free setFree(ResultSet rset, String test) {
+		Free f = new Free();
+
+		try {
+			f.setFilepath(rset.getString("filepath"));
+			f.setFreeContent(rset.getString("free_content"));
+			f.setFreeDate(rset.getString("free_date"));
+			f.setFreeNo(rset.getInt("free_no"));
+			f.setFreeTitle(rset.getString("free_title"));
+			f.setFreeWriter(rset.getString("free_writer"));
+			f.setReadCount(rset.getInt("read_count"));
+			
+			// 게시판 전체 조회
+			if (test.equals("조회")) {
+				f.setRnum(rset.getInt("rnum"));
+				f.setLikeCount(rset.getInt("like_count"));
+			}
+			// 게시물 상세페이지
+			if (test.equals("상세")) {
+				f.setLikeCount(rset.getInt("like_count"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return f;
+	}
+
+	// 댓글 불러오기
+	public ArrayList<FreeComment> selectFreeCommentList(Connection conn, int freeNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<FreeComment> list = new ArrayList<FreeComment>();
+		String query = "select * from free_comment where free_ref = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, freeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(setFreeComment(rset));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	// 댓글 저장용
+	private FreeComment setFreeComment(ResultSet rset) {
+		FreeComment fc = new FreeComment();
+		
+		try {
+			fc.setFcContent(rset.getString("fc_content"));
+			fc.setFcDate(rset.getString("fc_date"));
+			fc.setFcNo(rset.getInt("fc_no"));
+			fc.setFcRef(rset.getInt("fc_ref")); // 널인 경우 0으로 넣어줌
+			fc.setFcWriter(rset.getString("fc_writer"));
+			fc.setFreeRef(rset.getInt("free_ref"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return fc;
 	}
 
 }
