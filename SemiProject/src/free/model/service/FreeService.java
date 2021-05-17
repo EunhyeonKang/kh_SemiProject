@@ -107,11 +107,55 @@ public class FreeService {
 
 		// 해당 게시물 현재 로그인 한 회원의 좋아요 체크
 		int result = dao.selectLike(conn, freeNo, memberId);
-		
+
 		JDBCTemplate.close(conn);
 
 		FreeViewData fvd = new FreeViewData(f, list, result);
 		return fvd;
 	}
 
+	// 조회수 증가
+	public int updateReadCount(int freeNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new FreeDao().updateReadCount(conn, freeNo);
+
+		if (result > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+
+		return result;
+	}
+
+	// 좋아요 추가
+	public int insertFreeLike(int freeNo, String memberId) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new FreeDao().insertFreeLike(conn, freeNo, memberId);
+
+		if (result > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+
+		return result;
+	}
+
+	// 좋아요 삭제
+	public int deleteFreeLike(int freeNo, String freeWriter) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new FreeDao().deleteFreeLike(conn, freeNo, freeWriter);
+
+		if (result > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+
+		return result;
+	}
 }

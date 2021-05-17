@@ -54,7 +54,16 @@ public class FreeViewServlet extends HttpServlet {
 			return;
 		}
 		// 3. 비지니스 로직
-		FreeViewData fvd = new FreeService().selectFreeView(freeNo, memberId);
+		FreeService service =  new FreeService();
+		FreeViewData fvd = service.selectFreeView(freeNo, memberId); // 게시물 정보 및 댓글 / 좋아요 추출
+		int result = service.updateReadCount(freeNo); // 조회수 증가
+		
+//		if(result > 0) {
+//			System.out.println("조회수 증가!");
+//		} else {
+//			System.out.println("조회수 증가안돼...ㅠ");
+//		}
+		
 		// 4. 결과처리
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/free/freeView.jsp");
 

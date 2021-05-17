@@ -205,4 +205,61 @@ public class FreeDao {
 		return result;
 	}
 
+	// 좋아요 추가
+	public int insertFreeLike(Connection conn, int freeNo, String freeWriter) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "INSERT INTO FREE_LIKE VALUES(LIKE_SEQ.NEXTVAL, ?, ?)";
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, freeNo);
+			pstmt.setString(2, freeWriter);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	// 좋아요 삭제
+	public int deleteFreeLike(Connection conn, int freeNo, String freeWriter) {
+		PreparedStatement pstmt = null;
+		String query = "delete from free_like where free_ref = ? and member_id = ?";
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, freeNo);
+			pstmt.setString(2, freeWriter);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	// 조회수 증가
+	public int updateReadCount(Connection conn, int freeNo) {
+		PreparedStatement pstmt = null;
+		String query = "update free set read_count = read_count + 1 where free_no = ?";
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, freeNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
 }

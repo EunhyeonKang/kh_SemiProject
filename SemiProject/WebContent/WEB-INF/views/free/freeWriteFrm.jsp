@@ -30,7 +30,7 @@
             <input type="hidden" name="filename">
 
             <div class="btn-right">
-              <button type="submit" class="btn btn-danger btn-lg">등록</button>
+              <button type="submit" class="btn btn-primary">등록</button>
             </div>
           </fieldset>
         </form>

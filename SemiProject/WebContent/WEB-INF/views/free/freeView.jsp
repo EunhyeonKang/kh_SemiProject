@@ -11,7 +11,6 @@
               Member m = (Member) session.getAttribute("m");
               %>
 
-              %>
               <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
               <html>
 
@@ -35,12 +34,12 @@
                       <tbody>
                         <tr>
                           <th>좋아요</th>
-                          <td>
+                          <td class="change-like">
                             <%=f.getLikeCount()%>
                           </td>
                           <th>조회</th>
                           <td>
-                            <%=f.getReadCount()%>
+                            <%=f.getReadCount() + 1%>
                           </td>
                         </tr>
                         <tr>
@@ -55,8 +54,18 @@
                         </tr>
                         <tr>
                           <th>제목</th>
-                          <td colspan="3">
+                          <td colspan="2">
                             <%=f.getFreeTitle()%>
+                          </td>
+                          <td class="like">
+                            <!-- 좋아요 인 상태-->
+                            좋아요
+                            <%if(love==1) { %>
+                              <i class="fas fa-heart fa-lg heart love"></i>
+                              <!-- 좋아요 아닌 상태 -->
+                              <%} else {%>
+                                <i class="far fa-heart fa-lg heart"></i>
+                                <%} %>
                           </td>
                         </tr>
                         <tr>
@@ -66,37 +75,57 @@
                         </tr>
                       </tbody>
                     </table>
-
                     <!-- 하단 버튼 -->
                     <div class="text-center">
                       <input type="button" class="btn btn-primary" value="수정">&nbsp;
                       <input type="button" class="btn btn-primary" value="삭제">&nbsp;
                       <button class="btn btn-primary" onclick="history.go(-1);">목록</button>
                       &nbsp;
-                      <!-- 좋아요 인 경우-->
-                      <%if(love == 1) { %>
-                      <i class="fas fa-heart fa-lg heart love"></i>
-                      <%} else {%>
-                      <i class="far fa-heart fa-lg heart"></i>
-                      <%} %>
-                       
                     </div>
                   </div>
                   <!-- Footer -->
                   <%@ include file="/WEB-INF/views/common/footer.jsp" %>
-
                     <script>
                       $(function () {
+                        // 테스트
+                        var likeCnt = $(".change-like").html();
+
                         // 컬럼명 파란색 칠하기 + 글씨색 흰색
                         $("table th").addClass('bg-primary text-white');
-                      });
 
-                      // 좋아요 클릭
-                      $("i").on("click", function () {
-                        console.log($(this).css("color"));
+                        // 좋아요 클릭
+                        $("i").on("click", function () {
+                          $(this).toggleClass('love'); // 좋아요 색변경
+                          // 좋아요 삭제
+                          if ($(this).hasClass('fas')) {
+                            $.ajax({
+                              url: "/deleteLove",
+                              data: {
+                                freeWriter: '<%=f.getFreeWriter() %>',
+                                freeNo: '<%=f.getFreeNo() %>'
+                              },
+                              type: "post"
+                            });
+                            // 빈 하트 변경
+                            $(this).removeClass('fas');
+                            $(this).addClass('far');
+                            $(".change-like").html(--likeCnt); // 좋아요 1감소
 
-                        $(this).toggleClass('love'); // 좋아요 색칠
-                        // AJAX
+                          } else {// 좋아요 등록
+                            $.ajax({
+                              url: "/insertLove",
+                              data: {
+                                freeWriter: '<%=f.getFreeWriter() %>',
+                                freeNo: '<%=f.getFreeNo() %>'
+                              },
+                              type: "post"
+                            });
+                            // 빨간하트 변경
+                            $(this).removeClass('far');
+                            $(this).addClass('fas')
+                            $(".change-like").html(++likeCnt); // 좋아요 1증가
+                          }
+                        }); // 좋아요 클릭
                       });
                     </script>
               </body>
