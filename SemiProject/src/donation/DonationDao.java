@@ -91,6 +91,7 @@ public class DonationDao {
 				m.setMemberName(rset.getString("member_name"));
 				m.setMemberAddr(rset.getString("member_addr"));
 				m.setMemberEmail(rset.getString("member_email"));
+				m.setMemberPhone(rset.getString("phone"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
