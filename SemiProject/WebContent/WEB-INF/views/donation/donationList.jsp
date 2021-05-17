@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="donation.DonationList"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -65,11 +66,13 @@
           </thead>
           <tbody>
              <%for(DonationList n : list){ %>
+             <%DecimalFormat formatter = new DecimalFormat("###,###,###"); %>
+             
             <tr class="donaConList" style="height:40px;">
               <td style="width: 60px;"><%=n.getDona_no() %></td>
               <td style="width: 130px; padding-top: 10px"><%=n.getPa_level() %></td>
-              <td style="width: 120px; text-align: right; padding-right: 30px"><%=n.getPa_amount()%>원</td>
-              <td style="width: 120px; text-align: left; padding-left: 20px""><%=n.getDona_writer()%></td>
+              <td style="width: 120px; text-align: right; padding-right: 30px"><%=formatter.format(n.getPa_amount())%>원</td>
+              <td style="width: 120px; text-align: left; padding-left: 20px"><%=n.getDona_writer()%></td>
               <td style="width: 300px; height: 40px; text-align: left; margin-left: 100px"><%=n.getDona_content()%></td>
               <td style="width: 100px;"><input type="button"  class="modifyDonation" value="수정" >            	
                 <div class="alertModal" style="position: absolute; z-index: 10;">

@@ -190,7 +190,7 @@
                   <input type="checkbox" id="allCheck" style="margin-left: 470px;"><label for="allCheck">이용약관 전체동의</label>
                 </p>
                 <div class="agree">
-                  <input type="checkbox" id="check1"/>
+                  <input type="checkbox" id="check1" name="agree"/>
                   <p class="agree1">[+] 후원 약관 동의[필수]</p>
                 </div>
                 <div id="toggle1">
@@ -262,7 +262,7 @@
 
             <div class="con5_1" >
               <p class="ment1" style="float: left; padding-top: 30px;">후원자님의 비밀번호를 입력해주세요.</p>
-              <input style="float: left; margin-top: 25px; margin-left: 30px; width: 200px;" type="password" value="" />
+              <input style="float: left; margin-top: 25px; margin-left: 30px; width: 200px;" type="password" name="passRe" />
               <input id="pass_check" style="float: left; margin-top: 25px; margin-left: 10px; width: 50px;" type="button" value="확인">
             </div>
             <div class="con5_1">
@@ -278,7 +278,7 @@
           </div>
           <div class="con6" style="display: none;">
             <div class="con6_1">
-              <p style="margin-top: 20px;">후원이 완료되었습니다.</p>
+              <p style="margin-top: 20px;">후원과정이 완료되었습니다.</p>
             </div>
             <hr width="95%" style="margin-bottom: 30px;">
             <div class="con6_2" style="margin-bottom: 20px;">
@@ -296,11 +296,10 @@
                 <img src="/mini_img/56.jpg" style="height: 100%;">
               </div>
             </div>
-            <p class="ment6">후원 내역은 후원게시판에서 확인하실수 있습니다.</p>
+            <p class="ment6">후원하기를 클릭하면 후원이 완료됩니다.<br>후원완료시 자동으로 후원게시판으로 이동됩니다.</p>
             
             <div class="dona_btn">
-              <div style="margin-left: 310px"><button type="submit" class="formDonaList" value="후원게시판">후원하기</button></div>
-              <div onclick="func4()"><a href ="/">메인으로</a></div>
+              <div style="margin-left: 310px; width: 180px; background-color: orange;"><button style="margin-top: 5px; font-weight: bold" type="submit" class="formDonaList" value="후원게시판">후원하기</button></div>
             </div>
           </form>
           </div>
@@ -328,22 +327,49 @@
           }else{
         	  alert("후원을 선택해주세요");
           }
-          
-          
         }
         function func2() {
-          $(".con4").css("display", "none");
-          $(".con5").css("display", "block");
-          $(".dona_naviCon2").css("background-color", "rgba(211, 211, 211, 0.535)");
-          $(".dona_naviCon3").css("background-color", "rgba(135, 207, 235, 0.645)");
-          $(".con2_img > img").attr("src","mini_img/51.jpg")
+        	var donaSor = $("input[name=dona_sor]").is(":checked");
+        	var title = $("input[name=title]").val();
+        	var concon = $("textarea[name=concon]").val();
+        	var agree = $("input[name=agree]").is(":checked");
+        	
+        	if(donaSor){
+        		if(title !="" && concon != ""){
+        			if(agree){
+        				$(".con4").css("display", "none");
+       		          $(".con5").css("display", "block");
+       		          $(".dona_naviCon2").css("background-color", "rgba(211, 211, 211, 0.535)");
+       		          $(".dona_naviCon3").css("background-color", "rgba(135, 207, 235, 0.645)");
+       		          $(".con2_img > img").attr("src","mini_img/51.jpg");
+        			}else{
+        				alert("약관에 동의해 주세요");
+        			}
+        		}else{
+        			alert("제목과 내용을 입력해주세요");
+        		}
+        	}else{
+        		alert("후원구분을 선택해주세요");
+        	}
         }
         function func3() {
-          $(".con5").css("display", "none");
-          $(".con6").css("display", "block");
-          $(".dona_naviCon3").css("background-color", "rgba(211, 211, 211, 0.535)");
-          $(".dona_naviCon4").css("background-color", "rgba(135, 207, 235, 0.645)");
-          $(".con2_img > img").attr("src","mini_img/53.jpg");
+        	var priceChoice = $("input[name=price_choice]").is(":checked");
+        	var passRe = $("input[name=passRe]").val()
+        	
+        	
+        	if(priceChoice){
+        		if(passRe != ""){
+        			$(".con5").css("display", "none");
+        	          $(".con6").css("display", "block");
+        	          $(".dona_naviCon3").css("background-color", "rgba(211, 211, 211, 0.535)");
+        	          $(".dona_naviCon4").css("background-color", "rgba(135, 207, 235, 0.645)");
+        	          $(".con2_img > img").attr("src","mini_img/53.jpg");
+        		}else{
+        			alert("회원님의 비밀번호가 일치하지 않습니다.");
+        		}
+        	}else{
+        		alert("후원금액을 선택해주세요");
+        	}
         }
 
         $(function () {
