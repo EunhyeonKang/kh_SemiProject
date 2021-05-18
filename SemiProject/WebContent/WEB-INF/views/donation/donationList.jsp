@@ -89,12 +89,14 @@
               <td style="width: 120px; text-align: right; padding-right: 30px"><%=formatter.format(n.getPa_amount())%>원</td>
               <td style="width: 120px; text-align: left; padding-left: 20px"><%=n.getDona_writer()%></td>
               <td style="width: 300px; height: 40px; text-align: left; margin-left: 100px"><%=n.getDona_content()%></td>
-              <%if(n.getDona_writer().equals(m.getMemberName())){ %>
               
+              
+              <%if(n.getDona_writer().equals(m.getMemberName())){ %>
               <td style="width: 100px;"><input type="button"  class="modifyDonation" value="수정" style="font-size:14px;" > 
               <%}else{ %>
               <td style="width: 100px;"><input style="background-color: rgba(0, 183, 255, 0.959);font-size:14px;" type="button"  class="modifyDonation" value="내역";> 
               <%} %>
+              
                 <div class="alertModal" style="position: absolute; z-index: 10;">
                   <div class="alertWrap">
                     <h2>후원내용</h2>
@@ -103,10 +105,9 @@
                       <div class="donaModal">
                         <div class="radioHover">
                           <div>후원처</div>
-                          <input type="radio" id="dona_sor1" name="dona_sor" value="개인"><label for="dona_sor1">개인</label>
- 
-                          <input type="radio" id="dona_sor2" name="dona_sor" value="법인"><label for="dona_sor2">법인</label>
-                          <input type="radio" id="dona_sor3" name="dona_sor" value="학교 및 단체"><label for="dona_sor3">학교 및 단체</label>
+                          <input type="radio" id="dona_sor1" name="dona_sor" value="개인"><label style="width: 40px;" for="dona_sor1">개인</label>
+                          <input type="radio"  id="dona_sor2" name="dona_sor" value="법인"><label style="width: 40px;" for="dona_sor2">법인</label>
+                          <input type="radio"  id="dona_sor3" name="dona_sor" value="학교 및 단체"><label for="dona_sor3">학교 및 단체</label>
                           
                         </div>
                         <div>
