@@ -23,6 +23,9 @@
 	height:700px;
 }
 #view-field{
+	height:800px;
+}
+#notice-view{
 	height:400px;
 }
 </style>
@@ -31,7 +34,7 @@
 	<div class="container" id ="view-wrap">
 		<fieldset id="view-field">
 			<legend>공지사항</legend>
-			<table class="table" id="noticeView" style="width:100%;">
+			<table class="table" id="notice-view" style="width:100%;">
 				<tr class="table-info">
 					<th colspan="4"><%=n.getNoticeTitle() %></th>
 				</tr>	
@@ -59,7 +62,7 @@
 				<tr class="table-light">
 					<th colspan="4" style="text-align:center;">
 						<button class="btn btn-info" onclick="history.go(-1);">이전화면</button>
-						<%if(a!=null){ %>
+						<%if(m==null){ %>
 						<a class="btn btn-info" href="/noticeUpdateFrm?noticeNo=<%=n.getNoticeNo() %>">수정하기</a>
 						<a class="btn btn-info" href="/noticeDelete?noticeNo=<%=n.getNoticeNo() %>">삭제하기</a>
 						<%} %>
@@ -67,7 +70,7 @@
 				</tr>
 			</table>
 		</fieldset>
-		<%if(m!=null) {%>
+		<%if(m==null) {%>
 		<div class="inputCommentBox">
 			<form action="/insertComment" method="post">
 				<ul>
