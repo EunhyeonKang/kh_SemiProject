@@ -27,10 +27,6 @@ public class DonationServlet extends HttpServlet {
 		//4.결과처리
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/donation/donation.jsp");
 		rd.forward(request, response);
-		
-		
-		
-		
 	}
 
 
