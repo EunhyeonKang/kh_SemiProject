@@ -8,7 +8,6 @@
     <%
     Notice n = (Notice)request.getAttribute("n");
     ArrayList<NoticeComment> list = (ArrayList<NoticeComment>)request.getAttribute("list");
-    Member m = (Member)request.getAttribute("m");
   	Admin a = (Admin)request.getAttribute("a");
     %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

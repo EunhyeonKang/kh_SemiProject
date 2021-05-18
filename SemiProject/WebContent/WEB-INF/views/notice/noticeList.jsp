@@ -13,7 +13,6 @@ ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 
 	String pageNavi = (String) request.getAttribute("pageNavi");
 	Admin a  = (Admin)request.getAttribute("a");
-	Member m = (Member)request.getAttribute("m");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
