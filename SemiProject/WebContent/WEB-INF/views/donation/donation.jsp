@@ -273,8 +273,8 @@
 
             <div class="con5_1" >
               <p class="ment1" style="float: left; padding-top: 30px;">후원자님의 비밀번호를 입력해주세요.</p>
-              <input style="float: left; margin-top: 25px; margin-left: 30px; width: 200px;" type="password" name="passRe" />
-              <input id="pass_check" style="float: left; margin-top: 25px; margin-left: 10px; width: 50px;" type="button" value="확인">
+              <input style="float: left; margin-top: 25px; margin-left: 30px; width: 200px;" type="password" class="passRe" name="passRe">
+              <input id="pass_check" style="font-size:14px; float: left; margin-top: 25px; margin-left: 10px; width: 50px;" onclick="func22()" type="button" value="확인">
             </div>
             <div class="con5_1">
               <p style="font-weight: bold; text-align: center; color: orangered;">
@@ -365,21 +365,28 @@
         }
         function func3() {
         	var priceChoice = $("input[name=price_choice]").is(":checked");
-        	var passRe = $("input[name=passRe]").val()
-        	
-        	
+        	var passRe = $("input[name=passRe]").val();
         	if(priceChoice){
-        		if(passRe != ""){
+        		if(passRe=='<%=m.getMemberPw()%>'){
         			$(".con5").css("display", "none");
         	          $(".con6").css("display", "block");
         	          $(".dona_naviCon3").css("background-color", "rgba(211, 211, 211, 0.535)");
         	          $(".dona_naviCon4").css("background-color", "rgba(135, 207, 235, 0.645)");
         	          $(".con2_img > img").attr("src","mini_img/53.jpg");
         		}else{
-        			alert("회원님의 비밀번호가 일치하지 않습니다.");
+        			alert("회원님의 비밀번호를 확인해주세요");
         		}
         	}else{
         		alert("후원금액을 선택해주세요");
+        	}
+        }
+
+        function func22(){
+        	var pass = $(".passRe").val();
+        	if(pass == '<%=m.getMemberPw()%>' ){
+        		alert("회원님의 비밀번호가 일치합니다!!!!");
+        	}else{
+        		alert("비밀번호가 일치하지 않습니다.");
         	}
         }
 
@@ -399,6 +406,7 @@
               $("input[type=checkbox]").prop("checked",false);
             }
           });
+          
 
         });
 
