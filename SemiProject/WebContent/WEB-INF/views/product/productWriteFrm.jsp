@@ -21,7 +21,7 @@
 
 .selectform{
 	float : left;
-    width: 100px;
+    width: 110px;
     height: calc(1.5em + 1.5rem);
     padding: 0.75rem 1.5rem;
     font-size: 0.875rem;
@@ -32,6 +32,8 @@
     background-clip: padding-box;
     border: 0 solid #ced4da;
     border-radius: 0;
+    margin-top : 10px;
+    margin-bottom : 10px;
 }
 .titleform{
 	float : left;
@@ -46,6 +48,13 @@
     background-clip: padding-box;
     border: 0 solid #ced4da;
     border-radius: 0;
+    margin-top : 10px;
+    margin-bottom : 10px;
+}
+.btn{
+	float:right;
+	margin : 10px;
+	color : white;
 }
 </style>
 </head>
@@ -56,17 +65,18 @@
 		<div class="form-group">
 				<select class="selectform" name="spons">
 					<option selected disabled>-분류-</option>
-					<option value="이웃">이웃</option>
-					<option value="동물">동물</option>
+					<option value="결식아동">결식아동</option>
+					<option value="유기동물">유기동물</option>
 					<option value="자연">자연</option>
 					<option value="기타">기타</option>
 				</select>
 			<input type="text" class="titleform" placeholder="제목" id="title" name="title">
 		</div>
 		<div class="form-group">
-		<label for="filename">메인사진</label>
-			<input type="file" class="form-control" name="filename">
+		<div class="selectform">메인사진</div>
+			<input type="file" class="titleform" name="filename" >
 		</div>
+		
 	<div class="form-group">
 			<textarea class="form-control" name="info" placeholder="간략정보"></textarea>
 		</div>
@@ -76,7 +86,7 @@
 			<textarea id="summernote" class="form-control" rows="5" id="content" name="content"></textarea>
 		</div>
 	
-		<button type="submit" class="btn btn-primary" id="write">글쓰기 등록</button>
+		<button type="submit" class="btn btn-info btn1" id="write">글쓰기 등록</button>
 	</form>
 
 

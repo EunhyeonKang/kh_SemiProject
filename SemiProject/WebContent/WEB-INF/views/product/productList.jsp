@@ -17,7 +17,33 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 <link href="/css/product/product1.css" rel="stylesheet" type="text/css">
+<style>
 
+.dropdown {
+    border-radius: 3px;
+    border: 1px solid #e5e5e5;
+    background-color: rgba(255,255,255,0.98);
+    display: none;
+    min-width: 160px;
+    max-height: 650px;
+    overflow-y: auto;
+    opacity: 0;
+    position: absolute;
+    z-index: 999;
+    will-change: width, height;
+}
+.dropdown li{
+    clear: both;
+    color: rgba(0, 0, 0, 0.87);
+    cursor: pointer;
+    min-height: 36px;
+    width: 100%;
+    text-align: left;
+    text-transform: none;
+}
+
+
+</style>
  
 
 </head>
@@ -30,8 +56,18 @@
        			<h5 class="h5">후원상품정보 </h5>
        			<p class="p1">후원 상품 정보를 소개하는 공간 입니다.</p>
 			</div>
+		</div>
 		<div class = "menubtn">
-		<a class="btn btn-dark btn1"  href="/productWriteFrm" >글쓰기</a>
+			<a class="btn btn-info btn2"  href="#" >분류</a>
+				<ul class="dropdown">
+					<li><a href="#">전체</a></li>
+					<li><a href="#">이웃</a></li>
+					<li><a href="#">동물</a></li>
+					<li><a href="#">자연</a></li>
+					<li><a href="#">기타</a></li>
+				</ul>
+			<a class="btn btn-info btn1"  href="/productWriteFrm" >글쓰기</a>
+			<a class="btn btn-info btn1"  href="/productList?reqPage=1" >목록보기</a>
 		</div>
 	<div class="row">
 			<% for(Product p : list) {%>
@@ -49,15 +85,14 @@
                 </div> <br>
             </div>
         </div>  
-       
-         
 			<%} %>
        </div> 
     	
 		<div id ="pageNavi"><%=pageNavi %></div>
 		<br>
-
 	</div>
+	
 	<%@include file="/WEB-INF/views/common/footer.jsp" %>
+
 </body>
 </html>
