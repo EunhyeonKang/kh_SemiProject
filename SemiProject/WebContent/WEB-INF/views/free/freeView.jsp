@@ -100,7 +100,7 @@
                             $.ajax({
                               url: "/deleteLove",
                               data: {
-                                freeWriter: '<%=f.getFreeWriter() %>',
+                                freeWriter: '<%=m.getMemberId() %>',
                                 freeNo: '<%=f.getFreeNo() %>'
                               },
                               type: "post"
@@ -114,7 +114,7 @@
                             $.ajax({
                               url: "/insertLove",
                               data: {
-                                freeWriter: '<%=f.getFreeWriter() %>',
+                                freeWriter: '<%=m.getMemberId() %>',
                                 freeNo: '<%=f.getFreeNo() %>'
                               },
                               type: "post"

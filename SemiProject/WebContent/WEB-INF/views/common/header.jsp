@@ -15,7 +15,11 @@
   </style>
   <script>
   	function test11(){
-  		alert("로그인 후 이용 가능합니다.");
+  		alert("로그인 후 후원이 가능합니다.");
+  		location.href="/";
+  	}
+  	function test12(){
+  		alert("로그인 후 게시글 확인이 가능합니다.");
   		location.href="/";
   	}
   </script>
@@ -32,7 +36,11 @@
         <%} else { %>
         <li class="nav-item"><a href="javascript:void(0);" onclick="test11();">후원하기</a></li>
         <%} %>
+        <%if (m != null){ %>
         <li class="nav-item"><a href="/donationList?reqPage=1">후원게시판</a></li>
+        <%} else { %>
+        <li class="nav-item"><a href="javascript:void(0);" onclick="test12(); ">후원게시판</a></li>
+        <%} %>
         <li class="nav-item"><a href="/freeBoard?reqPage=1">자유게시판</a></li>
 
       </ul>
