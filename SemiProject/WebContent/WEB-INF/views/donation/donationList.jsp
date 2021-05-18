@@ -28,9 +28,11 @@
   <link rel="stylesheet" type="text/css" href="/slick/slick/slick.css" />
   <link rel="stylesheet" type="text/css" href="/slick/slick/slick-theme.css" />
   <script type="text/javascript" src="/slick/slick/slick.js"></script>
+  <script src="/slick/main.js" type="text/javascript"></script>
   
   <!-- css -->
   <link href="/css/donationList.css" rel="stylesheet" type="text/css" />
+  <link href="/css/donation1.css" rel="stylesheet" type="text/css" />
 <title>Insert title here</title>
 </head>
 <style>
@@ -49,7 +51,18 @@
     <!-- header -->
 
     <!-- content -->
-      <div class="content" style="margin-top: 80px;">
+    	
+      <div class="content" style="padding-top: 0px; width: 910px; margin: 0 auto;">
+      <div class="con1" style="overflow: hidden">
+          <div id="slider-div" style="">
+            <div><img src="mini_img/16.jpg" class="slideImg" /></div>
+            <div><img src="mini_img/9.jpg" class="slideImg" /></div>
+            <div><img src="mini_img/10.jpg" class="slideImg" /></div>
+            <div><img src="mini_img/8.jpg" class="slideImg" /></div>
+            <div><img src="mini_img/5.jpg" class="slideImg" /></div>
+            <div><img src="mini_img/11.jpg" class="slideImg" /></div>
+          </div>
+        </div>
       <div class="container">
       	<br><br>
         <h3 style="margin-left: 70px;">후원게시판</h2>
@@ -76,7 +89,12 @@
               <td style="width: 120px; text-align: right; padding-right: 30px"><%=formatter.format(n.getPa_amount())%>원</td>
               <td style="width: 120px; text-align: left; padding-left: 20px"><%=n.getDona_writer()%></td>
               <td style="width: 300px; height: 40px; text-align: left; margin-left: 100px"><%=n.getDona_content()%></td>
-              <td style="width: 100px;"><input type="button"  class="modifyDonation" value="수정" >            	
+              <%if(n.getDona_writer().equals(m.getMemberName())){ %>
+              
+              <td style="width: 100px;"><input type="button"  class="modifyDonation" value="수정" style="font-size:14px;" > 
+              <%}else{ %>
+              <td style="width: 100px;"><input style="background-color: rgba(0, 183, 255, 0.959);font-size:14px;" type="button"  class="modifyDonation" value="내역";> 
+              <%} %>
                 <div class="alertModal" style="position: absolute; z-index: 10;">
                   <div class="alertWrap">
                     <h2>후원내용</h2>
@@ -85,20 +103,25 @@
                       <div class="donaModal">
                         <div class="radioHover">
                           <div>후원처</div>
-                          <input type="radio" id="dona_sor1" name="dona_sor" value="개인" /><label for="dona_sor1">개인</label>
-                          <input type="radio" id="dona_sor2" name="dona_sor" value="법인" /><label for="dona_sor2">법인</label>
-                          <input type="radio" id="dona_sor3" name="dona_sor" value="학교 및 단체" /><label for="dona_sor3">학교 및 단체</label>
+                          <input type="radio" id="dona_sor1" name="dona_sor" value="개인"><label for="dona_sor1">개인</label>
+ 
+                          <input type="radio" id="dona_sor2" name="dona_sor" value="법인"><label for="dona_sor2">법인</label>
+                          <input type="radio" id="dona_sor3" name="dona_sor" value="학교 및 단체"><label for="dona_sor3">학교 및 단체</label>
+                          
                         </div>
                         <div>
                           <div>후원자</div>
-                          <input type="text" name="name" style="width: 300px" value="<%=n.getDona_writer()%>"/>
+                          <input type="text" name="name" style="width: 300px; font-size:14px;" value="<%=n.getDona_writer()%>"/>
                         </div>
                         <div>
-                          <div>emial</div>
-                          <input type="text" name="email" style="width: 100px;" /> @
-                          <input type="text" name="email2" style="width: 80px;" />
-                          <select class="select"style="width: 80px; height: 25px; outline: none;"onChange="selectEmail(this)">
-                            <option value="">직접입력</option>
+                          <div>email</div>
+                          	<%String str =  m.getMemberEmail(); %>
+		                  	<%String email1 = str.substring(0,str.indexOf("@")); %>
+		                  	<%String email2 = str.substring(str.lastIndexOf("@")+1); %>
+                          <input type="text" name="email" style="width: 100px; font-size:14px;" value="<%=email1 %>" > @
+                          <input type="text" name="email2" style="width: 90px; font-size:14px;" value="<%=email2 %>" >
+                          <select class="select"style="width: 90px; height: 20px; outline: none; font-size:14px;"onChange="selectEmail(this)">
+                            <option>직접입력</option>
                             <option value="naver.com">naver.com</option>
                             <option value="hanmail.net">hanmail.net</option>
                             <option value="yahoo.co.kr">yahoo.co.kr</option>
@@ -107,17 +130,21 @@
                         </div>
                         <div>
                           <div>제목</div>
-                          <input type="text" name="title" value="<%=n.getDona_title()%>">
+                          <input type="text" name="title" style=" font-size:14px;" value="<%=n.getDona_title()%>">
                         </div>
                         <div>
                           <div>내용</div>
-                          <textarea name="concon" style="width: 300px; height: 100px; resize: none;"><%=n.getDona_content()%></textarea>
+                          <textarea name="concon" style="width: 300px; height: 100px;  font-size:14px; resize: none;"><%=n.getDona_content()%></textarea>
                         </div>
                       </div>
                       <div class="modifyBtn">
-                        <button class="modiBtn1" type="button" onclick="location.href='donaListDel?donaNum=<%=n.getDona_no() %>'" style="background-color: rgba(253, 56, 56, 0.788); color: white;">게시글 삭제</button>
-                        <button class="modiBtn2" type="button" onclick="cancle()" style="background-color: rgba(48, 48, 48, 0.753); color: white;">취소</button>
-                        <button class="modiBtn3" type="submit" style="background-color: orange; color: white;">수정</button>
+                      <%if(n.getDona_writer().equals(m.getMemberName())){ %>
+                        <button class="modiBtn1" type="button" onclick="location.href='donaListDel?donaNum=<%=n.getDona_no() %>'" style=" font-size:14px; background-color: rgba(250, 44, 44, 0.555); color: white;">게시글 삭제</button>
+                        <button class="modiBtn2" type="button" onclick="cancle()" style=" font-size:14px; background-color: rgba(48, 48, 48, 0.753); color: white;">취소</button>
+                        <button class="modiBtn3" type="submit" style="background-color: orange;  font-size:14px; color: white;">수정</button>
+                      <%} else{%>
+                      <button class="modiBtn2" type="button" onclick="cancle()" style=" font-size:14px; background-color: rgba(48, 48, 48, 0.753); color: white;">취소</button>
+                      <%} %>
                       </div>
                     </form>
                   </div>
@@ -129,6 +156,7 @@
         </table>
         </div>
         <div id="dona_pageNavi" style="text-align: center;"><%=pageNavi%></div>
+        <hr style="width: 90%">
         <div class="donaBottom">
         <div class="donaBottom1">
         	<h3>함께이기에 하나가 될수있습니다</h3>
@@ -171,7 +199,11 @@
 	    var email2 = $("input[name=email2]");
 	    email2.val(ele);
 	  } 
-</script>
+	//수정/내역 클릭시 라벨 적용되게끔
+	$("[name=dona_sor]").next().click(function(){
+		$(this).prev().click();
+	});
+	</script>
 </html>
 
 

@@ -4,9 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <%
-    Member m = (Member)session.getAttribute("m");
-    %>
+   
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/css/donation1.css">
@@ -25,6 +23,7 @@
     <link rel="stylesheet" type="text/css" href="/slick/slick/slick-theme.css" />
     <script type="text/javascript" src="/slick/slick/slick.js"></script>
     <link href="/css/donation1.css" rel="stylesheet" type="text/css" />
+    <script src="/slick/main.js" type="text/javascript"></script>
 
     <!--나눔고딕체-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -38,6 +37,7 @@
     	 .header-wrap>.nav>li>a{
 		  	font-weight: bold;
 		  }
+		  
     </style>
   </head>
 
@@ -145,23 +145,23 @@
                 <div class="info">
                   <div>후원인 이름</div>
                   <div>
-                    <input type="text" name="name" style="width: 300px" value=<%=m.getMemberName()%>>
+                    <input type="text" name="name" style="width: 300px; font-size: 14px;" value=<%=m.getMemberName()%>>
                   </div>
                 </div>
                 <div class="info">
                   <div>전화번호</div>
                   <div>
-                    <input type="text" name="phone" style="width: 300px" value=<%=m.getMemberPhone() %>>
+                    <input type="text" name="phone" style="width: 300px; font-size: 14px;" value=<%=m.getMemberPhone() %>>
                   </div>
                 </div>
-                <div class="info" style="margin-bottom: 30px">
+                <div class="info" style="margin-bottom: 30px;">
                   <div>이메일</div>
                   <div>
                   	<%String str =  m.getMemberEmail(); %>
                   	<%String email1 = str.substring(0,str.indexOf("@")); %>
                   	<%String email2 = str.substring(str.lastIndexOf("@")+1); %>
-                    <input type="text" name="email" value=<%=email1 %> /> @
-                    <input type="text" name="email2" value=<%=email2 %> />
+                    <input type="text" name="email" style=" font-size: 14px;" value=<%=email1 %> /> @
+                    <input type="text" name="email2" style=" font-size: 14px;" value=<%=email2 %> />
                     <select
                       class="select"
                       style="width: 120px; height: 20px; outline: none; font-size:13px;"
@@ -184,13 +184,13 @@
                   <div class="info">
                     <div>제목</div>
                     <div>
-                      <input type="text" name="title" />
+                      <input type="text" name="title" style=" font-size: 14px;" placeholder="제목을 입력해주세요" />
                     </div>
                   </div>
                   <div class="info_con">
                     <div>내용</div>
                     <div style="margin-left: 30px">
-                      <textarea name="concon" style="width: 600px; height: 80px; outline: none;"></textarea>
+                      <textarea name="concon" style="width: 600px; height: 80px; outline: none; font-size: 14px;" placeholder="전하고싶은 말을 적어주세요!"></textarea>
                     </div>
                   </div>
                 </div>
