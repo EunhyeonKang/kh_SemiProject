@@ -158,4 +158,13 @@ public class FreeService {
 
 		return result;
 	}
+
+	// 게시물 1개 조회
+	public Free selectFree(int freeNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		Free f = new FreeDao().selectFree(conn, freeNo);
+		
+		JDBCTemplate.close(conn);
+		return f;
+	}
 }

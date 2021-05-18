@@ -82,6 +82,31 @@ public class FreeDao {
 		return result;
 	}
 
+	// 게시물 1개 정보 조회
+	public Free selectFree(Connection conn, int freeNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT * FROM FREE WHERE FREE_NO = ?";
+		Free f = null;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, freeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				f = setFree(rset, "");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return f;
+	}
+	
 	// 게시물 상세페이지 조회
 	public Free selectOneFree(Connection conn, int freeNo) {
 		PreparedStatement pstmt = null;

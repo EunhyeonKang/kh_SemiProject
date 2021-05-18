@@ -76,10 +76,14 @@
                     </table>
                     <!-- 하단 버튼 -->
                     <div class="text-center">
-                      <input type="button" class="btn btn-primary" value="수정">&nbsp;
-                      <input type="button" class="btn btn-primary" value="삭제">&nbsp;
-                      <button class="btn btn-primary" onclick="history.go(-1);">목록</button>
-                      &nbsp;
+
+                      <!-- 현재 로그인한 회원과, 해당 게시물의 작성자가 같은경우 수정/삭제 -->
+                      <%if(f.getFreeWriter().equals(m.getMemberId())){ %>
+                        <a href="/freeUpdateFrm?freeNo=<%=f.getFreeNo() %>" class="btn btn-primary">수정</a>
+                        <a class="btn btn-primary">삭제</a>
+                        <%} %>
+                          <button class="btn btn-primary" onclick="history.go(-1);">목록</button>
+                          &nbsp;
                     </div>
                   </div>
                   <!-- Footer -->
@@ -119,6 +123,7 @@
                               },
                               type: "post"
                             });
+
                             // 빨간하트 변경
                             $(this).removeClass('far');
                             $(this).addClass('fas')
