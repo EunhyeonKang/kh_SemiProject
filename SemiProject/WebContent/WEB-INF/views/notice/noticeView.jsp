@@ -63,7 +63,7 @@
 				<tr class="table-light">
 					<th colspan="4" style="text-align:center;">
 						<button class="btn btn-info" onclick="history.go(-1);">이전화면</button>
-						<%if(a!=null){ %>
+						<%if(m==null){ %>
 						<a class="btn btn-info" href="/noticeUpdateFrm?noticeNo=<%=n.getNoticeNo() %>">수정하기</a>
 						<a class="btn btn-info" href="/noticeDelete?noticeNo=<%=n.getNoticeNo() %>">삭제하기</a>
 						<%} %>
@@ -71,7 +71,7 @@
 				</tr>
 			</table>
 		</fieldset>
-		<%if(m!=null) {%>
+		<%if(m==null) {%>
 		<div class="inputCommentBox">
 			<form action="/insertComment" method="post">
 				<ul>
@@ -130,7 +130,7 @@
 				</li>
 			</ul>
 				<%for(NoticeComment ncc : list){ %>
-					<%if(m!=null) {%>
+					<%if(ncc.getNcLevel() == 2 && ncc.getNcRef() == nc.getNcNo()) {%>
 						<ul class="recomments">
 							<li>
 								<i class="fas fa-angle-double-right fa-3x"></i>

@@ -113,13 +113,14 @@ ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 		<div id="notice-content">
 
 			<div id="notice">
-			<%if(a!=null){ %> 
+			
+			<%if(m==null){ %>
 				<div class="form-row pull-right" id="button-style">
-
+			
 					<a class="btn btn-outline-secondary" href="#">글쓰기</a>
 
 				</div>
-				<%} %>
+			<%} %>
 
 				<table class="table table-hover">
 
