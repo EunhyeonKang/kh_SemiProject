@@ -21,12 +21,16 @@
 h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     letter-spacing: 3px;
+    font-weight : 600px
+}
+.btn1{
+color: white;
 }
 
 
 </style>
 </head>
-<body class="body1">
+<body>
 	<%@include file="/WEB-INF/views/common/header.jsp" %>
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<div class="container">
@@ -46,11 +50,11 @@ h1, h2, h3, h4, h5, h6 {
 			</div>
 			<div class="btnmenu">
 				<%--if(m!=null){ --%>
-					<a class="btn btn-dark" href="/productUpdateFrm?productNo=<%=p.getProductNo()%>">수정하기</a>
+					<a class="btn btn-info btn1" href="/productUpdateFrm?productNo=<%=p.getProductNo()%>">수정하기</a>
 					<%--} --%>
-					<a class="btn btn-dark" href="/productList?reqPage=1">목록보기</a>
+					<a class="btn btn-info btn1" href="/productList?reqPage=1">목록보기</a>
 						<%--if(m!=null){ --%>
-					<a class="btn btn-dark" href="/productDelete?productNo=<%=p.getProductNo()%>">삭제하기</a>
+					<a class="btn btn-info btn1" href="/productDelete?productNo=<%=p.getProductNo()%>">삭제하기</a>
 					<%--} --%>
 					</div>
 
