@@ -42,7 +42,7 @@ ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 
 	padding-left:50px;
 	
-	/*백그라운드이미지 */
+	/*백그라운드이미아 */
 
 }
 
