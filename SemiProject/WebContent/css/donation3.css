@@ -45,7 +45,17 @@
     color: orange;
     margin-top: 40px;
   }
- 
+ .passCheck{
+ 	height: 23px;
+ 	background-color: rgba(135, 207, 235, 0.643);
+ 	color : white;
+ 	font-weight: bold;
+ 	border-radius: 5px;
+ }
+.passCheck:hover{
+	background-color: rgba(0, 183, 255, 0.898);
+ 	cursor: pointer;
+ }
  
   
   

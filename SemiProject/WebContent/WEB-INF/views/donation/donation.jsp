@@ -258,12 +258,12 @@
             <hr width="95%">
 
             <div class="con5_1">
-              <input type="radio" id="30000" name="price_choice" value="30000"/><label for="30000">30,000원</label>
-              <input type="radio" id="50000" name="price_choice" value="50000"/><label for="50000"> 50,000원</label>
-              <input type="radio" id="100000" name="price_choice" value="100000"/><label for="100000">100,000원</label>
-              <input type="radio" id="200000" name="price_choice" value="200000"/><label for="200000">200,000원</label>
+              <input type="radio" id="100000" name="price_choice" value="30000"/><label for="100000">100,000원</label>
+              <input type="radio" id="200000" name="price_choice" value="50000"/><label for="200000"> 200,000원</label>
+              <input type="radio" id="500000" name="price_choice" value="100000"/><label for="500000">500,000원</label>
+              <input type="radio" id="1000000" name="price_choice" value="200000"/><label for="1000000">1,000,000원</label>
               <input type="radio" id="gitar" name="price_choice" value="500000" />
-              <label for="gitar">기타<input type="text"  name="price_choice" value="" placeholder="직접입력" style=" font-size:13px; margin-top: 20px; margin-left: 10px; width: 100px;"/>원</label>
+              <label for="gitar">기타<input type="text" class="realPrice" onchange ="selectMoney(this)" name="price_choice" value="" placeholder="직접입력" style=" font-size:13px; margin-top: 20px; margin-left: 10px; width: 100px;"/>원</label>
             </div>
 
             <div class="con5_1" style="padding-top: 10px;">
@@ -274,7 +274,7 @@
             <div class="con5_1" >
               <p class="ment1" style="float: left; padding-top: 30px;">후원자님의 비밀번호를 입력해주세요.</p>
               <input style="float: left; margin-top: 25px; margin-left: 30px; width: 200px;" type="password" class="passRe" name="passRe">
-              <input id="pass_check" style="font-size:14px; float: left; margin-top: 25px; margin-left: 10px; width: 50px;" onclick="func22()" type="button" value="확인">
+              <input id="pass_check" class="passCheck" style="font-size:14px; float: left; margin-top: 25px; margin-left: 10px; width: 50px;" onclick="func22()" type="button" value="확인">
             </div>
             <div class="con5_1">
               <p style="font-weight: bold; text-align: center; color: orangered;">
@@ -324,7 +324,12 @@
           var email2 = $("input[name=email2]");
           email2.val(ele);
         }
-
+        
+      	 function selectMoney(money){
+        	var money = $(".realPrice").val();
+        	$("#gitar").val(money);
+        }
+        
         function func1() {
         	var kind = $("input[name=kind]").is(":checked");
         	var kind1 = $("input[name=kind1]").is(":checked");
