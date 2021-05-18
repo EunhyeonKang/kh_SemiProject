@@ -41,6 +41,8 @@ ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 	margin:0 auto;
 
 	padding-left:50px;
+	
+	/*백그라운드이미지 */
 
 }
 
@@ -92,7 +94,13 @@ ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 #notice-tab{
 	height:30px;
 }
-
+#notice-style>td{
+	text-align:center;
+	border-style:none;
+}
+#notice-style>th{
+	text-align:center;
+}
 
 </style>
 
@@ -115,7 +123,7 @@ ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 
 				<table class="table table-hover">
 
-					<tr>
+					<tr class="table-info"id="notice-style">
 
 						<th>번호</th>
 
@@ -131,7 +139,7 @@ ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 					for (Notice n : list) {
 					%>
 
-					<tr>
+					<tr id="notice-style">
 
 						<td><%=n.getRnum()%></td>
 

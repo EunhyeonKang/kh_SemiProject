@@ -24,6 +24,9 @@
 	height:700px;
 }
 #view-field{
+	height:800px;
+}
+#notice-view{
 	height:400px;
 }
 </style>
@@ -32,7 +35,7 @@
 	<div class="container" id ="view-wrap">
 		<fieldset id="view-field">
 			<legend>공지사항</legend>
-			<table class="table" id="noticeView" style="width:100%;">
+			<table class="table" id="notice-view" style="width:100%;">
 				<tr class="table-info">
 					<th colspan="4"><%=n.getNoticeTitle() %></th>
 				</tr>	
@@ -127,7 +130,7 @@
 				</li>
 			</ul>
 				<%for(NoticeComment ncc : list){ %>
-					<%if(ncc.getNcLevel() == 2 && ncc.getNcRef() == nc.getNcNo()) {%>
+					<%if(m!=null) {%>
 						<ul class="recomments">
 							<li>
 								<i class="fas fa-angle-double-right fa-3x"></i>
