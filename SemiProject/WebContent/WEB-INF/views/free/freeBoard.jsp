@@ -5,6 +5,7 @@
 
 				<% ArrayList<Free> list = (ArrayList<Free>) request.getAttribute("list");
 						String pageNavi = (String) request.getAttribute("pageNavi");
+
 						%>
 						<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 						<html>
@@ -78,13 +79,15 @@
 													<option value="1">제목</option>
 													<option value="2">작성자</option>
 												</select>
-												<input class="form-control" type="text" name="searchContent">
+												<input class="form-control" type="text" name="searchContent" required>
 												<input class="btn btn-info" type="submit" value="검색">
+												<input type="hidden" value="1" name="reqPage">
 											</form>
 
 								</div>
 								<!-- Footer -->
 								<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 						</body>
+
 
 						</html>
