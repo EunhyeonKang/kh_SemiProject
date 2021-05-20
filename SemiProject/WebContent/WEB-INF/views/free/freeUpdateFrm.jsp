@@ -28,7 +28,7 @@
                 <input name="freeTitle" value="<%=f.getFreeTitle()%>" style="width: 100%;" type="text"
                   placeholder="제목을 입력하세요." required><br><br>
                 <!-- summerEditor -->
-                <textarea style="display:none" id="summernote" name="editordata"><%=f.getFreeContent()%></textarea>
+                <textarea id="summernote" name="editordata"><%=f.getFreeContent()%></textarea>
 
                 <!-- 파일 이름 저장용 -->
                 <input type="hidden" name="filename">

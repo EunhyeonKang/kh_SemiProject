@@ -67,7 +67,8 @@ public class UploadImageServlet extends HttpServlet {
 		// 4. 결과처리
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
-		out.print(fileName);
+		System.out.println("업로드 : " + fileName);
+		out.print(fileName);	
 	}
 
 	/**

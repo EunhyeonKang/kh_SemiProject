@@ -78,8 +78,8 @@
                     <div class="text-center">
                       <!-- 현재 로그인한 회원과, 해당 게시물의 작성자가 같은경우 수정/삭제 -->
                       <%if(f.getFreeWriter().equals(m.getMemberId())){ %>
-                        <a href="/freeUpdateFrm?freeNo=<%=f.getFreeNo() %>" class="btn btn-primary">수정</a>
-                        <a class="btn btn-primary">삭제</a>
+                        <a href="/freeUpdateFrm?freeNo=<%=f.getFreeNo() %>" class="btn btn-info">수정</a>
+                        <a href="/freeDelete?freeNo=<%=f.getFreeNo() %>" class="btn btn-danger">삭제</a>
                         <%} %>
                           <a class="btn btn-primary" href="/freeBoard?reqPage=1">목록</a>
                     </div>

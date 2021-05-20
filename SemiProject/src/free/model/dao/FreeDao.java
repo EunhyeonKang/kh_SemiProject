@@ -20,10 +20,10 @@ public class FreeDao {
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, f.getFreeTitle());
-			pstmt.setString(2, f.getFreeWriter());
-			pstmt.setString(3, f.getFreeContent());
+			pstmt.setString(2, f.getFreeWriter());	
+			pstmt.setString(3, (f.getFreeContent() == "") ? "내용 없음" : f.getFreeContent());	
 			pstmt.setString(4, f.getFilepath());
-
+			System.out.println("게시물 작성 : " + f.getFilepath());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -316,6 +316,25 @@ public class FreeDao {
 			pstmt.setString(2, f.getFreeContent());
 			pstmt.setString(3, f.getFilepath());
 			pstmt.setInt(4, f.getFreeNo());
+			System.out.println("게시물 수정 : " + f.getFilepath());
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	// 게시물 삭제
+	public int deleteFree(Connection conn, int freeNo) {
+		PreparedStatement pstmt = null;
+		String query = "delete from free where free_no = ?";
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, freeNo);
 
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

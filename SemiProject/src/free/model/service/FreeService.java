@@ -182,4 +182,19 @@ public class FreeService {
 
 		return result;
 	}
+
+	// 게시물 삭제
+	public int deleteFree(int freeNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new FreeDao().deleteFree(conn, freeNo);
+
+		if (result > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+
+		return result;
+	}
 }
