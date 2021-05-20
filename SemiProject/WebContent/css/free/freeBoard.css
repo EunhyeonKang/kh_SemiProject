@@ -1,5 +1,19 @@
 @charset "UTF-8";
 
+/* 검색 폼 중앙 정렬 */
+.searchFrm {
+  justify-content: center;
+  margin-top: 20px;
+}
+.searchFrm > select {
+  margin-right: 10px;
+  width: 20%;
+}
+.searchFrm > input:nth-child(2) {
+  margin-right: 10px;
+  width: 20%;
+}
+
 /* 글쓰기 버튼 우측 정렬 */
 table + div {
   text-align: right;
