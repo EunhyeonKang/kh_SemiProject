@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.apache.coyote.Request;
+
 import common.JDBCTemplate;
 import donation.login.Member;
 
@@ -192,6 +194,29 @@ public class DonationDao {
 			e.printStackTrace();
 		}finally {
 			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int allMoney(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		String money = "pa_amount";
+		String query = "SELECT SUM(pa_amount) as totalSum FROM DONATION_LIST";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt("totalSum");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
 		}
 		return result;
 	}

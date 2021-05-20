@@ -127,7 +127,6 @@
           </div>
 
           <!--화면2-->
-
           <div class="con4" style="display: none">
             <div class="con4_pan">
               <div class="con4_1">
@@ -312,11 +311,11 @@
                 <img src="/mini_img/56.jpg" style="height: 100%;">
               </div>
             </div>
-            <p class="ment6">후원하기를 클릭하면 후원이 완료됩니다.<br>후원완료시 자동으로 후원게시판으로 이동됩니다.</p>
+            <p class="ment6">후원게시판을 클릭하시면 후원게시물이 등록됩니다.<br>등록 후 후원게시판으로 이동합니다.</p>
             
             <div class="dona_btn">
-              <div style="margin-left: 310px; width: 180px; background-color: orange;">
-              <button style="margin-top: 5px; font-weight: bold" type="submit" class="formDonaList" value="후원게시판">후원하기</button></div>
+              <div style="margin-left: 340px; width: 180px; background-color: orange;">
+              <button style="margin-top: 5px; font-weight: bold;" type="submit" class="formDonaList" value="후원게시판">후원게시판</button></div>
             </div>
           </form>
           </div>

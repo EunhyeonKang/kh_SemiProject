@@ -149,7 +149,16 @@ public class DonationService {
 		JDBCTemplate.close(conn);
 		return result;
 	}
-
+	
+	
+	public int allMoney() {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new DonationDao().allMoney(conn);
+		
+		return result;
+		
+	}
 
 
 

@@ -1,5 +1,11 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="donation.DonationService"%>
+<%@page import="donation.DonationList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    	int allMoney = new DonationService().allMoney();
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +25,9 @@
        
       </div>
       <div class="content-detail">
-        <h1><span>￦845,730,000</span></h1>
+      <%DecimalFormat formatter = new DecimalFormat("###,###,###"); %>
+        <h1><span>￦<%=formatter.format(allMoney)%>원</span></h1>
+        
         <span><i class="fa fa-heart"></i>관심 후원</span>
         <ul>
           <li></li>

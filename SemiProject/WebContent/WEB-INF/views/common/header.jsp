@@ -25,11 +25,11 @@
   </script>
   <header>
     <div class="header-wrap">
-      <a href="/" class="home">해피흠</a>
+      <a href="/" class="home">HeppyHeum</a>
       <button type="button" class="menu-btn">메뉴열기</button>
       <ul class="nav">
         <li class="nav-item"><a href="/productList?reqPage=1">후원상품소개</a></li>
-        <li class="nav-item"><a href="/view/supporNotice.jsp">공지사항</a></li>
+        <li class="nav-item"><a href="/supportList?reqPage=1">공지사항</a></li>
 
 		<%if (m != null){ %>
         <li class="nav-item"><a href="/donation">후원하기</a></li>
@@ -49,7 +49,7 @@
           <li class="login-item"><a href="/login">로그인</a></li>
           <li class="login-item"><a href="/join">회원가입</a></li>
         </ul>
-        <a class="interior-link" href="/adminJoin">관리자</a>
+        <a class="interior-link" href="/adminLogin">관리자</a>
       </div>
     </div>
 

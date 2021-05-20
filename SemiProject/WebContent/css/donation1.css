@@ -5,7 +5,7 @@ div {
   border: 0px solid black;
   width: 95%;
   height: 350px;
-  margin-left: 40px;
+  margin-left: 30px;
 }
 .con2 {
   border: 0px solid black;
@@ -36,7 +36,7 @@ div {
   height: 100%;
 }
 #slider-div {
-  width: 80%;
+  width: 90%;
   height: 400px;
   overflow: hidden;
   margin: 0 auto;
