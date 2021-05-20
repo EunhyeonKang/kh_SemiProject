@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import notice.model.service.NoticeService;
-import notice.model.vo.Notice;
+import notice.model.vo.NoticeComment;
 
 /**
- * Servlet implementation class NoticeUpdateFrmServlet
+ * Servlet implementation class InsertCommentServlet
  */
-@WebServlet(name = "NoticeUpdateFrm", urlPatterns = { "/noticeUpdateFrm" })
-public class NoticeUpdateFrmServlet extends HttpServlet {
+@WebServlet(name = "InsertComment", urlPatterns = { "/insertComment" })
+public class InsertCommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeUpdateFrmServlet() {
+    public InsertCommentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,16 +32,21 @@ public class NoticeUpdateFrmServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-
-		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
-
-		Notice n = new NoticeService().selectOneNotice(noticeNo);
-
-		RequestDispatcher rd 
-		= request.getRequestDispatcher("/WEB-INF/views/notice/noticeUpdateFrm.jsp");
-		request.setAttribute("n", n);
+		NoticeComment nc = new NoticeComment();
+		nc.setNcContent(request.getParameter("ncContent"));
+		nc.setNcLevel(Integer.parseInt(request.getParameter("ncLevel")));
+		nc.setNcRef(Integer.parseInt(request.getParameter("ncRef")));
+		nc.setNcWriter(request.getParameter("ncWriter"));
+		nc.setNoticeRef(Integer.parseInt(request.getParameter("noticeRef")));
+		int result = new NoticeService().insertComment(nc);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
+		if(result>0) {
+			request.setAttribute("msg", "등록 성공!");
+		}else {
+			request.setAttribute("msg", "등록 실패!");
+		}
+		request.setAttribute("loc", "/noticeView?noticeNo="+nc.getNoticeRef());
 		rd.forward(request, response);
-		
 	}
 
 	/**

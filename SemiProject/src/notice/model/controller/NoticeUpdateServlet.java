@@ -37,9 +37,9 @@ public class NoticeUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1. 인코딩
+
 		request.setCharacterEncoding("utf-8");
-		//2. 값 추출
+
 		if(!ServletFileUpload.isMultipartContent(request)) {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 			request.setAttribute("msg", "공지사항 수정 오류[enctype]");
@@ -87,9 +87,9 @@ public class NoticeUpdateServlet extends HttpServlet {
 		//4. 결과처리
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 		if(result>0) {
-			request.setAttribute("msg", "변경 성공");
+			request.setAttribute("msg", "변경 성공!");
 		}else {
-			request.setAttribute("msg", "변경 실패");
+			request.setAttribute("msg", "변경 실패!");
 		}
 		request.setAttribute("loc", "/noticeView?noticeNo="+noticeNo);
 		rd.forward(request, response);

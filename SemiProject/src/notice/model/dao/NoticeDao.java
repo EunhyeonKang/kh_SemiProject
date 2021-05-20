@@ -16,7 +16,7 @@ public class NoticeDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<Notice> list = new ArrayList<Notice>();
-		String query = "select * from (select rownum as rnum, n.* from (select * from notice order by notice_no desc)n) where rnum between ? and ?";
+		String query = "select * from (select rownum as rnum, n.* from (select * from notice1 order by notice_no desc)n) where rnum between ? and ?";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, start);
@@ -47,7 +47,7 @@ public class NoticeDao {
 	public int totalCount(Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "select count(*) as cnt from notice";
+		String query = "select count(*) as cnt from notice1";
 		int result = 0;
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -68,7 +68,7 @@ public class NoticeDao {
 	public int insertNotice(Connection conn, Notice n) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "insert into notice values(notice_seq.nextval,?,?,?,to_char(sysdate,'yyyy-mm-dd'),?,?)";
+		String query = "insert into notice1 values(notice1_seq.nextval,?,?,?,to_char(sysdate,'yyyy-mm-dd'),?,?)";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, n.getNoticeTitle());
@@ -89,7 +89,7 @@ public class NoticeDao {
 	public Notice selectOneNotice(Connection conn, int noticeNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "select * from notice where notice_no=?";
+		String query = "select * from notice1 where notice_no=?";
 		Notice n = null;
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -118,7 +118,7 @@ public class NoticeDao {
 	public int deleteNotice(Connection conn, int noticeNo) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "delete from notice where notice_no=?";
+		String query = "delete from notice1 where notice_no=?";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, noticeNo);
@@ -135,7 +135,7 @@ public class NoticeDao {
 	public int updateNotice(Connection conn, Notice n) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "update notice set notice_title=?, notice_content=?, filename=?,filepath=? where notice_no=?";
+		String query = "update notice1 set notice_title=?, notice_content=?, filename=?,filepath=? where notice_no=?";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, n.getNoticeTitle());
@@ -156,7 +156,7 @@ public class NoticeDao {
 	public int insertComment(Connection conn, NoticeComment nc) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "insert into notice_comment values(nc_seq.nextval,?,?,?,to_char(sysdate,'yyyy-mm-dd'),?,?)";
+		String query = "insert into notice_comment values(notice1_seq.nextval,?,?,?,to_char(sysdate,'yyyy-mm-dd'),?,?)";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, nc.getNcLevel());

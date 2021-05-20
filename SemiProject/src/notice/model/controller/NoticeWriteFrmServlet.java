@@ -9,20 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import notice.model.service.NoticeService;
-import notice.model.vo.Notice;
-
 /**
- * Servlet implementation class NoticeUpdateFrmServlet
+ * Servlet implementation class NoticeWriteFrmServlet
  */
-@WebServlet(name = "NoticeUpdateFrm", urlPatterns = { "/noticeUpdateFrm" })
-public class NoticeUpdateFrmServlet extends HttpServlet {
+@WebServlet(name = "NoticeWriteFrm", urlPatterns = { "/noticeWriteFrm" })
+public class NoticeWriteFrmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeUpdateFrmServlet() {
+    public NoticeWriteFrmServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,16 +29,9 @@ public class NoticeUpdateFrmServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-
-		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
-
-		Notice n = new NoticeService().selectOneNotice(noticeNo);
-
-		RequestDispatcher rd 
-		= request.getRequestDispatcher("/WEB-INF/views/notice/noticeUpdateFrm.jsp");
-		request.setAttribute("n", n);
+		//결과처리
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/notice/noticeWriteFrm.jsp");
 		rd.forward(request, response);
-		
 	}
 
 	/**

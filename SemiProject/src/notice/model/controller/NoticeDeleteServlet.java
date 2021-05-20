@@ -32,15 +32,11 @@ public class NoticeDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1. 인코딩
 		request.setCharacterEncoding("utf-8");
-		//2. 값추출
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
-		//3. 비지니스로직
 		NoticeService service = new NoticeService();
 		Notice n = service.selectOneNotice(noticeNo);
 		int result = service.deleteNotice(noticeNo);
-		//4. 결과처리
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 		if(result>0) {
 			if(n.getFilepath() != null) {//삭제한 공지사항이 첨부파일이 있는경우
@@ -49,10 +45,10 @@ public class NoticeDeleteServlet extends HttpServlet {
 				File delFile = new File(file);	//java.io.File
 				delFile.delete();
 			}
-			request.setAttribute("msg", "삭제 성공");
-			request.setAttribute("loc", "/noticeList?reqPage=1");
+			request.setAttribute("msg", "삭제 성공!");
+			request.setAttribute("loc", "/supportList?reqPage=1");
 		}else {
-			request.setAttribute("msg", "삭제 실패");
+			request.setAttribute("msg", "삭제 실패!");
 			request.setAttribute("loc", "/noticeView?noticeNo="+noticeNo);
 		}
 		rd.forward(request, response);

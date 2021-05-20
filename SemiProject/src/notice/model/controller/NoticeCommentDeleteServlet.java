@@ -10,19 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import notice.model.service.NoticeService;
-import notice.model.vo.Notice;
 
 /**
- * Servlet implementation class NoticeUpdateFrmServlet
+ * Servlet implementation class NoticeCommentDeleteServlet
  */
-@WebServlet(name = "NoticeUpdateFrm", urlPatterns = { "/noticeUpdateFrm" })
-public class NoticeUpdateFrmServlet extends HttpServlet {
+@WebServlet(name = "NoticeCommentDelete", urlPatterns = { "/noticeCommentDelete" })
+public class NoticeCommentDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeUpdateFrmServlet() {
+    public NoticeCommentDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,16 +31,17 @@ public class NoticeUpdateFrmServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-
+		int ncNo = Integer.parseInt(request.getParameter("ncNo"));
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
-
-		Notice n = new NoticeService().selectOneNotice(noticeNo);
-
-		RequestDispatcher rd 
-		= request.getRequestDispatcher("/WEB-INF/views/notice/noticeUpdateFrm.jsp");
-		request.setAttribute("n", n);
+		int result = new NoticeService().deleteNoticeComment(ncNo);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
+		if(result>0) {
+			request.setAttribute("msg", "삭제성공");
+		}else {
+			request.setAttribute("msg", "삭제실패");
+		}
+		request.setAttribute("loc", "/noticeView?noticeNo="+noticeNo);
 		rd.forward(request, response);
-		
 	}
 
 	/**

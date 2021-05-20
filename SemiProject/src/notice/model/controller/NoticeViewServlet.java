@@ -32,13 +32,9 @@ public class NoticeViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1. 인코딩
 		request.setCharacterEncoding("utf-8");
-		//2. 값추출
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
-		//3. 비지니스로직
 		NoticeViewData nvd = new NoticeService().selectNoticeView(noticeNo);
-		//4. 결과처리
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/notice/noticeView.jsp");
 		request.setAttribute("n", nvd.getN());
 		request.setAttribute("list", nvd.getList());

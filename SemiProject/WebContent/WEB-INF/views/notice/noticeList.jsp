@@ -12,7 +12,9 @@
 ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 
 	String pageNavi = (String) request.getAttribute("pageNavi");
-	Admin a  = (Admin)request.getAttribute("a");
+	//Member m = (Member)session.getAttribute("m");
+	Admin a = (Admin)session.getAttribute("a");
+	
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -40,14 +42,17 @@ ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 	margin:0 auto;
 
 	padding-left:50px;
-	
-	/*백그라운드이미아 */
+	padding-bottom:50px;
+	 background: url(/img/backimg.jpeg);
+	 background-size: 1200px 300px;
+	background-repeat: no-repeat;
+
 
 }
 
 #notice {
 
-	padding-top: 130px;
+	padding-top: 50px; 
 
 	width: 90%;
 
@@ -85,7 +90,7 @@ ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 
  
 
-#suyeon {
+#list-nav {
 
 	margin-bottom:40px;
 
@@ -100,7 +105,10 @@ ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 #notice-style>th{
 	text-align:center;
 }
-
+#list-h3{
+	padding-top:200px;
+	text-align:center;
+}
 </style>
 
 <body>
@@ -108,19 +116,11 @@ ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 
 	<div id="notice-wrap">
-
+		
 		<div id="notice-content">
-
+				<h3 id="list-h3">"해피흠에서 새로운 소식과 보도자료를 만나보세요" </h3>
 			<div id="notice">
 			
-			<%if(m==null){ %>
-				<div class="form-row pull-right" id="button-style">
-			
-					<a class="btn btn-outline-secondary" href="#">글쓰기</a>
-
-				</div>
-			<%} %>
-
 				<table class="table table-hover">
 
 					<tr class="table-info"id="notice-style">
@@ -158,10 +158,20 @@ ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 					%>
 
 				</table>
+				
+				<%if(a!=null){ %>
+				
+				<div class="form-row pull-right" id="button-style">
+			
+					<a class="btn btn-outline-secondary" href="/noticeWriteFrm">글쓰기</a>
+
+				</div>
+				<%} %>
+				
 
 				<nav aria-label="Page navigation example">
 
-				<div id="suyeon"><%=pageNavi%></div>
+				<div id="list-nav"><%=pageNavi%></div>
 
 				</nav>
 
@@ -171,6 +181,7 @@ ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 
 	</div>
 
+	
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 
  
