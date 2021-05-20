@@ -20,10 +20,10 @@ public class FreeDao {
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, f.getFreeTitle());
-			pstmt.setString(2, f.getFreeWriter());
-			pstmt.setString(3, f.getFreeContent());
+			pstmt.setString(2, f.getFreeWriter());	
+			pstmt.setString(3, (f.getFreeContent() == "") ? "내용 없음" : f.getFreeContent());	
 			pstmt.setString(4, f.getFilepath());
-
+			System.out.println("게시물 작성 : " + f.getFilepath());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -80,6 +80,31 @@ public class FreeDao {
 			JDBCTemplate.close(pstmt);
 		}
 		return result;
+	}
+
+	// 게시물 1개 정보 조회
+	public Free selectFree(Connection conn, int freeNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT * FROM FREE WHERE FREE_NO = ?";
+		Free f = null;
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, freeNo);
+
+			rset = pstmt.executeQuery();
+
+			if (rset.next()) {
+				f = setFree(rset, "");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return f;
 	}
 
 	// 게시물 상세페이지 조회
@@ -215,7 +240,7 @@ public class FreeDao {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, freeNo);
 			pstmt.setString(2, freeWriter);
-			
+
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -226,6 +251,24 @@ public class FreeDao {
 	}
 
 	// 좋아요 삭제
+	public int deleteFreeLike(Connection conn, int freeNo) {
+		PreparedStatement pstmt = null;
+		String query = "delete from free_like where free_ref = ?";
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, freeNo);
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	// 게시글 삭제
 	public int deleteFreeLike(Connection conn, int freeNo, String freeWriter) {
 		PreparedStatement pstmt = null;
 		String query = "delete from free_like where free_ref = ? and member_id = ?";
@@ -234,7 +277,7 @@ public class FreeDao {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, freeNo);
 			pstmt.setString(2, freeWriter);
-			
+
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -252,7 +295,47 @@ public class FreeDao {
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, freeNo);
-			
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	// 게시물 수정
+	public int updateFree(Connection conn, Free f) {
+		PreparedStatement pstmt = null;
+		String query = "update free set free_title = ?, free_content = ?, filepath = ? where free_no = ?";
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, f.getFreeTitle());
+			pstmt.setString(2, f.getFreeContent());
+			pstmt.setString(3, f.getFilepath());
+			pstmt.setInt(4, f.getFreeNo());
+			System.out.println("게시물 수정 : " + f.getFilepath());
+
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	// 게시물 삭제
+	public int deleteFree(Connection conn, int freeNo) {
+		PreparedStatement pstmt = null;
+		String query = "delete from free where free_no = ?";
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, freeNo);
+
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

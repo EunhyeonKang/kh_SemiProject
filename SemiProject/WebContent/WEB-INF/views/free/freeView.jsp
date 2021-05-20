@@ -76,17 +76,18 @@
                     </table>
                     <!-- 하단 버튼 -->
                     <div class="text-center">
-                      <input type="button" class="btn btn-primary" value="수정">&nbsp;
-                      <input type="button" class="btn btn-primary" value="삭제">&nbsp;
-                      <button class="btn btn-primary" onclick="history.go(-1);">목록</button>
-                      &nbsp;
+                      <!-- 현재 로그인한 회원과, 해당 게시물의 작성자가 같은경우 수정/삭제 -->
+                      <%if(f.getFreeWriter().equals(m.getMemberId())){ %>
+                        <a href="/freeUpdateFrm?freeNo=<%=f.getFreeNo() %>" class="btn btn-info">수정</a>
+                        <a href="/freeDelete?freeNo=<%=f.getFreeNo() %>" class="btn btn-danger">삭제</a>
+                        <%} %>
+                          <a class="btn btn-primary" href="/freeBoard?reqPage=1">목록</a>
                     </div>
                   </div>
                   <!-- Footer -->
                   <%@ include file="/WEB-INF/views/common/footer.jsp" %>
                     <script>
                       $(function () {
-                        // 테스트
                         var likeCnt = $(".change-like").html();
 
                         // 컬럼명 파란색 칠하기 + 글씨색 흰색
@@ -109,7 +110,6 @@
                             $(this).removeClass('fas');
                             $(this).addClass('far');
                             $(".change-like").html(--likeCnt); // 좋아요 1감소
-
                           } else {// 좋아요 등록
                             $.ajax({
                               url: "/insertLove",

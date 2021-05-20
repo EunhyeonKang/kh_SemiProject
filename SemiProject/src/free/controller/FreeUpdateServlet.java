@@ -15,16 +15,16 @@ import free.model.service.FreeService;
 import free.model.vo.Free;
 
 /**
- * Servlet implementation class FreeWriteServlet
+ * Servlet implementation class FreeUpdateServlet
  */
-@WebServlet(name = "FreeWrite", urlPatterns = { "/freeWrite" })
-public class FreeWriteServlet extends HttpServlet {
+@WebServlet(name = "FreeUpdate", urlPatterns = { "/freeUpdate" })
+public class FreeUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public FreeWriteServlet() {
+	public FreeUpdateServlet() {
 		super();
 	}
 
@@ -37,34 +37,23 @@ public class FreeWriteServlet extends HttpServlet {
 		// 1. 인코딩
 		request.setCharacterEncoding("utf-8");
 
-		// 2. 값 추출
-		HttpSession session = request.getSession(false); // 로그인 했으면 값 불러옴 / 로그인 안했으면 null
-		if(session == null) { // 로그인 안 한 경우
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
-			request.setAttribute("msg", "로그인 후 작성 가능합니다.");
-			request.setAttribute("loc", "/freeBoard?reqPage=1"); // 다시 자유게시판 화면으로 이동
-			rd.forward(request, response);
-			return;
-		}
-		
-		Member m = (Member) session.getAttribute("m");
+		// 2. 값 추출	
 		Free f = new Free();
 		f.setFreeTitle(request.getParameter("freeTitle"));
 		f.setFreeContent(request.getParameter("editordata"));
 		f.setFilepath(request.getParameter("filename"));
-		f.setFreeWriter(m.getMemberId());
-
+		f.setFreeNo(Integer.parseInt(request.getParameter(("freeNo"))));
 		// 3. 비지니스로직
-		int result = new FreeService().insertFree(f);
+		int result = new FreeService().updateFree(f);
 		// 4. 결과처리
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 
 		if (result > 0) {
-			request.setAttribute("msg", "게시물 등록 성공!");
+			request.setAttribute("msg", "게시물 수정 성공!");
 		} else {
-			request.setAttribute("msg", "게시물 등록 실패!");
+			request.setAttribute("msg", "게시물 수정 실패!");
 		}
-		request.setAttribute("loc", "/freeBoard?reqPage=1");
+		request.setAttribute("loc", "/freeView?freeNo=" + f.getFreeNo());
 		rd.forward(request, response);
 	}
 

@@ -158,4 +158,43 @@ public class FreeService {
 
 		return result;
 	}
+
+	// 게시물 1개 조회
+	public Free selectFree(int freeNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		Free f = new FreeDao().selectFree(conn, freeNo);
+		
+		JDBCTemplate.close(conn);
+		return f;
+	}
+
+	// 게시물 수정
+	public int updateFree(Free f) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new FreeDao().updateFree(conn, f);
+
+		if (result > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+
+		return result;
+	}
+
+	// 게시물 삭제
+	public int deleteFree(int freeNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new FreeDao().deleteFree(conn, freeNo);
+
+		if (result > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+
+		return result;
+	}
 }

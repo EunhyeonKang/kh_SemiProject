@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import donation.login.Member;
 import free.model.service.FreeService;
+import free.model.vo.Free;
 import free.model.vo.FreeViewData;
 
 /**
@@ -36,15 +37,24 @@ public class FreeViewServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// 1. 인코딩
 		request.setCharacterEncoding("utf-8");
-		
+
 		// 2. 값 추출
 		int freeNo = Integer.parseInt(request.getParameter("freeNo"));
+		Free f = new FreeService().selectFree(freeNo); // 게시물 유/무 확인
+
+		if (f == null) {
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
+			request.setAttribute("msg", "해당게시물은 삭제되었습니다.");
+			request.setAttribute("loc", "/freeBoard?reqPage=1"); // 다시 자유게시판 화면으로 이동
+			rd.forward(request, response);
+			return;
+		}
 		// 현재 회원값 넘기기
 		HttpSession session = request.getSession(false); // 로그인 했으면 값 불러옴 / 로그인 안했으면 null
 		Member m = (Member) session.getAttribute("m");
 		String memberId = "";
-		
-		if(m != null) { // 로그인 한 경우
+
+		if (m != null) { // 로그인 한 경우
 			memberId = m.getMemberId(); // 회원 아이디 조회
 		} else { // 로그인 안했으면 조회 불가
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
@@ -54,16 +64,11 @@ public class FreeViewServlet extends HttpServlet {
 			return;
 		}
 		// 3. 비지니스 로직
-		FreeService service =  new FreeService();
+		FreeService service = new FreeService();
 		FreeViewData fvd = service.selectFreeView(freeNo, memberId); // 게시물 정보 및 댓글 / 좋아요 추출
-		int result = service.updateReadCount(freeNo); // 조회수 증가
-		
-//		if(result > 0) {
-//			System.out.println("조회수 증가!");
-//		} else {
-//			System.out.println("조회수 증가안돼...ㅠ");
-//		}
-		
+
+		service.updateReadCount(freeNo); // 조회수 증가
+
 		// 4. 결과처리
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/free/freeView.jsp");
 

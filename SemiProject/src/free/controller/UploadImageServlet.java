@@ -2,7 +2,6 @@ package free.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
-import com.google.gson.Gson;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -69,7 +67,8 @@ public class UploadImageServlet extends HttpServlet {
 		// 4. 결과처리
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
-		out.print(fileName);
+		System.out.println("업로드 : " + fileName);
+		out.print(fileName);	
 	}
 
 	/**
