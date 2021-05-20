@@ -136,6 +136,20 @@ public class DonationService {
 		return m;
 	}
 
+	public int memberInsert(Member m) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new DonationDao().memberInsert(conn,m);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
 
 
 

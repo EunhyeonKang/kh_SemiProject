@@ -25,6 +25,8 @@
     <link href="/css/donation1.css" rel="stylesheet" type="text/css" />
     <script src="/slick/main.js" type="text/javascript"></script>
 
+	<!-- 결제 스크립트 -->
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
     <!--나눔고딕체-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"rel="stylesheet"/>
@@ -258,23 +260,24 @@
             <hr width="95%">
 
             <div class="con5_1">
-              <input type="radio" id="100000" name="price_choice" value="30000"/><label for="100000">100,000원</label>
-              <input type="radio" id="200000" name="price_choice" value="50000"/><label for="200000"> 200,000원</label>
-              <input type="radio" id="500000" name="price_choice" value="100000"/><label for="500000">500,000원</label>
-              <input type="radio" id="1000000" name="price_choice" value="200000"/><label for="1000000">1,000,000원</label>
-              <input type="radio" id="gitar" name="price_choice" value="500000" />
+              <input type="radio" id="100000" name="price_choice" value="100000"/><label for="100000">100,000원</label>
+              <input type="radio" id="200000" name="price_choice" value="200000"/><label for="200000"> 200,000원</label>
+              <input type="radio" id="500000" name="price_choice" value="500000"/><label for="500000">500,000원</label>
+              <input type="radio" id="1000000" name="price_choice" value="1000000"/><label for="1000000">1,000,000원</label>
+              <input type="radio" id="gitar" name="price_choice" value="" />
               <label for="gitar">기타<input type="text" class="realPrice" onchange ="selectMoney(this)" name="price_choice" value="" placeholder="직접입력" style=" font-size:13px; margin-top: 20px; margin-left: 10px; width: 100px;"/>원</label>
             </div>
 
             <div class="con5_1" style="padding-top: 10px;">
               <p class="ment1" style="padding-top: 40px;">후원 정보 추가 확인</p>
+              
             </div>
             <hr width="95%">
 
             <div class="con5_1" >
               <p class="ment1" style="float: left; padding-top: 30px;">후원자님의 비밀번호를 입력해주세요.</p>
               <input style="float: left; margin-top: 25px; margin-left: 30px; width: 200px;" type="password" class="passRe" name="passRe">
-              <input id="pass_check" class="passCheck" style="font-size:14px; float: left; margin-top: 25px; margin-left: 10px; width: 50px;" onclick="func22()" type="button" value="확인">
+              <button id="pass_check" class="passCheck" style="font-size:14px; float: left; margin-top: 25px; margin-left: 10px; width: 50px;" onclick="func22()" type="button" value="확인">확인</button>
             </div>
             <div class="con5_1">
               <p style="font-weight: bold; text-align: center; color: orangered;">
@@ -284,7 +287,9 @@
             </div>
             <div class="dona_btn">
               <div style="margin-left: 310px"><a href ="/">메인으로</a></div>
-              <div onclick="func3()">다음</div>
+              
+              
+              <div id="payment">결제하기</div>
             </div>
           </div>
           <div class="con6" style="display: none;">
@@ -310,7 +315,8 @@
             <p class="ment6">후원하기를 클릭하면 후원이 완료됩니다.<br>후원완료시 자동으로 후원게시판으로 이동됩니다.</p>
             
             <div class="dona_btn">
-              <div style="margin-left: 310px; width: 180px; background-color: orange;"><button style="margin-top: 5px; font-weight: bold" type="submit" class="formDonaList" value="후원게시판">후원하기</button></div>
+              <div style="margin-left: 310px; width: 180px; background-color: orange;">
+              <button style="margin-top: 5px; font-weight: bold" type="submit" class="formDonaList" value="후원게시판">후원하기</button></div>
             </div>
           </form>
           </div>
@@ -390,8 +396,10 @@
         	var pass = $(".passRe").val();
         	if(pass == '<%=m.getMemberPw()%>' ){
         		alert("회원님의 비밀번호가 일치합니다!!!!");
+        		$(".passCheck").val("일치");
         	}else{
         		alert("비밀번호가 일치하지 않습니다.");
+        		$(".passCheck").val("틀림");
         	}
         }
 
@@ -414,7 +422,58 @@
           
 
         });
-
+        $("#payment").click(function(){
+        	var passRe = $(".passCheck").val();
+        	console.log(passRe);
+			var price = $("input[name=price_choice]:checked").val();
+			
+			if($(".passCheck").val()=="일치"){
+			var d = new Date();	//결제고유번호의 날짜를 위해 날짜생성
+			//날짜 넣기 (+""+를 안하면 숫자가 합해지기에 공백 넣는다)
+			var date = d.getFullYear()+""+(d.getMonth()+1)+""+d.getDate()+""+d.getHours()+""+d.getMinutes()+""+d.getSeconds();
+			
+			//스크립트 임포트해서 IMP사용 가능
+			IMP.init('imp62610614');	//결제 api 사용을 위한 코드입력
+			IMP.request_pay({
+				merchant_uid : "후원_"+date,			//거래ID
+				name : "후원 결제",							//결제 이름
+				amount : price,							//결제금액
+				
+				buyer_email : '<%=m.getMemberEmail()%>',	//구매자 email주소
+				buyer_name : '<%=m.getMemberName()%>',	//구매자 이름
+				buyer_phone : '<%=m.getMemberPhone()%>',	//구매자 전화번호
+				buyer_addr : '<%=m.getMemberAddr()%>',	//구매자 주소
+				buyer_postcode : "07902"				//구매자 우편번호
+			}, function(rsp){	// rsp : 결제 성공여부
+				if(rsp.success){
+					//결제 성공시 DB에 결제정보 저장하고 사용자 화면 처리
+					alert("결제 성공");
+					console.log("카드 승인번호 : "+rsp.apply_num);//카드 승인번호 출력
+					
+					var priceChoice = $("input[name=price_choice]").is(":checked");
+		        	var passRe = $("input[name=passRe]").val();
+		        	if(priceChoice){
+		        		if(passRe=='<%=m.getMemberPw()%>'){
+		        			$(".con5").css("display", "none");
+		        	          $(".con6").css("display", "block");
+		        	          $(".dona_naviCon3").css("background-color", "rgba(211, 211, 211, 0.535)");
+		        	          $(".dona_naviCon4").css("background-color", "rgba(135, 207, 235, 0.645)");
+		        	          $(".con2_img > img").attr("src","mini_img/53.jpg");
+		        		}else{
+		        			alert("회원님의 비밀번호를 확인해주세요");
+		        		}
+		        	}else{
+		        		alert("후원금액을 선택해주세요");
+		        	}
+					
+				}else{
+					alert("결제 실패");
+				}
+			});
+			}else{
+				alert("비밀번호를 확인해주세요!");
+			}
+		});
 
 
         
