@@ -81,12 +81,32 @@
                     <!-- 하단 버튼 -->
                     <div class="text-center">
                       <!-- 현재 로그인한 회원과, 해당 게시물의 작성자가 같은경우 수정/삭제 -->
-                      <%if (m != null && f.getFreeWriter().equals(m.getMemberId())){ %>
-                        <a href="/freeUpdateFrm?freeNo=<%=f.getFreeNo() %>" class="btn btn-info">수정</a>
-                        <a href="/freeDelete?freeNo=<%=f.getFreeNo() %>" class="btn btn-danger">삭제</a>
+                      <%if (m !=null && f.getFreeWriter().equals(m.getMemberId())){ %>
+                        <a href="/freeUpdateFrm?freeNo=<%=f.getFreeNo() %>" class="btn btn-outline-info">수정</a>
+                        <a href="/freeDelete?freeNo=<%=f.getFreeNo() %>" class="btn btn-outline-danger">삭제</a>
                         <%} %>
-                          <a class="btn btn-primary" href="/freeBoard?reqPage=1">목록</a>
+                          <a class="btn btn-outline-primary" href="/freeBoard?reqPage=1">목록</a>
                     </div>
+
+                    <!-- 로그인 한 경우 -->
+                    <% if (m !=null) { %>
+                      <div class="inputCommentBox">
+                        <form action="/insertComment" method="post">
+                          <ul>
+                            <li>
+                              <input type="hidden" name="fcWriter" value="<%=m.getMemberId()%>">
+                              <input type="hidden" name="freeRef" value="<%=f.getFreeNo()%>">
+                              <input type="hidden" name="fcRef" value="0">
+                              <textarea style="resize: none;" class="form-control" name="fcContent"></textarea>
+                            </li>
+                            <li>
+                              <button type="submit" class="btn btn-outline-success">등록</button>
+                            </li>
+                          </ul>
+                        </form>
+                      </div>
+                      <% } %>
+
                   </div>
                   <!-- Footer -->
                   <%@ include file="/WEB-INF/views/common/footer.jsp" %>
@@ -99,7 +119,7 @@
                         $("table th").addClass('bg-primary text-white');
                           <% if (m != null) { %>
                           // 좋아요 클릭
-                          $("i").on("click", function () {
+                          $(".heart").on("click", function () {
                             $(this).toggleClass('love'); // 좋아요 색변경
                             // 좋아요 삭제
                             if ($(this).hasClass('fas')) {

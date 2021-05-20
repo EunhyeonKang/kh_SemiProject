@@ -66,7 +66,7 @@
 									<!-- 로그인 시에만 글쓰기 가능 -->
 									<%if(m !=null) {%>
 										<div>
-											<a class="btn btn-primary" href="/freeWriteFrm">글쓰기</a>
+											<a class="btn btn-outline-primary" href="/freeWriteFrm">글쓰기</a>
 										</div>
 										<%} %>
 											<div class="pageNavi">
@@ -80,7 +80,7 @@
 													<option value="2">작성자</option>
 												</select>
 												<input class="form-control" type="text" name="searchContent" required>
-												<input class="btn btn-info" type="submit" value="검색">
+												<input class="btn btn-outline-info" type="submit" value="검색">
 												<input type="hidden" value="1" name="reqPage">
 											</form>
 
