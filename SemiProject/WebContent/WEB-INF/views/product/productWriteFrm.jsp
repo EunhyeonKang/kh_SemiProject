@@ -55,6 +55,18 @@
 	float:right;
 	margin : 10px;
 	color : white;
+	font-size : 0.765625rem;
+}
+
+.btn-info{
+color:#fff;
+background-color : #1f9bcf;
+border-color : #1f9bcf;
+}
+.btn-info:hover{
+color:#fff;
+background-color : #1a82ae;
+border-color : #1a82ae;
 }
 </style>
 </head>
@@ -70,7 +82,7 @@
 					<option value="자연">자연</option>
 					<option value="기타">기타</option>
 				</select>
-			<input type="text" class="titleform" placeholder="제목" id="title" name="title">
+			<input type="text" class="titleform" placeholder="제목" id="title" name="title" required>
 		</div>
 		<div class="form-group">
 		<div class="selectform">메인사진</div>
@@ -78,12 +90,12 @@
 		</div>
 		
 	<div class="form-group">
-			<textarea class="form-control" name="info" placeholder="간략정보"></textarea>
+			<textarea class="form-control" name="info" placeholder="간략정보" required></textarea>
 		</div>
 	
 		<div class="form-group">
 			<label for="content"></label>
-			<textarea id="summernote" class="form-control" rows="5" id="content" name="content"></textarea>
+			<textarea id="summernote" class="form-control" rows="5" id="content" name="content" required></textarea>
 		</div>
 	
 		<button type="submit" class="btn btn-info btn1" id="write">글쓰기 등록</button>

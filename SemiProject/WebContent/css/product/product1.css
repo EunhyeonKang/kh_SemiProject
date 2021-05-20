@@ -101,21 +101,3 @@ body>*{
 	margin: 0 auto;
 	justify-content: center;
 }
-.menubtn{
-	margin-bottom : 10px;
-	margin-top : 10px;
-	overflow : hidden;
-
-}
-
-.btn1{
-	float : right;
-	margin-right :  3px;
-	color: white;
-}
-.btn2{
-	float : left;
-	margin-right :  3px;
-	color: white;
-}
-

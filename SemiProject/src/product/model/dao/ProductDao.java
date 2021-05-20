@@ -157,7 +157,61 @@ public class ProductDao {
 		}
 		return result;
 	}
-	
-	
-	
+
+	public int totalCountSpons(Connection conn , String spons) {
+		PreparedStatement pstmt = null;
+		ResultSet rset= null;
+		String query = "select count(*) as cnt from product where product_spons=?";
+		int totalCount = 0;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, spons);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				totalCount = rset.getInt("cnt");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+		}
+		return totalCount;
+	}
+
+	public ArrayList<Product> selectSponsList(Connection conn, int end, int start, String spons) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Product> list = new ArrayList<Product>();
+		String query = "select * from (select rownum as rnum, s.* from (select * from product where product_spons = ? )s) where rnum between ? and ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, spons);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Product p = new Product();
+				p.setFilename(rset.getString("filename"));
+				p.setFilepath(rset.getString("filename"));
+				p.setProductContent(rset.getString("product_contetnt"));
+				p.setProductInfo(rset.getString("product_info"));
+				p.setProductNo(rset.getInt("product_no"));
+				p.setProductSpons(rset.getString("product_spons"));
+				p.setProductTitle(rset.getString("product_title"));
+				p.setRnum(rset.getInt("rnum"));
+				list.add(p);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rset);
+			
+		}
+		return list;
+	}
+
 }	
