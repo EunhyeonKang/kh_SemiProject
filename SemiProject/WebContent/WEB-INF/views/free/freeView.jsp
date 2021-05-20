@@ -56,16 +56,20 @@
                           <td colspan="2">
                             <%=f.getFreeTitle()%>
                           </td>
-                          <td class="like">
-                            <!-- 좋아요 인 상태-->
-                            좋아요
-                            <%if(love==1) { %>
-                              <i class="fas fa-heart fa-lg heart love"></i>
-                              <!-- 좋아요 아닌 상태 -->
-                              <%} else {%>
-                                <i class="far fa-heart fa-lg heart"></i>
-                                <%} %>
-                          </td>
+                          <%if (m !=null) {%>
+                            <td class="like">
+                              <!-- 좋아요 인 상태-->
+                              좋아요
+                              <%if(love==1) { %>
+                                <i class="fas fa-heart fa-lg heart love"></i>
+                                <!-- 좋아요 아닌 상태 -->
+                                <%} else {%>
+                                  <i class="far fa-heart fa-lg heart"></i>
+                                  <%} %>
+                                    <%} else {%>
+                            <td></td>
+                            <%}%>
+                              </td>
                         </tr>
                         <tr>
                           <td colspan="4">
@@ -77,55 +81,78 @@
                     <!-- 하단 버튼 -->
                     <div class="text-center">
                       <!-- 현재 로그인한 회원과, 해당 게시물의 작성자가 같은경우 수정/삭제 -->
-                      <%if(f.getFreeWriter().equals(m.getMemberId())){ %>
-                        <a href="/freeUpdateFrm?freeNo=<%=f.getFreeNo() %>" class="btn btn-info">수정</a>
-                        <a href="/freeDelete?freeNo=<%=f.getFreeNo() %>" class="btn btn-danger">삭제</a>
+                      <%if (m !=null && f.getFreeWriter().equals(m.getMemberId())){ %>
+                        <a href="/freeUpdateFrm?freeNo=<%=f.getFreeNo() %>" class="btn btn-outline-info">수정</a>
+                        <a href="/freeDelete?freeNo=<%=f.getFreeNo() %>" class="btn btn-outline-danger">삭제</a>
                         <%} %>
-                          <a class="btn btn-primary" href="/freeBoard?reqPage=1">목록</a>
+                          <a class="btn btn-outline-primary" href="/freeBoard?reqPage=1">목록</a>
                     </div>
+
+                    <!-- 로그인 한 경우 -->
+                    <% if (m !=null) { %>
+                      <div class="inputCommentBox">
+                        <form action="/insertComment" method="post">
+                          <ul>
+                            <li>
+                              <input type="hidden" name="fcWriter" value="<%=m.getMemberId()%>">
+                              <input type="hidden" name="freeRef" value="<%=f.getFreeNo()%>">
+                              <input type="hidden" name="fcRef" value="0">
+                              <textarea style="resize: none;" class="form-control" name="fcContent"></textarea>
+                            </li>
+                            <li>
+                              <button type="submit" class="btn btn-outline-success">등록</button>
+                            </li>
+                          </ul>
+                        </form>
+                      </div>
+                      <% } %>
+
                   </div>
                   <!-- Footer -->
                   <%@ include file="/WEB-INF/views/common/footer.jsp" %>
                     <script>
+
                       $(function () {
                         var likeCnt = $(".change-like").html();
 
                         // 컬럼명 파란색 칠하기 + 글씨색 흰색
                         $("table th").addClass('bg-primary text-white');
+                          <% if (m != null) { %>
+                          // 좋아요 클릭
+                          $(".heart").on("click", function () {
+                            $(this).toggleClass('love'); // 좋아요 색변경
+                            // 좋아요 삭제
+                            if ($(this).hasClass('fas')) {
+                              $.ajax({
+                                url: "/deleteLove",
+                                data: {
+                                  freeWriter: '<%=m.getMemberId() %>',
+                                  freeNo: '<%=f.getFreeNo() %>'
+                                },
+                                type: "post"
+                              });
+                              // 빈 하트 변경
+                              $(this).removeClass('fas');
+                              $(this).addClass('far');
+                              $(".change-like").html(--likeCnt); // 좋아요 1감소
+                            } else {// 좋아요 등록
+                              $.ajax({
+                                url: "/insertLove",
+                                data: {
+                                  freeWriter: '<%=m.getMemberId() %>',
+                                  freeNo: '<%=f.getFreeNo() %>'
+                                },
+                                type: "post"
+                              });
+                              // 빨간하트 변경
+                              $(this).removeClass('far');
+                              $(this).addClass('fas')
+                              $(".change-like").html(++likeCnt); // 좋아요 1증가
+                            }
+                          }); // 좋아요 클릭
+                          <%}%>
+                        });
 
-                        // 좋아요 클릭
-                        $("i").on("click", function () {
-                          $(this).toggleClass('love'); // 좋아요 색변경
-                          // 좋아요 삭제
-                          if ($(this).hasClass('fas')) {
-                            $.ajax({
-                              url: "/deleteLove",
-                              data: {
-                                freeWriter: '<%=m.getMemberId() %>',
-                                freeNo: '<%=f.getFreeNo() %>'
-                              },
-                              type: "post"
-                            });
-                            // 빈 하트 변경
-                            $(this).removeClass('fas');
-                            $(this).addClass('far');
-                            $(".change-like").html(--likeCnt); // 좋아요 1감소
-                          } else {// 좋아요 등록
-                            $.ajax({
-                              url: "/insertLove",
-                              data: {
-                                freeWriter: '<%=m.getMemberId() %>',
-                                freeNo: '<%=f.getFreeNo() %>'
-                              },
-                              type: "post"
-                            });
-                            // 빨간하트 변경
-                            $(this).removeClass('far');
-                            $(this).addClass('fas')
-                            $(".change-like").html(++likeCnt); // 좋아요 1증가
-                          }
-                        }); // 좋아요 클릭
-                      });
                     </script>
               </body>
 

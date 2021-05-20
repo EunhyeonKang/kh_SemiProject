@@ -1,4 +1,4 @@
-package main.controller;
+package admin.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,22 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import donation.DonationList;
-import main.model.service.MainService;
-import main.model.vo.Main;
-import product.model.vo.Product;
+import admin.model.service.AdminService;
+import admin.model.vo.Admin;
+import donation.login.Member;
 
 /**
- * Servlet implementation class SearchServlet
+ * Servlet implementation class UpdateAdminServlet
  */
-@WebServlet(name = "Search", urlPatterns = { "/search" })
-public class SearchServlet extends HttpServlet {
+@WebServlet(name = "UpdateAdmin", urlPatterns = { "/updateAdmin" })
+public class UpdateAdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchServlet() {
+    public UpdateAdminServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,18 +33,23 @@ public class SearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1.인코딩
 		request.setCharacterEncoding("utf-8");
-		//2.값추출
-		String search= request.getParameter("search");
-		//3.비지니스로직
-		ArrayList<Product> list = new MainService().searchProduct(search);
-		ArrayList<DonationList> list1 = new MainService().searchDonationList(search);
-		//4.결과처리
-		request.setAttribute("list", list);
-		request.setAttribute("list1", list1);
-		request.setAttribute("search", search);
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/product/goodsProducts.jsp");
+		Admin a = new Admin();
+		a.setAdminId(request.getParameter("adminId"));
+		a.setAdminPw(request.getParameter("adminPw"));
+		a.setPhone(request.getParameter("adminPhone"));
+		a.setAddr(request.getParameter("adminAddr"));
+		int result = new AdminService().updateAdmin(a);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
+		if (result > 0) {
+			request.setAttribute("msg", "정보변경 성공!!");
+			
+		} else {
+			request.setAttribute("msg", "정보변경 실패ㅠ");
+		}
+		
+		request.setAttribute("loc", "/adminPage");// 마이페이지로 이동시키기 위해 서블릿 매핑값을 전달
 		rd.forward(request, response);
 	}
 

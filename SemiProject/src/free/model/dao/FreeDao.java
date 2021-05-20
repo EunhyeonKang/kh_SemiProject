@@ -20,8 +20,8 @@ public class FreeDao {
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, f.getFreeTitle());
-			pstmt.setString(2, f.getFreeWriter());	
-			pstmt.setString(3, (f.getFreeContent() == "") ? "내용 없음" : f.getFreeContent());	
+			pstmt.setString(2, f.getFreeWriter());
+			pstmt.setString(3, (f.getFreeContent() == "") ? "내용 없음" : f.getFreeContent());
 			pstmt.setString(4, f.getFilepath());
 			System.out.println("게시물 작성 : " + f.getFilepath());
 			result = pstmt.executeUpdate();
@@ -340,6 +340,110 @@ public class FreeDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	// 작성자 검색
+	public ArrayList<Free> selectWriterList(Connection conn, int start, int end, String searchContent) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT * FROM(SELECT ROWNUM AS RNUM, F.*, (SELECT COUNT(*) AS CNT FROM FREE_LIKE WHERE FREE_REF = F.FREE_NO) AS LIKE_COUNT FROM (SELECT * FROM FREE WHERE FREE_WRITER = ? ORDER BY FREE_NO DESC) F) WHERE RNUM BETWEEN ? AND ?";
+		ArrayList<Free> list = new ArrayList<Free>();
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, searchContent);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				list.add(setFree(rset, "조회"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return list;
+	}
+
+	// 작성자 검색 게시물 수
+	public int totalCountWriter(Connection conn, String searchContent) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select count(*) as cnt from free where free_writer = ?";
+		int result = 0;
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, searchContent);
+
+			rset = pstmt.executeQuery();
+
+			if (rset.next()) {
+				result = rset.getInt("cnt");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	// 제목 검색
+	public ArrayList<Free> selectTitleList(Connection conn, int start, int end, String searchContent) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT * FROM(SELECT ROWNUM AS RNUM, F.*, (SELECT COUNT(*) AS CNT FROM FREE_LIKE WHERE FREE_REF = F.FREE_NO) AS LIKE_COUNT FROM (SELECT * FROM FREE WHERE FREE_TITLE LIKE ? ORDER BY FREE_NO DESC) F) WHERE RNUM BETWEEN ? AND ?";
+		ArrayList<Free> list = new ArrayList<Free>();
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%" + searchContent + "%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				list.add(setFree(rset, "조회"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return list;
+	}
+
+	// 제목 검색 게시물 수
+	public int totalCountTitle(Connection conn, String searchContent) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "select count(*) as cnt from free where free_title like ?";
+		int result = 0;
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%" + searchContent + "%");
+
+			rset = pstmt.executeQuery();
+
+			if (rset.next()) {
+				result = rset.getInt("cnt");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
 		return result;

@@ -57,11 +57,7 @@ public class FreeViewServlet extends HttpServlet {
 		if (m != null) { // 로그인 한 경우
 			memberId = m.getMemberId(); // 회원 아이디 조회
 		} else { // 로그인 안했으면 조회 불가
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
-			request.setAttribute("msg", "로그인 후 조회 가능합니다.");
-			request.setAttribute("loc", "/freeBoard?reqPage=1"); // 다시 자유게시판 화면으로 이동
-			rd.forward(request, response);
-			return;
+			memberId = "";
 		}
 		// 3. 비지니스 로직
 		FreeService service = new FreeService();

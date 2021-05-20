@@ -2,9 +2,11 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+ <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> 
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style>
 .registerForm{
     border: 1px solid rgb(206, 203, 203);
@@ -36,16 +38,15 @@
                         <li><span>전화번호</span><input type="text" name="adminPhone" placeholder="예)01012345678"><br></li>
                         <li><span>주소</span><input type="text" name="adminAddr" placeholder="주소를 입력해주세요"><br></li>
                     </ul>
-                    <button type="button"><a href="/adminLogin">로그인</a></button>
-                    <button type="submit">가입하기</button>
+                    <button type="button" style="width:20%"><a href="/adminLogin">로그인</a></button>
+                    <button type="submit" style="width:20%">가입하기</button>
                     
                 </form>
                
                 <div class="content-footer"> </div>
             </div>
-	</div>
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
-	<script>
+		</div>
+		<script>
 		$("#idChk").click(function(){
 		var adminId = $(this).prev().val();
 			if(adminId==""){
@@ -57,6 +58,8 @@
 			$("[name=checkIdFrm]").attr("target","checkId");
 			$("[name=checkIdFrm]").submit();//폼태그 제출
 		})
-	</script>
+		</script>
+	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+
 </body>
 </html>

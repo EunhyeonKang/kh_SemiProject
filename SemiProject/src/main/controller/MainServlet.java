@@ -9,23 +9,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import donation.DonationList;
+import donation.login.Member;
+import free.model.vo.Free;
 import main.model.service.MainService;
-import main.model.vo.Main;
 import product.model.vo.Product;
 
 /**
- * Servlet implementation class SearchServlet
+ * Servlet implementation class MainServlet
  */
-@WebServlet(name = "Search", urlPatterns = { "/search" })
-public class SearchServlet extends HttpServlet {
+@WebServlet(name = "Main", urlPatterns = { "/main" })
+public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchServlet() {
+    public MainServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,21 +35,29 @@ public class SearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1.인코딩
 		request.setCharacterEncoding("utf-8");
-		//2.값추출
-		String search= request.getParameter("search");
-		//3.비지니스로직
-		ArrayList<Product> list = new MainService().searchProduct(search);
-		ArrayList<DonationList> list1 = new MainService().searchDonationList(search);
-		//4.결과처리
-		request.setAttribute("list", list);
-		request.setAttribute("list1", list1);
-		request.setAttribute("search", search);
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/product/goodsProducts.jsp");
+		HttpSession session = request.getSession();
+		String id = null;
+		ArrayList<Product> goods = new MainService().allGoodsProduct();
+		request.setAttribute("goods", goods);		
+		if(session != null) {
+			Member m = (Member)session.getAttribute("m");
+			if(m != null) {
+				id = m.getMemberId();
+				ArrayList<Free> list3 = new MainService().likeList(id);
+				request.setAttribute("list3", list3);	
+				request.setAttribute("m", m);	
+			}else {
+				ArrayList<Free> list4 = new MainService().allList();
+				request.setAttribute("list4", list4);			
+			}
+		}else {
+			ArrayList<Free> list4 = new MainService().allList();
+			request.setAttribute("list4", list4);
+		}
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/main/main.jsp");
 		rd.forward(request, response);
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

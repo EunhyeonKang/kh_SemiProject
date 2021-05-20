@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.container {
+  padding-bottom: 20px;
+}
+
 /* 검색 폼 중앙 정렬 */
 .searchFrm {
   justify-content: center;
@@ -27,11 +31,7 @@ table + div {
   justify-content: center;
 }
 
-table > thead > tr {
-  /* background-color: rgb(80, 215, 248); */
-}
-
-table > thead > tr > th {
+table > thead tr > th {
   text-align: center;
 }
 
