@@ -56,7 +56,20 @@
 	float:right;
 	margin : 10px;
 	color : white;
+	font-size : 0.765625rem;
 }
+
+.btn-info{
+color:#fff;
+background-color : #1f9bcf;
+border-color : #1f9bcf;
+}
+.btn-info:hover{
+color:#fff;
+background-color : #1a82ae;
+border-color : #1a82ae;
+}
+
 </style>
 </head>
 <body>
