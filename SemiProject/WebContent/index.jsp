@@ -7,13 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- Header -->
-	<%@ include file="/WEB-INF/views/common/header.jsp" %>
-	<div class="layout-wrap">
-		<%@ include file="/WEB-INF/views/common/content.jsp" %>
-	</div>
-	<!-- Footer -->
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+<script>
+	location.href="/main";
+</script>
 </body>
 
 </html>

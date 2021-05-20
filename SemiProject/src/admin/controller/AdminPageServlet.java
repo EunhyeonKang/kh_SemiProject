@@ -1,4 +1,4 @@
-package main.controller;
+package admin.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,23 +9,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import donation.DonationList;
-import main.model.service.MainService;
-import main.model.vo.Main;
-import product.model.vo.Product;
+import admin.model.service.AdminService;
+import admin.model.vo.Admin;
+import donation.login.Member;
 
 /**
- * Servlet implementation class SearchServlet
+ * Servlet implementation class AdminPageServlet
  */
-@WebServlet(name = "Search", urlPatterns = { "/search" })
-public class SearchServlet extends HttpServlet {
+@WebServlet(name = "AdminPage", urlPatterns = { "/adminPage" })
+public class AdminPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchServlet() {
+    public AdminPageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,18 +34,16 @@ public class SearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//1.인코딩
 		request.setCharacterEncoding("utf-8");
-		//2.값추출
-		String search= request.getParameter("search");
-		//3.비지니스로직
-		ArrayList<Product> list = new MainService().searchProduct(search);
-		ArrayList<DonationList> list1 = new MainService().searchDonationList(search);
-		//4.결과처리
+		HttpSession session = request.getSession(false);
+		Admin a = (Admin)session.getAttribute("admin");
+		Admin admin = new AdminService().selectOneAdmin(a.getAdminId());
+		
+		ArrayList<Member> list = new AdminService().selectAllMember();
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/admin/adminpage.jsp");
+		request.setAttribute("admin", admin);
 		request.setAttribute("list", list);
-		request.setAttribute("list1", list1);
-		request.setAttribute("search", search);
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/product/goodsProducts.jsp");
 		rd.forward(request, response);
 	}
 

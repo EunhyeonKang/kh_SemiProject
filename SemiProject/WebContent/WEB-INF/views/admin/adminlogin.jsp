@@ -38,7 +38,7 @@
                         <li><span>관리자아이디</span><input type="text" name="adminId" placeholder="아이디를 입력해주세요"></li>
                         <li><span>비밀번호</span><input type="password" name="adminPw" placeholder="비밀번호를 입력해주세요"><br></li>
                     </ul>
-                    <button type="submit" style="background-color: rgba(0, 183, 255, 0.959);">로그인</button>
+                    <button type="submit" style="background-color: rgba(0, 183, 255, 0.959); width:20%;">로그인</button>
                 </form>
 				<div class="content-footer"> </div>
 		</div>
