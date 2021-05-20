@@ -167,4 +167,19 @@ public class FreeService {
 		JDBCTemplate.close(conn);
 		return f;
 	}
+
+	// 게시물 수정
+	public int updateFree(Free f) {
+		Connection conn = JDBCTemplate.getConnection();
+		int result = new FreeDao().updateFree(conn, f);
+
+		if (result > 0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+
+		return result;
+	}
 }

@@ -28,13 +28,14 @@
                 <input name="freeTitle" value="<%=f.getFreeTitle()%>" style="width: 100%;" type="text"
                   placeholder="제목을 입력하세요." required><br><br>
                 <!-- summerEditor -->
-                <textarea id="summernote" name="editordata"><%=f.getFreeContent()%></textarea>
+                <textarea style="display:none" id="summernote" name="editordata"><%=f.getFreeContent()%></textarea>
 
                 <!-- 파일 이름 저장용 -->
                 <input type="hidden" name="filename">
-
+                <!-- 게시물 번호 전달용 -->
+                <input type="hidden" value='<%=f.getFreeNo()%>' name="freeNo">
                 <div class="btn-right">
-                  <button type="submit" class="btn btn-primary">수정완료</button>
+                  <button type="submit" class="btn btn-primary">수정 완료</button>
                 </div>
               </fieldset>
             </form>
@@ -43,48 +44,46 @@
           <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
             <script>
-              $(function () {
-                // summernote init
-                $("#summernote").summernote({
-                  height: 500, // editor height
-                  focus: true, // set focus editable area
-                  lang: "ko-KR", // 한글설정
-                  placeholder: "내용을 입력하세요.",
-                  callbacks: {
-                    // 이미지 첨부 시
-                    onImageUpload: function (files) {
-                      // 다중 업로드 처리
-                      for (var i = 0; i < files.length; i++) {
-                        uploadImage(files[i], this);
-                      }
+              // summernote init
+              $("#summernote").summernote({
+                height: 500, // editor height
+                focus: true, // set focus editable area
+                lang: "ko-KR", // 한글설정
+                placeholder: "내용을 입력하세요.",
+                callbacks: {
+                  // 이미지 첨부 시
+                  onImageUpload: function (files) {
+                    // 다중 업로드 처리
+                    for (var i = 0; i < files.length; i++) {
+                      uploadImage(files[i], this);
                     }
                   }
-                });
-
-                // 이미지 업로드
-                function uploadImage(file, editor) {
-                  var formData = new FormData();
-                  formData.append("file", file);
-
-                  $.ajax({
-                    data: formData,
-                    type: "POST",
-                    url: "/uploadImage",
-                    enctype: 'multipart/form-data',
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    success: function (data) {
-                      // 파일 네임 전송용
-                      $("[name=filename]").val(data);
-                      // 이미지 경로 설정
-                      data = "/upload/free/" + data;
-                      // 이미지 미리보기
-                      $(editor).summernote('insertImage', data);
-                    }
-                  });
                 }
               });
+              // 이미지 업로드
+              function uploadImage(file, editor) {
+                var formData = new FormData();
+                formData.append("file", file);
+
+                $.ajax({
+                  data: formData,
+                  type: "POST",
+                  url: "/uploadImage",
+                  enctype: 'multipart/form-data',
+                  cache: false,
+                  contentType: false,
+                  processData: false,
+                  success: function (data) {
+                    // 파일 네임 전송용
+                    $("[name=filename]").val(data);
+                    // 이미지 경로 설정
+                    data = "/upload/free/" + data;
+                    // 이미지 미리보기
+                    $(editor).summernote('insertImage', data);
+                  }
+                });
+              }
+
             </script>
       </body>
 
