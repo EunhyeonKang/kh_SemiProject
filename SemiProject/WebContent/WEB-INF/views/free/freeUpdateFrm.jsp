@@ -14,7 +14,8 @@
           <script src="/summernote/summernote-bs4.js"></script>
           <!-- summernote 한글 설정 -->
           <script src="/summernote/lang/summernote-ko-KR.js"></script>
-          <link href="/css/free/freeBoardFrm.css" rel="stylesheet">
+
+          <link href="/css/free/freeUpdateFrm.css" rel="stylesheet">
       </head>
 
       <body>
@@ -25,8 +26,8 @@
             <br>
             <form action="/freeUpdate" method="POST">
               <fieldset>
-                <input name="freeTitle" value="<%=f.getFreeTitle()%>" style="width: 100%;" type="text"
-                  placeholder="제목을 입력하세요." required><br><br>
+                <input class="form-control" name="freeTitle" value="<%=f.getFreeTitle()%>" style="width: 100%;"
+                  type="text" placeholder="제목을 입력하세요." required><br><br>
                 <!-- summerEditor -->
                 <textarea id="summernote" name="editordata"><%=f.getFreeContent()%></textarea>
 
@@ -35,7 +36,7 @@
                 <!-- 게시물 번호 전달용 -->
                 <input type="hidden" value='<%=f.getFreeNo()%>' name="freeNo">
                 <div class="btn-right">
-                  <button type="submit" class="btn btn-primary">수정 완료</button>
+                  <button type="submit" class="btn btn-outline-primary">수정 완료</button>
                 </div>
               </fieldset>
             </form>

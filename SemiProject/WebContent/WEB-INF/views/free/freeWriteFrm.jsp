@@ -11,7 +11,7 @@
       <script src="/summernote/summernote-bs4.js"></script>
       <!-- summernote 한글 설정 -->
       <script src="/summernote/lang/summernote-ko-KR.js"></script>
-      <link href="/css/free/freeBoardFrm.css" rel="stylesheet">
+      <link href="/css/free/freeWriteFrm.css" rel="stylesheet">
   </head>
 
   <body>
@@ -22,7 +22,8 @@
         <br>
         <form action="/freeWrite" method="POST">
           <fieldset>
-            <input name="freeTitle" style="width: 100%;" type="text" placeholder="제목을 입력하세요." required><br><br>
+            <input class="form-control" name="freeTitle" style="width: 100%;" type="text" placeholder="제목을 입력하세요."
+              required><br><br>
             <!-- summerEditor -->
             <textarea id="summernote" name="editordata"></textarea>
 

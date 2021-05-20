@@ -94,7 +94,7 @@ public class FreeService {
 		if (reqPage < totalPage) {
 			pageNavi += "<li class='page-item'>";
 			pageNavi += "<a class='page-link' href='freeSearch?reqPage=" + (reqPage + 1) + "&searchWhat=" + searchWhat
-					+ "searchContent=" + searchContent + "'>&gt</a></li>";
+					+ "&searchContent=" + searchContent + "'>&gt</a></li>";
 		}
 		// pageNavi 종료
 		pageNavi += "</ul>";
