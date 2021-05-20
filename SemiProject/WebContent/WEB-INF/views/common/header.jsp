@@ -47,7 +47,7 @@
       <div class="right-col">
         <ul class="login">
           <li class="login-item"><a href="/login">로그인</a></li>
-          <li class="login-item"><a href="#none">회원가입</a></li>
+          <li class="login-item"><a href="/join">회원가입</a></li>
         </ul>
         <a class="interior-link" href="/adminJoin">관리자</a>
       </div>
