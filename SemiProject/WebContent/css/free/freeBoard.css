@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
-.container {
-  /* padding-bottom: 20px; */
+body {
+  background-color: white;
 }
 
 /* 검색 폼 중앙 정렬 */

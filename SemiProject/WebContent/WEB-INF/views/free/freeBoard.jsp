@@ -13,19 +13,18 @@
 						<head>
 							<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 							<title>freeBoard</title>
-
 							<%@ include file="/WEB-INF/views/free/freeHeader.html" %>
-								<link rel="stylesheet" href="/css/free/freeBoard.css">
 						</head>
 
 						<body>
 
 							<!-- Header -->
 							<%@ include file="/WEB-INF/views/common/header.jsp" %>
+								<link rel="stylesheet" href="/css/free/freeBoard.css">
 								<div class="container">
 									<h3>자유게시판</h3>
 									<br>
-									<table class="table table-hover">
+									<table class="table table-hover table-bordered">
 										<thead class="thead-dark">
 											<tr>
 												<th>글번호</th>

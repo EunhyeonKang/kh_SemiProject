@@ -21,13 +21,13 @@
                   integrity="sha512-u7ppO4TLg4v6EY8yQ6T6d66inT0daGyTodAi6ycbw9+/AU8KMLAF7Z7YGKPMRA96v7t+c7O1s6YCTGkok6p9ZA=="
                   crossorigin="anonymous" />
 
-                <link rel="stylesheet" href="/css/free/freeView.css">
                 <%@ include file="/WEB-INF/views/free/freeHeader.html" %>
               </head>
 
               <body>
                 <!-- Header -->
                 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+                  <link rel="stylesheet" href="/css/free/freeView.css">
                   <div class="container">
                     <table class="table table-bordered">
                       <tbody>

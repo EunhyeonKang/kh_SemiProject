@@ -8,19 +8,20 @@
       <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>freeWriteFrm</title>
-        <%@ include file="/WEB-INF/views/free/freeHeader.html" %>
-          <!-- 서머노트 bs4 css/js -->
-          <link href="/summernote/summernote-bs4.css" rel="stylesheet">
-          <script src="/summernote/summernote-bs4.js"></script>
-          <!-- summernote 한글 설정 -->
-          <script src="/summernote/lang/summernote-ko-KR.js"></script>
+<%@ include file="/WEB-INF/views/free/freeHeader.html" %>
+        <!-- 서머노트 bs4 css/js -->
+        <link href="/summernote/summernote-bs4.css" rel="stylesheet">
+        <script src="/summernote/summernote-bs4.js"></script>
+        <!-- summernote 한글 설정 -->
+        <script src="/summernote/lang/summernote-ko-KR.js"></script>
+        
 
-          <link href="/css/free/freeUpdateFrm.css" rel="stylesheet">
       </head>
 
       <body>
         <!-- Header -->
         <%@ include file="/WEB-INF/views/common/header.jsp" %>
+          <link href="/css/free/freeUpdateFrm.css" rel="stylesheet">
           <div class="container">
             <h3>자유게시판 수정</h3>
             <br>
