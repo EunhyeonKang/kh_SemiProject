@@ -39,7 +39,7 @@
 					<tr>
 						<th class="danger">작성자</th>
 						<td>							
-							<%=m.getMemberId() %>	
+							<%=adm.getAdminId() %>	
 						</td>
 						<th>첨부파일</th>
 						<td style="text-align:left">

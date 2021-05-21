@@ -36,8 +36,8 @@
 					<tr>
 						<th class="danger">작성자</th>
 						<td>
-							<input type="hidden" name="noticeWriter" value="<%=m.getMemberId()%>">
-							<%=m.getMemberId() %>	
+							<input type="hidden" name="noticeWriter" value="<%=adm.getAdminId()%>">
+							<%=adm.getAdminId() %>	
 						</td>
 						<th class="danger">첨부파일</th>
 						<td class="danger" style="text-align:left">

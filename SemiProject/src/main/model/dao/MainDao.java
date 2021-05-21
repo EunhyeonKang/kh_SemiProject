@@ -104,7 +104,7 @@ public class MainDao {
 	public ArrayList<Free> allList(Connection conn) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query ="select * from free";
+		String query ="select * from free order by free_no desc";
 		ArrayList<Free> list = new ArrayList<Free>();
 		try {
 			pstmt = conn.prepareStatement(query);
