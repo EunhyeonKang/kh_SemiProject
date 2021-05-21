@@ -61,6 +61,7 @@ Admin a = (Admin) session.getAttribute("admin");
 </style>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
+	
 	<div class="container" id="view-wrap">
 		<div id="notice-view">
 			<table class="table" id="notice-view" style="width: 100%;">
@@ -116,7 +117,7 @@ Admin a = (Admin) session.getAttribute("admin");
 				<ul>
 					<li><i class=”fafa-arrows-v“></i></li>
 					<li><input type="hidden" name="ncLevel" value="1"> <input
-						type="hidden" name="ncWriter" value="<%=n.getNoticeWriter()%>">
+						type="hidden" name="ncWriter" value="<%=m.getMemberId()%>">
 						<input type="hidden" name="noticeRef" value="<%=n.getNoticeNo()%>">
 						<input type="hidden" name="ncRef" value="0"> <textarea
 							class="form-control" name="ncContent" style="height: 40px;"></textarea></li>

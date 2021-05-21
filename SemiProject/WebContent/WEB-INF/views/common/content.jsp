@@ -84,7 +84,7 @@
             <li>
                <div class="photo"><a href="/freeView?freeNo=<%=f.getFreeNo()%>">
                <%if(f.getFilepath()==null) {%>
-                  <img src="/image/logo.png" width="180" height="180">
+                  <img src="/img/logo.png" width="180" height="180">
                <%}else{ %>
                <img src="/upload/free/<%=f.getFilepath() %>" width="180" height="180">
                <%} %>
