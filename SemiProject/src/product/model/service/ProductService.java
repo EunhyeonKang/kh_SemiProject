@@ -13,7 +13,7 @@ public class ProductService {
 
 	public ProductPageData selectProductList(int reqPage) {
 		Connection conn = JDBCTemplate.getConnection();
-		int numPage = 9; 
+		int numPage = 6; 
 		int end = reqPage*numPage;
 		int start = end - numPage + 1;
 		ProductDao dao = new ProductDao();
@@ -101,7 +101,7 @@ public class ProductService {
 
 	public ProductPageData selectSponsList(int reqPage, String spons) {
 		Connection conn = JDBCTemplate.getConnection();
-		int numPage = 9; 
+		int numPage = 6; 
 		int end = reqPage*numPage;
 		int start = end - numPage + 1;
 		ProductDao dao = new ProductDao();
