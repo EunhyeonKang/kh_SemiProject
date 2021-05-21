@@ -39,7 +39,12 @@ color:#fff;
 background-color : #1a82ae;
 border-color : #1a82ae;
 }
-
+body, html{
+background-color:white !important;
+}
+.content1 img{
+width:100%;
+}
 
 </style>
 </head>
@@ -57,18 +62,19 @@ border-color : #1a82ae;
 									<p><%=p.getProductInfoBr() %></p>
 								</div>
 								<div class="image main"><img src="/upload/product/<%=p.getFilepath()%>"></div>
-								<p style="font-size : 16pt"><%=p.getProductContent() %></p>
+								<p class="content1" style="font-size : 16pt"><%=p.getProductContent() %></p>
 							</section>
 					</div>
+
 			</div>
 			<div class="btnmenu">
-				<%--if(m!=null){ --%>
+				<%if(adm!=null){ %>
 					<a class="btn btn-info btn1" href="/productUpdateFrm?productNo=<%=p.getProductNo()%>">수정하기</a>
-					<%--} --%>
+					<%}%>
 					<a class="btn btn-info btn1" href="/productList?reqPage=1">목록보기</a>
-						<%--if(m!=null){ --%>
+						<%if(adm!=null){ %>
 					<a class="btn btn-info btn1" href="/productDelete?productNo=<%=p.getProductNo()%>">삭제하기</a>
-					<%--} --%>
+					<%}%>
 					</div>
 
 	</div>
