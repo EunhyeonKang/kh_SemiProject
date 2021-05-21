@@ -33,7 +33,7 @@
                         <li><span>관리자아이디</span><input type="text" name="adminId" placeholder="아이디를 입력해주세요"><button
                                 type="button" id="idChk">중복확인</button><br></li>
                         <li><span>비밀번호</span><input type="password" name="adminPw" placeholder="비밀번호를 입력해주세요"><br></li>
-                        <li><span>비밀번호확인</span><input type="password" name="adminPwRe" placeholder="비밀번호를 확인해주세요"><br></li>
+                        <!-- <li><span>비밀번호확인</span><input type="password" name="adminPwRe" placeholder="비밀번호를 확인해주세요"><br></li> -->
                         <li><span>이름</span><input type="text" name="adminName" placeholder="예)홍길동"><br></li>
                         <li><span>전화번호</span><input type="text" name="adminPhone" placeholder="예)01012345678"><br></li>
                         <li><span>주소</span><input type="text" name="adminAddr" placeholder="주소를 입력해주세요"><br></li>
