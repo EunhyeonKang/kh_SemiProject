@@ -13,7 +13,7 @@ ArrayList<Notice> list = (ArrayList<Notice>) request.getAttribute("list");
 
 	String pageNavi = (String) request.getAttribute("pageNavi");
 	//Member m = (Member)session.getAttribute("m");
-	Admin a = (Admin)session.getAttribute("a");
+	Admin a = (Admin)session.getAttribute("admin");
 	
 %>
 

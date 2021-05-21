@@ -9,7 +9,7 @@
 Notice n = (Notice) request.getAttribute("n");
 ArrayList<NoticeComment> list = (ArrayList<NoticeComment>) request.getAttribute("list");
 //Member m = (Member) session.getAttribute("m");
-Admin a = (Admin) session.getAttribute("a");
+Admin a = (Admin) session.getAttribute("admin");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -17,11 +17,18 @@ Admin a = (Admin) session.getAttribute("a");
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
-<script src="bootstrap-modal-wrapper-factory.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<!— jQuery라이브러리 추가(2개)—>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script> 
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.js"></script> 
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+  />
+
 
 <style>
 #view-wrap {
@@ -145,7 +152,7 @@ Admin a = (Admin) session.getAttribute("a");
 							<a class="btn btn-light"id="view-botton" href="javascript:void(0)" onclick="deleteComment(this,'<%=nc.getNcNo()%>','<%=n.getNoticeNo()%>');">삭제</a>
 							
 						<%} //댓글 작성자와 로그인 회원이 일치하는 경우 %>
-						<a class="btn btn-light recShow" id="view-botton" href="javascript:void(0)">답글달기</a>
+						
 					<%} //로그인 되어있는경우 %>
 					</p>
 					<%if(m != null || a!=null) {%>
@@ -154,54 +161,28 @@ Admin a = (Admin) session.getAttribute("a");
 						<input type="hidden" name="ncWriter" value="<%=m.getMemberId() %>">
 						<input type="hidden" name="noticeRef" value="<%=n.getNoticeNo() %>">
 						<input type="hidden" name="ncRef" value="<%=nc.getNcNo()%>">
-					
-						<textarea class="form-control" name="ncContent" style="height:30px;"></textarea>
-						<div id="view-btntag"style="float:right;">
-							<button type="submit" class="btn btn-light">등록</button>
-							<button type="button" class="btn btn-light recCancel">취소</button>
-						</div>
+						
 					</form>
 					<%} %>
 				</li>
 			</ul>
-				<%for(NoticeComment ncc : list){ %>
-					<%if(ncc.getNcLevel() == 2 && ncc.getNcRef() == nc.getNcNo()) { //대댓글 %>
-					<ul  class="list-group list-group-flush">
-				<li class="list-group-item" style="margin-top:40px; padding:10px; background-color:#dddfe6;">
-				<div class="form-inline mb-2">
-				<i class="fa fa-user-circle-o fa-2x"></i>
-					<p style="padding-left:30px;"><%=nc.getNcWriter() %></p>
-					</div>
-				</li>
-				<li>
-					<p style="padding:10px;"><%=ncc.getNcContentBr() %></p>
-					<textarea name="ncContent" class="form-control" style="display:none;"><%=ncc.getNcContent() %></textarea>
-					<p class="commentsBtn float-right " style="margin-bottom:20px;">
-					<%if(a!=null || m.getMemberId().equals(n.getNoticeWriter())) {%>
-					<a class="btn btn-light " href="javascript:void(0)" onclick="modifyComment(this,'<%=ncc.getNcNo()%>','<%=n.getNoticeNo()%>');">수정</a>
-					<a class="btn btn-light " href="javascript:void(0)" onclick="deleteComment(this,'<%=ncc.getNcNo()%>','<%=n.getNoticeNo()%>');">삭제</a>
-						<%} %>
-						</p>
-						
-						</ul>
-					<%} %>
-				<%}//대댓글 반복문 끝나는 지점 %>
+			
 			<%} %>
 			<%} //전체댓글 반복문 끝나는 지점%>
 			</div>
 			</div>
 			<script>
-		$(".recShow").click(function(){
-			var idx = $(".recShow").index(this);	//클릭한게 몇번째 답글달기 버튼인지 구하는 코드
-			$(this).hide();
-			$(".recoment").eq(idx).css("display","block");
-		});
-		
-		$(".recCancel").click(function(){
-			var idx = $(".recCancel").index(this);
-			$(".recoment").eq(idx).css("display","none");
-			$(".recShow").eq(idx).show();
-		});
+	
+			$(".recShow").click(function(){
+				var idx = $(".recShow").index(this);	//클릭한게 몇번째 답글달기 버튼인지 구하는 코드
+				$(this).show();
+				$(".recoment").eq(idx).css("display","flex");
+			});
+			$(".recCancel").click(function(){
+				var idx = $(".recCancel").index(this);
+				$(".recoment").eq(idx).css("display","none");
+				$(".recShow").eq(idx).hide();
+			});
 		function modifyComment(obj,ncNo,noticeNo){
 			//textarea를 보여줌
 			$(obj).parent().prev().show();
@@ -247,10 +228,3 @@ Admin a = (Admin) session.getAttribute("a");
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
 </html>
-
-
-
-
-
-
-
