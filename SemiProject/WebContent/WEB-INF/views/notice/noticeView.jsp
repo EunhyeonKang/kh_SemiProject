@@ -116,7 +116,7 @@ Admin a = (Admin) session.getAttribute("admin");
 				<ul>
 					<li><i class=”fafa-arrows-v“></i></li>
 					<li><input type="hidden" name="ncLevel" value="1"> <input
-						type="hidden" name="ncWriter" value="<%=m.getMemberId()%>">
+						type="hidden" name="ncWriter" value="<%=n.getNoticeWriter()%>">
 						<input type="hidden" name="noticeRef" value="<%=n.getNoticeNo()%>">
 						<input type="hidden" name="ncRef" value="0"> <textarea
 							class="form-control" name="ncContent" style="height: 40px;"></textarea></li>
