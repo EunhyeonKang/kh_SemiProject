@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Member.service.MemberService;
-import Member.vo.Member;
+import donation.login.Member;
 
 
 

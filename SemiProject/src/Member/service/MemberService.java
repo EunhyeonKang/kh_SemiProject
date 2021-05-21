@@ -3,8 +3,8 @@ package Member.service;
 import java.sql.Connection;
 
 import Member.dao.MemberDao;
-import Member.vo.Member;
 import common.JDBCTemplate;
+import donation.login.Member;
 
 
 public class MemberService {

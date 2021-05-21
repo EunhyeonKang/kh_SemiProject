@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Member.service.MemberService;
-import Member.vo.Member;
+import donation.login.Member;
+
 
 
 /**
@@ -41,7 +42,7 @@ public class MemberJoinServlet extends HttpServlet {
 		m.setMemberPw(request.getParameter("memberPw"));
 		m.setMemberName(request.getParameter("memberName"));
 		m.setMemberEmail(request.getParameter("memberEmail"));
-		m.setPhone(request.getParameter("Phone"));
+		m.setMemberPhone(request.getParameter("Phone"));
 		m.setMemberAddr(request.getParameter("memberAddr"));
 		//3
 		int result = new MemberService().inserMember(m);

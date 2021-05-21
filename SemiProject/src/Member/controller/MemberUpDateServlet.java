@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Member.service.MemberService;
-import Member.vo.Member;
+import donation.login.Member;
 
 /**
  * Servlet implementation class MemberUpDateServlet
@@ -39,7 +39,7 @@ public class MemberUpDateServlet extends HttpServlet {
 		m.setMemberId(request.getParameter("memberId"));
 		m.setMemberPw(request.getParameter("memberPw"));
 		m.setMemberEmail(request.getParameter("memberEmail"));
-		m.setPhone(request.getParameter("Phone"));
+		m.setMemberPhone(request.getParameter("Phone"));
 		m.setMemberAddr(request.getParameter("memberAddr"));
 		//3
 		int result = new MemberService().updateMember(m);

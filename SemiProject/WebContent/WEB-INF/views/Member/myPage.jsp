@@ -79,7 +79,7 @@
                 </div>
                 <div>
                   <div>전화번호</div>
-                  <div class="concon2"><input type="text" name="Phone" value="<%=m.getPhone()%>"></div>
+                  <div class="concon2"><input type="text" name="Phone" value="<%=m.getMemberPhone()%>"></div>
                 </div>
                 <div>
                   <div>주소</div>
@@ -87,7 +87,7 @@
                 </div>
                 <div>
                   <div class="fileChoice" style="width: 80px;"><input type="file" value="사진변경"></div>
-                  <div class="concon2">/img/img/pic34.jpg</div>
+                  <div class="concon2"></div>
                 </div>
                 <hr width="75%">
                 <div>

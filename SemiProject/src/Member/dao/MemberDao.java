@@ -5,10 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.sun.javafx.geom.transform.GeneralTransform3D;
-
-import Member.vo.Member;
 import common.JDBCTemplate;
+import donation.login.Member;
 
 public class MemberDao {
 
@@ -30,7 +28,7 @@ public class MemberDao {
 				m.setMemberPw(rset.getString("member_Pw"));
 				m.setMemberName(rset.getString("member_Name"));
 				m.setMemberNo(rset.getInt("member_No"));
-				m.setPhone(rset.getString("Phone"));
+				m.setMemberPhone(rset.getString("Phone"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -53,7 +51,7 @@ public class MemberDao {
 			pstmt.setString(3, m.getMemberName());
 			pstmt.setString(4, m.getMemberAddr());
 			pstmt.setString(5, m.getMemberEmail());
-			pstmt.setString(6, m.getPhone());
+			pstmt.setString(6, m.getMemberPhone());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -81,7 +79,7 @@ public class MemberDao {
 				m.setMemberName(rset.getString("member_Name"));
 				m.setMemberNo(rset.getInt("member_No"));
 				m.setMemberPw(rset.getString("member_Pw"));
-				m.setPhone(rset.getString("Phone"));
+				m.setMemberPhone(rset.getString("Phone"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -103,7 +101,7 @@ public class MemberDao {
 			pstmt.setString(1, m.getMemberPw());
 			pstmt.setString(2, m.getMemberEmail());
 			pstmt.setString(3, m.getMemberAddr());
-			pstmt.setString(4, m.getPhone());
+			pstmt.setString(4, m.getMemberPhone());
 			pstmt.setString(5, m.getMemberId());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

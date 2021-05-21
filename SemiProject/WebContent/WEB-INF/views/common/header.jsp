@@ -51,6 +51,7 @@
         <li class="nav-item"><a href="/freeBoard?reqPage=1">자유게시판</a></li>
 
       </ul>
+     <%--  원래코드
       <%if (adm == null) {%>
       <div class="right-col">
         <ul class="login">
@@ -65,6 +66,30 @@
           <li class="login-item"><a href="/adminPage" style="color:rgba(0, 183, 255, 0.959);"><%=adm.getAdminName() %> </a>님 환영합니다</li>
           <li class="login-item"><a href="/logout">로그아웃</a></li>
          </ul>
+      </div>
+      <%} %>
+      --%>
+      <%if (m != null) {%>
+      <div class="right-col">   
+         <ul class="login">
+           <li class="login-item"><a href="/memberMyPage" style="color:rgba(0, 183, 255, 0.959);"><%=m.getMemberName() %> </a>님 환영합니다</li>
+           <li class="login-item"><a href="/memberLogout">로그아웃</a></li>
+         </ul>
+      </div>
+      <%} else if(adm != null){ %>
+      <div class="right-col">   
+         <ul class="login">
+           <li class="login-item"><a href="/adminPage" style="color:rgba(0, 183, 255, 0.959);"><%=adm.getAdminName() %> </a>님 환영합니다</li>
+           <li class="login-item"><a href="/logout">로그아웃</a></li>
+         </ul>
+      </div>
+      <%}else{%>
+      <div class="right-col">
+        <ul class="login">
+          	<li class="login-item"><a href="/memberLoginPage">로그인</a></li>
+			<li class="login-item"><a href="/memberJoinPage">회원가입</a></li>
+        </ul>
+        <a class="interior-link" href="/adminJoin">관리자</a> 
       </div>
       <%} %>
       
